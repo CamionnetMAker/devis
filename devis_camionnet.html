@@ -48,7 +48,8 @@ body{font-family:var(--font);background:#F7F8FB;color:var(--gray-900);min-height
 .hdr-cta:hover{background:var(--green-dark);}
 
 /* ── PROGRESS BAR ── */
-.pbar-wrap{height:3px;background:var(--gray-100);}
+.hdr{display:none;}
+.pbar-wrap{display:none;}
 .pbar{height:3px;background:linear-gradient(90deg,var(--green),#3B7BC8);transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
 
 /* ── HERO ── */
@@ -65,7 +66,7 @@ body{font-family:var(--font);background:#F7F8FB;color:var(--gray-900);min-height
 .stat-label{font-size:11px;color:var(--gray-400);font-weight:500;margin-top:5px;display:block;letter-spacing:0.3px;}
 
 /* ── STEPPER ── */
-.stepper-outer{border-bottom:1px solid var(--gray-200);background:var(--white);position:sticky;top:64px;z-index:90;}
+.stepper-outer{border-bottom:1px solid var(--gray-200);background:var(--white);position:sticky;top:0;z-index:90;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
 .stepper{display:flex;max-width:860px;margin:0 auto;padding:0 48px;}
 .step-item{flex:1;display:flex;align-items:center;gap:10px;padding:16px 0;position:relative;cursor:default;}
 .step-item:not(:last-child)::after{content:'›';position:absolute;right:-4px;top:50%;transform:translateY(-50%);color:var(--gray-300);font-size:16px;font-weight:300;}
