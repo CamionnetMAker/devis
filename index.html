@@ -403,8 +403,17 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   .tag-group{gap:5px;}
   .jour-btn,.plage-btn{padding:6px 10px;font-size:11px;}
 
-  /* Tableau véhicules : scroll horizontal */
-  .vehicle-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  /* Tableau véhicules : layout carte mobile (pas de scroll horizontal) */
+  .vehicle-table thead{display:none;}
+  .vehicle-table,.vehicle-table tbody,.vehicle-table tr{display:block;width:100%;}
+  .vehicle-table tr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-bottom:none;background:var(--gray-50);border-radius:8px;margin-bottom:6px;}
+  .vehicle-table tr:last-child{margin-bottom:0;}
+  .vehicle-table tr:hover td{background:transparent;}
+  .vehicle-table td{display:block;border:none;padding:0;}
+  .vehicle-table td:nth-child(1){flex:1 1 100%;padding-bottom:6px;}
+  .vehicle-table td:nth-child(2){flex:0 0 auto;}
+  .vehicle-table td:nth-child(3){flex:1 1 140px;min-width:0;}
+  .vehicle-table td:nth-child(3) select{width:100%;font-size:13px;padding:6px 8px;}
 
   /* Compteurs */
   .counter-btn{width:27px;height:27px;font-size:15px;}
@@ -779,7 +788,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   <div class="form-section">
     <div class="section-label"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Composition de la flotte</div>
     <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Indiquez le nombre de véhicules de chaque catégorie.</p>
-    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="vehicle-table" style="min-width:480px;">
+    <div class="vehicle-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="vehicle-table" style="width:100%;border-collapse:collapse">
       <thead><tr><th style="width:50%">Type de véhicule</th><th style="width:22%;text-align:center">Quantité</th><th style="width:28%">Gabarit</th></tr></thead>
       <tbody>
         <tr><td><div class="veh-name">VL — Véhicule léger<div class="veh-desc">Berline, citadine, petit utilitaire type Kangoo</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vl" data-delta="-1">−</button><div class="counter-val" id="vl-val">0</div><button class="counter-btn" data-type="vl" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Berline / citadine</option><option>SUV / Break</option><option>Petit utilitaire (Kangoo, Berlingo…)</option></select></td></tr>
