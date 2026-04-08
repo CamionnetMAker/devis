@@ -272,6 +272,46 @@ img{max-width:100%;display:block;}
   .veh-grid{grid-template-columns:1fr 1fr;}
   .nav-inner{padding:0 16px;}
 }
+
+/* ── RUNGIS SERVICE CARDS ── */
+.rungis-service-card{
+  display:flex;align-items:center;gap:14px;
+  background:#fff;border:1.5px solid var(--gray-100);
+  border-radius:var(--radius-lg);padding:16px 18px;
+  cursor:pointer;transition:all 0.2s;
+}
+.rungis-service-card:hover{
+  border-color:var(--teal);background:var(--teal-light);
+  transform:translateY(-2px);box-shadow:var(--shadow);
+}
+.rungis-service-card.rsc-featured{
+  border-color:rgba(49,220,200,0.4);
+  background:linear-gradient(135deg,rgba(49,220,200,0.06),rgba(49,220,200,0.02));
+}
+.rungis-service-card.rsc-featured:hover{
+  border-color:var(--teal);background:var(--teal-light);
+}
+.rsc-icon{font-size:24px;flex-shrink:0;width:36px;text-align:center;}
+.rsc-info{flex:1;min-width:0;}
+.rsc-name{font-size:14px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px;}
+.rsc-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.rsc-duration{font-size:12px;color:var(--gray-400);}
+.rsc-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;
+  background:rgba(49,220,200,0.15);color:var(--teal-dark);
+  padding:2px 8px;border-radius:100px;}
+.rsc-cta{font-size:12px;font-weight:700;color:var(--teal);flex-shrink:0;white-space:nowrap;}
+.rungis-service-card:hover .rsc-name{color:var(--navy);}
+@media(max-width:768px){
+  .rungis-service-card{padding:12px 14px;}
+  #rungis-services .section-narrow > div > div[style*="grid-template-columns:repeat(3"]{
+    grid-template-columns:1fr 1fr!important;
+  }
+}
+@media(max-width:480px){
+  #rungis-services .section-narrow > div > div[style*="grid-template-columns:repeat(3"]{
+    grid-template-columns:1fr!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -758,32 +798,36 @@ img{max-width:100%;display:block;}
 <!-- PAGE : CENTRE RUNGIS -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div class="page" id="page-rungis">
+
+  <!-- HERO -->
   <section class="hero" style="min-height:60vh;padding-top:100px;padding-bottom:60px;">
     <div class="hero-inner">
       <div>
         <div class="hero-eyebrow"><span class="hero-dot"></span>Centre fixe — MIN de Rungis</div>
         <h1>Centre de lavage <em>Rungis</em><br>au cœur du MIN</h1>
-        <p class="hero-sub">Notre station fixe est implantée à Sogaris, au sein même du Marché International de Rungis. Accessible facilement pour tous les professionnels de la logistique alimentaire en Île-de-France.</p>
+        <p class="hero-sub">Notre station fixe est implantée à Sogaris, au sein même du Marché International de Rungis. Réservez votre créneau en ligne — disponibilités en temps réel, confirmation immédiate.</p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
-          <button class="btn-secondary" onclick="showPage('tarifs')">Simuler un tarif</button>
+          <button class="btn-primary" onclick="document.getElementById('rungis-services').scrollIntoView({behavior:'smooth'})">
+            Choisir un service →
+          </button>
+          <button class="btn-secondary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver maintenant</button>
         </div>
       </div>
       <div class="hero-visual">
         <div class="hero-card">
           <div class="hero-card-badge">● Infos pratiques</div>
           <h3>Centre Camion Net — Rungis</h3>
-          <p>Sur rendez-vous uniquement. Fonctionnement du lundi au samedi.</p>
+          <p>Sur rendez-vous uniquement. Lundi au samedi.</p>
           <div class="hero-service-list">
             <div class="hero-service"><div class="hero-service-dot"></div>Sogaris, Pl. de la Logistique, 94150 Rungis</div>
-            <div class="hero-service"><div class="hero-service-dot"></div>Réservation en ligne obligatoire</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Lundi – Samedi, sur rendez-vous</div>
             <div class="hero-service"><div class="hero-service-dot"></div>+33 6 80 93 61 31</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Réservation en ligne obligatoire</div>
             <div class="hero-service"><div class="hero-service-dot"></div>Option convoyage disponible</div>
           </div>
           <div class="hero-cta-bottom">
             <a href="https://www.lavagecamions.com/book-online" target="_blank">
-              Réserver en ligne
-              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              Réserver en ligne <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
             </a>
           </div>
         </div>
@@ -791,58 +835,114 @@ img{max-width:100%;display:block;}
     </div>
   </section>
 
-  <section class="section" style="background:var(--navy);">
-    <div class="section-narrow rungis-inner">
-      <div class="rungis-info">
-        <div class="label">Notre station fixe</div>
-        <h2>Un centre de lavage spécialisé pour les professionnels</h2>
-        <p>Situé au cœur du Marché International de Rungis, notre centre de lavage fixe est spécialement conçu pour répondre aux exigences des professionnels du transport, de la logistique et de la grande distribution.</p>
-        <p>Accessible facilement depuis le MIN, il permet un nettoyage complet et rapide des véhicules utilitaires et poids lourds, dans le respect des normes d'hygiène et de sécurité.</p>
-        <div class="rungis-details">
-          <div class="rungis-detail"><div class="d-label">Adresse</div><div class="d-val">Sogaris, Pl. de la Logistique<br>94150 Rungis</div></div>
-          <div class="rungis-detail"><div class="d-label">Horaires</div><div class="d-val">Lun – Sam<br>Sur rendez-vous</div></div>
-          <div class="rungis-detail"><div class="d-label">Téléphone</div><div class="d-val">+33 6 80 93 61 31</div></div>
-          <div class="rungis-detail"><div class="d-label">Réservation</div><div class="d-val">En ligne — obligatoire</div></div>
-        </div>
-        <div style="display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;">
-          <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
-          <button class="btn-secondary" onclick="window.open('https://www.google.com/maps/place/Camion+Net+Ecomobile+Lavage+Pl/@48.7521566,2.3606119','_blank')">Voir sur Google Maps</button>
-        </div>
-      </div>
-      <div>
-        <div class="rungis-map-card">
-          <div class="label">Nos prestations Rungis</div>
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
-              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Lavage extérieur haute pression</div>
+  <!-- INFOS PRATIQUES -->
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+        <div>
+          <div class="section-label">Notre station fixe</div>
+          <h2 class="section-title">Un centre spécialisé<br>pour les professionnels</h2>
+          <p style="font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:20px;">Situé au cœur du Marché International de Rungis, notre centre de lavage fixe répond aux exigences des professionnels du transport, de la logistique et de la grande distribution alimentaire.</p>
+          <p style="font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:28px;">Accessible facilement depuis le MIN, il permet un nettoyage complet et rapide dans le respect des normes d'hygiène HACCP.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:28px;">
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Adresse</div>
+              <div style="font-size:14px;font-weight:600;color:var(--navy);">Sogaris, Pl. de la Logistique<br>94150 Rungis</div>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
-              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Nettoyage intérieur caisse frigo</div>
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Horaires</div>
+              <div style="font-size:14px;font-weight:600;color:var(--navy);">Lun – Sam<br>Sur rendez-vous</div>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
-              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Désinfection alimentaire certifiée</div>
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:10px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Téléphone</div>
+              <div style="font-size:14px;font-weight:600;color:var(--navy);"><a href="tel:+33680936131" style="color:var(--navy);">+33 6 80 93 61 31</a></div>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
-              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Nettoyage cabine intérieure</div>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
-              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
-              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Option convoyage vers le centre</div>
+            <div style="background:rgba(49,220,200,0.08);border:1.5px solid rgba(49,220,200,0.3);border-radius:12px;padding:18px;">
+              <div style="font-size:10px;color:var(--teal-dark);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;">Réservation</div>
+              <div style="font-size:14px;font-weight:600;color:var(--navy);">En ligne — obligatoire</div>
             </div>
           </div>
-          <div style="margin-top:20px;padding:14px;background:rgba(49,220,200,0.1);border:1px solid rgba(49,220,200,0.25);border-radius:10px;">
-            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--teal);margin-bottom:6px;">Simulation tarifaire disponible</div>
-            <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;">Estimez le coût de votre prestation en ligne via notre simulateur de tarifs HT.</div>
-            <button class="btn-primary" style="margin-top:12px;padding:9px 18px;font-size:13px;" onclick="showPage('tarifs')">Simuler un tarif →</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
+            <button class="btn-secondary" onclick="window.open('https://www.google.com/maps/place/Camion+Net+Ecomobile+Lavage+Pl/@48.7521566,2.3606119','_blank')">Voir sur Maps</button>
+          </div>
+        </div>
+        <div>
+          <div style="background:linear-gradient(135deg,#0B1628,#142346);border-radius:20px;padding:32px;">
+            <div class="section-label" style="margin-bottom:16px;">Nos prestations Rungis</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,0.05);border-radius:10px;"><svg style="width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Lavage extérieur haute pression</div></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,0.05);border-radius:10px;"><svg style="width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Nettoyage intérieur caisse frigo</div></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,0.05);border-radius:10px;"><svg style="width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Désinfection alimentaire certifiée HACCP</div></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,0.05);border-radius:10px;"><svg style="width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Nettoyage intérieur cabine</div></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;background:rgba(255,255,255,0.05);border-radius:10px;"><svg style="width:18px;height:18px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><div style="font-size:14px;color:rgba(255,255,255,0.85);font-weight:500;">Option convoyage vers le centre</div></div>
+            </div>
+            <div style="margin-top:20px;padding:14px;background:rgba(49,220,200,0.1);border:1px solid rgba(49,220,200,0.25);border-radius:10px;">
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--teal);margin-bottom:6px;">Simulation tarifaire disponible</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;">Estimez le coût en ligne via notre simulateur de tarifs HT.</div>
+              <button class="btn-primary" style="margin-top:12px;padding:9px 18px;font-size:13px;" onclick="showPage('tarifs')">Simuler un tarif →</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- GRILLE DE SERVICES / RÉSERVATION -->
+  <section class="section" id="rungis-services">
+    <div class="section-narrow">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-label" style="text-align:center;">Réservation en ligne</div>
+        <h2 class="section-title" style="text-align:center;max-width:600px;margin:0 auto 12px;">Choisissez votre type de véhicule</h2>
+        <p class="section-sub" style="text-align:center;margin:0 auto 48px;">Cliquez sur votre service ci-dessous pour accéder au calendrier et choisir votre créneau.</p>
+      </div>
+
+      <div style="margin-bottom:40px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--gray-100);">Véhicules utilitaires</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-vl?referral=service_list_widget','_blank')"><div class="rsc-icon">🚗</div><div class="rsc-info"><div class="rsc-name">Lavage VL</div><div class="rsc-meta"><span class="rsc-duration">⏱ 10 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-vul-5-a-11-9m3?referral=service_list_widget','_blank')"><div class="rsc-icon">🚐</div><div class="rsc-info"><div class="rsc-name">Lavage VUL 5 à 11,9M3</div><div class="rsc-meta"><span class="rsc-duration">⏱ 15 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-vul-12-a-20-m3?referral=service_list_widget','_blank')"><div class="rsc-icon">📦</div><div class="rsc-info"><div class="rsc-name">Lavage VUL 12 à 20 m3</div><div class="rsc-meta"><span class="rsc-duration">⏱ 15 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:40px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--gray-100);">Poids lourds & porteurs</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-pl-6t-12-9t?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage PL 6T – 12,9T</div><div class="rsc-meta"><span class="rsc-duration">⏱ 20 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-pl-13t-25-9t?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage PL 13T - 25,9T</div><div class="rsc-meta"><span class="rsc-duration">⏱ 20 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-pl-26t?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage PL +26T</div><div class="rsc-meta"><span class="rsc-duration">⏱ 20 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-porteur-plateau?referral=service_list_widget','_blank')"><div class="rsc-icon">🏗️</div><div class="rsc-info"><div class="rsc-name">Lavage Porteur plateau</div><div class="rsc-meta"><span class="rsc-duration">⏱ 20 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-porteur-benne?referral=service_list_widget','_blank')"><div class="rsc-icon">🚜</div><div class="rsc-info"><div class="rsc-name">Lavage Porteur benne</div><div class="rsc-meta"><span class="rsc-duration">⏱ 30 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-car-bus?referral=service_list_widget','_blank')"><div class="rsc-icon">🚌</div><div class="rsc-info"><div class="rsc-name">Lavage CAR / BUS</div><div class="rsc-meta"><span class="rsc-duration">⏱ 30 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:40px;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--gray-100);">Tracteurs, semi-remorques & ensembles</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-tracteur-routier?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage Tracteur Routier</div><div class="rsc-meta"><span class="rsc-duration">⏱ 20 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-semi-remorque?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage Semi remorque</div><div class="rsc-meta"><span class="rsc-duration">⏱ 25 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-tracteur-semi?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage Tracteur + Semi</div><div class="rsc-meta"><span class="rsc-duration">⏱ 30 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-semi-citerne?referral=service_list_widget','_blank')"><div class="rsc-icon">⛽</div><div class="rsc-info"><div class="rsc-name">Lavage Semi citerne</div><div class="rsc-meta"><span class="rsc-duration">⏱ 35 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card rsc-featured" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-tracteur-semi-citerne?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage Tracteur + Semi citerne</div><div class="rsc-meta"><span class="rsc-duration">⏱ 45 min</span><span class="rsc-badge">Ensemble complet</span></div></div><div class="rsc-cta">Réserver →</div></div>
+          <div class="rungis-service-card" onclick="window.open('https://www.lavagecamions.com/booking-calendar/lavage-camion-remorque?referral=service_list_widget','_blank')"><div class="rsc-icon">🚛</div><div class="rsc-info"><div class="rsc-name">Lavage Camion + Remorque</div><div class="rsc-meta"><span class="rsc-duration">⏱ 30 min</span></div></div><div class="rsc-cta">Réserver →</div></div>
+        </div>
+      </div>
+
+      <div style="text-align:center;padding:32px;background:var(--off);border-radius:16px;border:1.5px solid var(--gray-100);">
+        <div style="font-size:13px;color:var(--gray-500);margin-bottom:12px;">Vous ne trouvez pas votre service ou besoin d'un devis sur mesure ?</div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="showPage('tarifs')">Demander un devis personnalisé →</button>
+          <a href="tel:+33680936131" style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--navy);font-size:15px;font-weight:600;padding:14px 24px;border-radius:6px;border:1.5px solid var(--gray-200);">
+            <svg style="width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+            +33 6 80 93 61 31
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="cta-section">
     <div class="cta-inner">
       <div class="cta-eyebrow">● Réservation en ligne</div>
@@ -854,7 +954,9 @@ img{max-width:100%;display:block;}
       </div>
     </div>
   </div>
+
 </div>
+
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- PAGE : VÉHICULES -->
 <!-- ══════════════════════════════════════════════════════ -->
