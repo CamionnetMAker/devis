@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camion Net — Spécialiste du lavage industriel de véhicules</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & BASE ── */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#0B1628;--navy-mid:#142346;--navy-light:#1C3060;
+  --teal:#31DCC8;--teal-dark:#0FBDAD;--teal-light:#E4FBF9;
+  --white:#fff;--off:#F8FAFB;
+  --gray-50:#F3F4F6;--gray-100:#E5E7EB;--gray-200:#D1D5DB;
+  --gray-300:#9CA3AF;--gray-400:#6B7280;--gray-500:#4B5563;
+  --gray-700:#374151;--gray-900:#0F172A;
+  --radius:6px;--radius-lg:12px;--radius-xl:20px;
+  --shadow:0 4px 20px rgba(11,22,40,.10);--shadow-lg:0 12px 40px rgba(11,22,40,.18);
+  --font:'Inter',-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:#fff;color:var(--gray-900);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.08);}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-logo-mark{width:36px;height:36px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;}
+.nav-logo-mark svg{width:22px;height:22px;fill:#0B1628;}
+.nav-brand{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
+.nav-brand span{color:var(--teal);}
+.nav-tagline{font-size:11px;color:rgba(255,255,255,0.45);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-top:1px;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:var(--radius);transition:all 0.15s;cursor:pointer;}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);min-width:240px;overflow:hidden;border:1px solid var(--gray-100);}
+.nav-dropdown:hover .nav-dropdown-menu{display:block;}
+.nav-dropdown-item{display:block;padding:10px 16px;font-size:13px;font-weight:500;color:var(--gray-700);border-bottom:1px solid var(--gray-50);cursor:pointer;}
+.nav-dropdown-item:hover{background:var(--teal-light);color:var(--navy);}
+.nav-dropdown-item:last-child{border-bottom:none;}
+.nav-ctas{display:flex;align-items:center;gap:10px;}
+.btn-devis{background:var(--teal);color:var(--navy);font-size:13px;font-weight:700;padding:9px 20px;border-radius:var(--radius);border:none;cursor:pointer;transition:all 0.15s;}
+.btn-devis:hover{background:var(--teal-dark);}
+.btn-resa{background:transparent;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.15s;}
+.btn-resa:hover{border-color:var(--teal);color:var(--teal);}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:#fff;margin:4px 0;border-radius:2px;transition:all 0.2s;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(150deg,#0B1628 0%,#142346 60%,#0B1628 100%);padding:120px 32px 80px;min-height:100vh;display:flex;align-items:center;}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(49,220,200,0.12);border:1px solid rgba(49,220,200,0.3);color:var(--teal);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:24px;letter-spacing:0.08em;text-transform:uppercase;}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;color:#fff;line-height:1.05;letter-spacing:-0.04em;margin-bottom:20px;}
+.hero h1 em{font-style:normal;color:var(--teal);}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.65);line-height:1.65;max-width:480px;margin-bottom:36px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{background:var(--teal);color:var(--navy);font-family:var(--font);font-size:15px;font-weight:700;padding:14px 28px;border-radius:var(--radius);border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-1px);}
+.btn-primary svg{width:14px;height:14px;stroke:var(--navy);fill:none;stroke-width:2.5;}
+.btn-secondary{background:transparent;color:#fff;font-family:var(--font);font-size:15px;font-weight:600;padding:14px 24px;border-radius:var(--radius);border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s;}
+.btn-secondary:hover{border-color:var(--teal);color:var(--teal);}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.07);border-radius:var(--radius-lg);overflow:hidden;margin-top:40px;border:1px solid rgba(255,255,255,0.08);}
+.hero-stat{background:rgba(255,255,255,0.04);padding:16px 12px;text-align:center;}
+.stat-n{font-size:22px;font-weight:900;color:var(--teal);display:block;letter-spacing:-0.03em;line-height:1;}
+.stat-l{font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.06em;text-transform:uppercase;margin-top:5px;display:block;}
+.hero-visual{position:relative;}
+.hero-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-xl);padding:32px;color:#fff;}
+.hero-card-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(49,220,200,0.15);border:1px solid rgba(49,220,200,0.3);color:var(--teal);font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;margin-bottom:16px;text-transform:uppercase;letter-spacing:0.08em;}
+.hero-card h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.02em;}
+.hero-card p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;margin-bottom:20px;}
+.hero-service-list{display:flex;flex-direction:column;gap:8px;}
+.hero-service{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.8);font-weight:500;}
+.hero-service-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.hero-cta-bottom{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);}
+.hero-cta-bottom a{font-size:13px;font-weight:600;color:var(--teal);display:flex;align-items:center;gap:5px;}
+.hero-cta-bottom a svg{width:12px;height:12px;stroke:var(--teal);fill:none;stroke-width:2.5;}
+
+/* ── SECTIONS COMMUNES ── */
+.section{padding:96px 32px;}
+.section-narrow{max-width:1200px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:14px;}
+.section-title{font-size:clamp(28px,4vw,40px);font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;}
+.section-sub{font-size:16px;color:var(--gray-400);line-height:1.65;max-width:560px;}
+.section-header{margin-bottom:60px;}
+.section-bg{background:var(--off);}
+.section-dark{background:linear-gradient(150deg,#0B1628,#142346);}
+
+/* ── CARDS ── */
+.cards-grid{display:grid;gap:24px;}
+.cards-grid.cols-3{grid-template-columns:repeat(3,1fr);}
+.cards-grid.cols-2{grid-template-columns:repeat(2,1fr);}
+.cards-grid.cols-4{grid-template-columns:repeat(4,1fr);}
+.card{background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-lg);padding:28px;transition:all 0.2s;position:relative;overflow:hidden;}
+.card:hover{border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-2px);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);opacity:0;transition:opacity 0.2s;}
+.card:hover::before{opacity:1;}
+.card-icon{width:44px;height:44px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.card-icon svg{width:22px;height:22px;stroke:var(--teal-dark);fill:none;stroke-width:1.8;}
+.card-title{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;letter-spacing:-0.02em;}
+.card-text{font-size:14px;color:var(--gray-400);line-height:1.6;}
+.card-link{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal);margin-top:14px;cursor:pointer;}
+.card-link svg{width:12px;height:12px;stroke:var(--teal);fill:none;stroke-width:2.5;transition:transform 0.15s;}
+.card:hover .card-link svg{transform:translateX(3px);}
+.card-dark{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);}
+.card-dark .card-title{color:#fff;}
+.card-dark .card-text{color:rgba(255,255,255,0.6);}
+.card-dark .card-link{color:var(--teal);}
+.card-dark .card-icon{background:rgba(49,220,200,0.15);}
+.card-dark:hover{border-color:var(--teal);}
+
+/* ── SERVICE CARDS VÉHICULES ── */
+.veh-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.veh-card{background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-lg);padding:22px 18px;text-align:center;cursor:pointer;transition:all 0.2s;}
+.veh-card:hover{border-color:var(--teal);background:var(--teal-light);transform:translateY(-2px);}
+.veh-icon{font-size:32px;margin-bottom:10px;}
+.veh-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.veh-desc{font-size:12px;color:var(--gray-400);line-height:1.5;}
+.veh-card:hover .veh-name{color:var(--navy);}
+
+/* ── DEUX COLONNES ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.two-col-text .label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.two-col-text h2{font-size:clamp(26px,3.5vw,36px);font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;}
+.two-col-text p{font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:16px;}
+.two-col-text .list{list-style:none;margin:20px 0;}
+.two-col-text .list li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-600);margin-bottom:10px;line-height:1.5;}
+.two-col-text .list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:6px;}
+.two-col-visual{position:relative;}
+.two-col-visual img{border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);}
+.img-placeholder{background:linear-gradient(135deg,#0B1628,#142346);border-radius:var(--radius-xl);height:380px;display:flex;align-items:center;justify-content:center;}
+.img-placeholder svg{width:80px;height:80px;stroke:rgba(255,255,255,0.15);fill:none;stroke-width:1;}
+
+/* ── DARK TEXT VERSION ── */
+.two-col-text.light h2,.two-col-text.light p,.two-col-text.light .list li{color:#fff;}
+.two-col-text.light p,.two-col-text.light .list li{color:rgba(255,255,255,0.7);}
+
+/* ── PROCESSUS ── */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;}
+.process-steps::before{content:'';position:absolute;top:24px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--teal),var(--teal),transparent);opacity:0.3;}
+.step-item{text-align:center;position:relative;}
+.step-num{width:48px;height:48px;background:var(--navy);border:2px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:16px;font-weight:800;color:var(--teal);}
+.step-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.step-text{font-size:13px;color:var(--gray-400);line-height:1.6;}
+
+/* ── TEMOIGNAGES / TRUST ── */
+.trust-bar{background:linear-gradient(90deg,#0B1628,#142346);padding:40px 32px;}
+.trust-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;align-items:center;text-align:center;}
+.trust-item .num{font-size:28px;font-weight:900;color:var(--teal);letter-spacing:-0.03em;line-height:1;}
+.trust-item .lbl{font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
+
+/* ── MAP / ZONE ── */
+.zone-section{background:var(--off);}
+.zone-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center;}
+.zone-map{background:linear-gradient(135deg,#E4FBF9,#F0FDF4);border-radius:var(--radius-xl);height:420px;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--teal-light);position:relative;overflow:hidden;}
+.zone-badge{position:absolute;background:var(--teal);color:var(--navy);font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;box-shadow:var(--shadow);}
+.zone-badge.top-left{top:20px;left:20px;}
+.zone-badge.top-right{top:20px;right:20px;}
+.zone-badge.bottom{bottom:20px;left:50%;transform:translateX(-50%);}
+
+/* ── RUNGIS ── */
+.rungis-section{background:var(--navy);}
+.rungis-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.rungis-info h2{font-size:clamp(24px,3vw,34px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;}
+.rungis-info .label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+.rungis-info p{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:20px;}
+.rungis-details{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+.rungis-detail{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:16px;}
+.rungis-detail .d-label{font-size:10px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:5px;}
+.rungis-detail .d-val{font-size:14px;font-weight:600;color:#fff;}
+.rungis-map-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-xl);padding:28px;}
+.rungis-address{display:flex;align-items:flex-start;gap:10px;padding:14px;background:rgba(255,255,255,0.05);border-radius:var(--radius-lg);margin-top:16px;}
+.rungis-address svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px;}
+.rungis-address p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;}
+
+/* ── SERVICES GRID ── */
+.services-main{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;margin-top:48px;}
+.service-featured{background:linear-gradient(135deg,#0B1628,#142346);border-radius:var(--radius-xl);padding:40px;color:#fff;position:relative;overflow:hidden;}
+.service-featured::after{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(49,220,200,0.06);}
+.service-featured .sf-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);margin-bottom:12px;}
+.service-featured h3{font-size:24px;font-weight:900;color:#fff;margin-bottom:12px;letter-spacing:-0.02em;}
+.service-featured p{font-size:14px;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:24px;}
+.service-side{display:flex;flex-direction:column;gap:16px;}
+.service-mini{background:#fff;border:1.5px solid var(--gray-100);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:all 0.2s;}
+.service-mini:hover{border-color:var(--teal);background:var(--teal-light);}
+.service-mini-icon{width:38px;height:38px;background:var(--teal-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.service-mini-icon svg{width:18px;height:18px;stroke:var(--teal-dark);fill:none;stroke-width:2;}
+.service-mini-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.service-mini-text{font-size:12px;color:var(--gray-400);line-height:1.5;}
+
+/* ── CONTACT / DEVIS ── */
+.cta-section{background:linear-gradient(150deg,#0B1628 0%,#142346 100%);padding:80px 32px;text-align:center;}
+.cta-inner{max-width:680px;margin:0 auto;}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(49,220,200,0.12);border:1px solid rgba(49,220,200,0.3);color:var(--teal);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;margin-bottom:20px;letter-spacing:0.08em;text-transform:uppercase;}
+.cta-inner h2{font-size:clamp(28px,4vw,40px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-0.03em;margin-bottom:14px;}
+.cta-inner p{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:32px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-contact{display:flex;align-items:center;gap:32px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
+.cta-contact-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:14px;}
+.cta-contact-item svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:2;}
+.cta-contact-item a{color:rgba(255,255,255,0.85);font-weight:600;}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.08);padding:60px 32px 32px;}
+.footer-inner{max-width:1200px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.footer-logo .brand{font-size:20px;font-weight:900;color:#fff;letter-spacing:-0.5px;margin-bottom:8px;}
+.footer-logo .brand span{color:var(--teal);}
+.footer-logo p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;max-width:240px;margin-bottom:16px;}
+.footer-socials{display:flex;gap:8px;}
+.footer-social{width:34px;height:34px;background:rgba(255,255,255,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.15s;cursor:pointer;}
+.footer-social:hover{background:rgba(49,220,200,0.2);}
+.footer-social svg{width:14px;height:14px;fill:rgba(255,255,255,0.6);}
+.footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.4);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:10px;transition:color 0.15s;cursor:pointer;}
+.footer-link:hover{color:var(--teal);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-legal{font-size:12px;color:rgba(255,255,255,0.3);}
+.footer-legal a{color:rgba(255,255,255,0.4);margin-left:16px;}
+.footer-legal a:hover{color:var(--teal);}
+
+/* ── BADGE TÉMOIGNAGE ── */
+.review-strip{background:var(--off);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);padding:20px 32px;}
+.review-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.review-group{display:flex;align-items:center;gap:10px;}
+.stars{display:flex;gap:2px;}
+.star{color:#F59E0B;font-size:14px;}
+.review-text{font-size:13px;color:var(--gray-500);}
+.review-text strong{color:var(--gray-900);}
+.review-divider{width:1px;height:32px;background:var(--gray-200);}
+
+/* ── PAGE SECTIONS (JS navigation) ── */
+.page{display:none;}
+.page.active{display:block;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .two-col,.hero-inner,.rungis-inner,.zone-inner{grid-template-columns:1fr;gap:40px;}
+  .cards-grid.cols-3{grid-template-columns:1fr 1fr;}
+  .cards-grid.cols-4{grid-template-columns:1fr 1fr;}
+  .veh-grid{grid-template-columns:repeat(3,1fr);}
+  .services-main{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;gap:24px;}
+  .process-steps::before{display:none;}
+  .trust-inner{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:768px){
+  .nav-links,.nav-ctas{display:none;}
+  .nav-mobile-btn{display:block;}
+  .hero{padding:100px 20px 60px;min-height:auto;}
+  .hero h1{font-size:32px;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .section{padding:60px 20px;}
+  .cards-grid.cols-3,.cards-grid.cols-2{grid-template-columns:1fr;}
+  .cards-grid.cols-4{grid-template-columns:1fr 1fr;}
+  .veh-grid{grid-template-columns:1fr 1fr;}
+  .process-steps{grid-template-columns:1fr;}
+  .trust-inner{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+  .rungis-details{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:26px;}
+  .hero-stats{grid-template-columns:repeat(3,1fr);}
+  .stat-n{font-size:17px;}
+  .cta-btns{flex-direction:column;}
+  .veh-grid{grid-template-columns:1fr 1fr;}
+  .nav-inner{padding:0 16px;}
+}
+</style>
+</head>
+<body>
+<!-- ── NAVIGATION ── -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div>
+        <div class="nav-brand">Camion<span>net</span></div>
+        <div class="nav-tagline">Spécialiste du lavage industriel</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="nav-link" onclick="showPage('accueil')">Accueil</span>
+      <span class="nav-link" onclick="showPage('apropos')">À propos</span>
+      <div class="nav-dropdown">
+        <span class="nav-link">Services ▾</span>
+        <div class="nav-dropdown-menu">
+          <span class="nav-dropdown-item" onclick="showPage('mobile')">Stations mobiles (sur site)</span>
+          <span class="nav-dropdown-item" onclick="showPage('rungis')">Centre de lavage Rungis</span>
+          <span class="nav-dropdown-item" onclick="showPage('industriel')">Nettoyage industriel HP</span>
+          <span class="nav-dropdown-item" onclick="showPage('froid')">Chambres froides</span>
+          <span class="nav-dropdown-item" onclick="showPage('batiment')">Bardage & bâtiments</span>
+          <span class="nav-dropdown-item" onclick="showPage('urbain')">Mobilier urbain</span>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-link">Véhicules ▾</span>
+        <div class="nav-dropdown-menu">
+          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Tous types de véhicules</span>
+          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camionnette / VUL</span>
+          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camion 20m³</span>
+          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Poids lourd / SPL</span>
+          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camion frigorifique</span>
+        </div>
+      </div>
+      <span class="nav-link" onclick="showPage('tarifs')">Devis & Tarifs</span>
+    </div>
+    <div class="nav-ctas">
+      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
+      <button class="btn-devis" onclick="showPage('tarifs')">Demander un devis →</button>
+    </div>
+    <button class="nav-mobile-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobileMenu" style="display:none;background:#0B1628;border-top:1px solid rgba(255,255,255,0.08);padding:16px 20px;">
+    <div style="display:flex;flex-direction:column;gap:4px;">
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('accueil');toggleMobileMenu()">Accueil</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('mobile');toggleMobileMenu()">Stations mobiles</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('rungis');toggleMobileMenu()">Centre Rungis</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('vehicules');toggleMobileMenu()">Nos véhicules</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('industriel');toggleMobileMenu()">Nettoyage industriel</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('apropos');toggleMobileMenu()">À propos</span>
+      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('tarifs');toggleMobileMenu()">Devis & Tarifs</span>
+      <div style="margin-top:12px;display:flex;gap:8px;">
+        <button class="btn-resa" style="flex:1" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
+        <button class="btn-devis" style="flex:1" onclick="showPage('tarifs');toggleMobileMenu()">Devis →</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : ACCUEIL -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page active" id="page-accueil">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="hero-dot"></span>Depuis 2002 — 75 départements couverts</div>
+        <h1>Lavage <em>professionnel</em><br>de vos véhicules industriels</h1>
+        <p class="hero-sub">Camion Net intervient directement sur votre site ou vous accueille dans notre centre fixe au MIN de Rungis. Nettoyage complet de flottes, chambres froides et infrastructures industrielles.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('tarifs')">
+            Demander un devis
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="btn-secondary" onclick="showPage('mobile')">
+            Découvrir nos services
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="stat-n">160k+</span><span class="stat-l">Véhicules / an</span></div>
+          <div class="hero-stat"><span class="stat-n">60</span><span class="stat-l">Collaborateurs</span></div>
+          <div class="hero-stat"><span class="stat-n">20+</span><span class="stat-l">Ans d'expérience</span></div>
+          <div class="hero-stat"><span class="stat-n">75</span><span class="stat-l">Départements</span></div>
+          <div class="hero-stat"><span class="stat-n">25</span><span class="stat-l">Unités mobiles</span></div>
+          <div class="hero-stat"><span class="stat-n">100%</span><span class="stat-l">Suivi digitalisé</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-badge">● Nos services phares</div>
+          <h3>Solutions complètes de nettoyage</h3>
+          <p>Du lavage extérieur à la désinfection HACCP, nous couvrons tous vos besoins.</p>
+          <div class="hero-service-list">
+            <div class="hero-service"><div class="hero-service-dot"></div>Lavage HP extérieur & intérieur</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Désinfection alimentaire (HACCP)</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Nettoyage chambres froides</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Nettoyage bâtiments industriels</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Mobilier urbain & équipements</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Station fixe au MIN de Rungis</div>
+          </div>
+          <div class="hero-cta-bottom">
+            <a href="#" onclick="showPage('rungis');return false;">
+              Centre Rungis — sur rendez-vous
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><div class="num">160 000</div><div class="lbl">Véhicules lavés / an</div></div>
+      <div class="trust-item"><div class="num">20+</div><div class="lbl">Ans d'expertise</div></div>
+      <div class="trust-item"><div class="num">75</div><div class="lbl">Départements</div></div>
+      <div class="trust-item"><div class="num">25</div><div class="lbl">Unités mobiles HP</div></div>
+      <div class="trust-item"><div class="num">100%</div><div class="lbl">Traçabilité numérique</div></div>
+    </div>
+  </div>
+
+  <!-- PRÉSENTATION GÉNÉRALE -->
+  <section class="section">
+    <div class="section-narrow">
+      <div class="two-col">
+        <div class="two-col-text">
+          <div class="label">Qui sommes-nous</div>
+          <h2>Spécialiste du lavage de camion & d'infrastructures depuis 2002</h2>
+          <p>Fondée par des professionnels du transport et de la logistique, Camion Net est une entreprise spécialisée dans le <strong>lavage industriel de véhicules</strong> couvrant l'ensemble du territoire national.</p>
+          <p>Grâce à une flotte de <strong>25 unités mobiles haute pression</strong> et une équipe de <strong>60 collaborateurs</strong>, Camion Net assure un service efficace, de qualité et traçable, en intervenant dans <strong>75 départements français</strong>.</p>
+          <ul class="list">
+            <li>Intervention directe sur votre site pendant les temps d'immobilisation</li>
+            <li>Centre de lavage fixe au cœur du MIN de Rungis (Île-de-France)</li>
+            <li>Produits homogènes sur tout le territoire — politique qualité nationale</li>
+            <li>Traçabilité complète par véhicule et par intervention</li>
+            <li>Nettoyage conforme aux normes HACCP pour le secteur alimentaire</li>
+          </ul>
+          <button class="btn-primary" style="margin-top:24px;" onclick="showPage('apropos')">
+            En savoir plus sur Camion Net
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="two-col-visual">
+          <div class="img-placeholder">
+            <svg viewBox="0 0 80 80"><rect x="5" y="20" width="55" height="35" rx="4"/><polygon points="60,30 75,30 80,38 80,55 60,55"/><circle cx="18" cy="60" r="8"/><circle cx="55" cy="60" r="8"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOS DEUX OFFRES PRINCIPALES -->
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Nos modes d'intervention</div>
+        <h2 class="section-title">Deux solutions adaptées à vos besoins</h2>
+        <p class="section-sub">Que vous soyez en Île-de-France ou en province, Camion Net s'adapte à votre organisation.</p>
+      </div>
+      <div class="cards-grid cols-2">
+        <div class="card" style="padding:36px;cursor:pointer;" onclick="showPage('mobile')">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;">Partout en France</div>
+          <h3 class="card-title" style="font-size:20px;">Intervention sur votre site</h3>
+          <p class="card-text" style="font-size:15px;margin-top:8px;">Nos unités mobiles haute pression se déplacent directement chez vous, pendant les temps d'immobilisation de vos véhicules, dans un rayon de 100 km. Nettoyage régulier de votre flotte sans interruption d'activité.</p>
+          <ul class="list" style="margin-top:16px;">
+            <li>Lavage extérieur HP, intérieur caisse, désinfection HACCP</li>
+            <li>Intervention aux horaires qui vous conviennent</li>
+            <li>Fréquence personnalisée — de quotidienne à ponctuelle</li>
+            <li>Rapport d'intervention numérique par véhicule</li>
+          </ul>
+          <div class="card-link" style="margin-top:20px;">En savoir plus <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card" style="padding:36px;background:linear-gradient(135deg,#0B1628,#142346);border-color:rgba(255,255,255,0.12);cursor:pointer;" onclick="showPage('rungis')">
+          <div class="card-icon" style="background:rgba(49,220,200,0.15);"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div style="display:inline-block;background:rgba(49,220,200,0.15);border:1px solid rgba(49,220,200,0.3);color:#31DCC8;font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;">Rungis — Sur RDV</div>
+          <h3 class="card-title" style="font-size:20px;color:#fff;">Centre de lavage Rungis</h3>
+          <p class="card-text" style="font-size:15px;margin-top:8px;color:rgba(255,255,255,0.65);">Notre station fixe est implantée au cœur du Marché International de Rungis (MIN), idéalement placée pour les professionnels du secteur alimentaire et logistique en Île-de-France.</p>
+          <ul class="list" style="margin-top:16px;">
+            <li style="color:rgba(255,255,255,0.7);">Lavage extérieur, intérieur, cabine & désinfection</li>
+            <li style="color:rgba(255,255,255,0.7);">Simulation tarifaire en ligne disponible</li>
+            <li style="color:rgba(255,255,255,0.7);">Réservation de créneaux en ligne</li>
+            <li style="color:rgba(255,255,255,0.7);">Option convoyage de vos véhicules</li>
+          </ul>
+          <div class="card-link" style="color:#31DCC8;margin-top:20px;">Voir le centre Rungis <svg viewBox="0 0 24 24" style="stroke:#31DCC8"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TYPES DE VÉHICULES -->
+  <section class="section">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Nos spécialités véhicules</div>
+        <h2 class="section-title">Du VUL au semi-remorque, nous lavons tout</h2>
+        <p class="section-sub">Camion Net est équipé pour traiter tous types de véhicules industriels, du véhicule léger au train routier complet.</p>
+      </div>
+      <div class="veh-grid">
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🚐</div>
+          <div class="veh-name">Camionnette & VUL</div>
+          <div class="veh-desc">Sprinter, Crafter, Transit, Trafic…</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">📦</div>
+          <div class="veh-name">Camion 20m³</div>
+          <div class="veh-desc">Grand fourgon Master, Ducato XL…</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🚛</div>
+          <div class="veh-name">Poids lourd</div>
+          <div class="veh-desc">Porteur, tracteur, semi-remorque</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">❄️</div>
+          <div class="veh-name">Camion frigo</div>
+          <div class="veh-desc">Désinfection HACCP, ATP/frigo</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🚌</div>
+          <div class="veh-name">Bus & Car</div>
+          <div class="veh-desc">Transports en commun, scolaires</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🏗️</div>
+          <div class="veh-name">Engins TP</div>
+          <div class="veh-desc">Pelleteuses, chariots, BTP</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🔧</div>
+          <div class="veh-name">Cabine intérieure</div>
+          <div class="veh-desc">Aspiration, tableau de bord</div>
+        </div>
+        <div class="veh-card" onclick="showPage('vehicules')">
+          <div class="veh-icon">🏭</div>
+          <div class="veh-name">Infrastructure</div>
+          <div class="veh-desc">Bâtiments, chambres froides…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOS AUTRES SERVICES -->
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Au-delà du lavage de véhicules</div>
+        <h2 class="section-title">Nettoyage industriel haute pression</h2>
+        <p class="section-sub">Notre expertise s'étend bien au-delà du lavage de camions — nous intervenons sur vos infrastructures industrielles avec les mêmes équipements professionnels.</p>
+      </div>
+      <div class="services-main">
+        <div class="service-featured">
+          <div class="sf-label">Service phare</div>
+          <h3>Nettoyage haute pression sur site</h3>
+          <p>Nos unités mobiles HP interviennent sur l'ensemble de vos installations : entrepôts, quais de chargement, bardages, équipements industriels. Nous adaptons notre matériel et nos produits à chaque surface.</p>
+          <button class="btn-primary" onclick="showPage('industriel')">Découvrir la prestation →</button>
+        </div>
+        <div class="service-side">
+          <div class="service-mini" onclick="showPage('froid')">
+            <div class="service-mini-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+            <div>
+              <div class="service-mini-title">Chambres froides</div>
+              <div class="service-mini-text">Nettoyage positive et négative, décontamination bactériologique, respect des normes HACCP.</div>
+            </div>
+          </div>
+          <div class="service-mini" onclick="showPage('batiment')">
+            <div class="service-mini-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+            <div>
+              <div class="service-mini-title">Bardage & bâtiments industriels</div>
+              <div class="service-mini-text">Façades, bardages métalliques, entrepôts, toitures industrielles — nettoyage haute pression et traitement.</div>
+            </div>
+          </div>
+          <div class="service-mini" onclick="showPage('urbain')">
+            <div class="service-mini-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+            <div>
+              <div class="service-mini-title">Mobilier urbain</div>
+              <div class="service-mini-text">Abribus, abri-vélos, bacs à ordures, panneaux — entretien et nettoyage de vos équipements urbains.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <section class="section">
+    <div class="section-narrow">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-label" style="text-align:center;">Comment ça marche</div>
+        <h2 class="section-title" style="text-align:center;max-width:500px;margin:0 auto 16px;">De la demande à l'intervention en 4 étapes</h2>
+      </div>
+      <div class="process-steps">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-title">Demande de devis</div>
+          <div class="step-text">Remplissez notre formulaire en ligne en décrivant votre flotte et vos besoins. Réponse sous 48h ouvrées.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-title">Visite technique</div>
+          <div class="step-text">Notre équipe effectue une visite de faisabilité sur votre site pour dimensionner l'intervention.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-title">Planification</div>
+          <div class="step-text">Nous définissons ensemble le planning d'intervention, les horaires et la fréquence adaptés à votre activité.</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-title">Intervention & suivi</div>
+          <div class="step-text">Nos équipes interviennent selon le plan défini. Chaque intervention fait l'objet d'un rapport numérique.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA DEVIS -->
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Devis gratuit — Réponse sous 48h</div>
+      <h2>Prêt à optimiser le nettoyage de votre flotte ?</h2>
+      <p>Décrivez-nous votre flotte et vos contraintes. Notre équipe commerciale vous adresse une proposition tarifaire personnalisée sous 48h ouvrées.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('tarifs')">
+          Demander un devis gratuit
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <button class="btn-secondary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver au centre Rungis</button>
+      </div>
+      <div class="cta-contact">
+        <div class="cta-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+          <a href="tel:+33680936131">+33 6 80 93 61 31</a>
+        </div>
+        <div class="cta-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:contact@camionnet.fr">contact@camionnet.fr</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page accueil -->
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : STATIONS MOBILES -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-mobile">
+  <section class="hero" style="min-height:60vh;padding-top:100px;padding-bottom:60px;">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow"><span class="hero-dot"></span>Intervention sur site</div>
+        <h1>Camion Net se déplace <em>directement chez vous</em></h1>
+        <p class="hero-sub">Nos unités mobiles haute pression interviennent sur votre site dans un rayon de 100 km, pendant les temps d'immobilisation de vos véhicules. Aucune interruption de votre activité.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="showPage('tarifs')">Demander un devis</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-badge">● Zone d'intervention</div>
+          <h3>75 départements couverts</h3>
+          <p>Après une visite technique de faisabilité, notre équipe mobile se rend directement chez vous aux horaires et à la fréquence qui vous conviennent le mieux.</p>
+          <div class="hero-service-list">
+            <div class="hero-service"><div class="hero-service-dot"></div>Flotte de véhicules industriels</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Chambres froides & frigos</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Infrastructures industrielles</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Planning régulier ou ponctuel</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bg zone-section">
+    <div class="section-narrow">
+      <div class="zone-inner">
+        <div class="two-col-text">
+          <div class="label">Notre couverture nationale</div>
+          <h2 style="font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px;">Présents dans 75 départements français</h2>
+          <p style="font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:16px;">Grâce à nos 25 unités mobiles haute pression réparties stratégiquement sur le territoire, Camion Net peut intervenir rapidement chez vous dans un rayon de 100 km.</p>
+          <p style="font-size:15px;color:var(--gray-500);line-height:1.7;margin-bottom:20px;">Notre organisation nationale garantit des <strong>produits et techniques uniformes</strong> sur l'ensemble du territoire, pour répondre aux exigences des petites structures comme des groupes nationaux.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:22px;font-weight:900;color:var(--teal);letter-spacing:-0.03em;">25</div>
+              <div style="font-size:13px;color:var(--gray-500);margin-top:4px;">Unités mobiles HP</div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:22px;font-weight:900;color:var(--teal);letter-spacing:-0.03em;">100 km</div>
+              <div style="font-size:13px;color:var(--gray-500);margin-top:4px;">Rayon d'intervention</div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:22px;font-weight:900;color:var(--teal);letter-spacing:-0.03em;">75</div>
+              <div style="font-size:13px;color:var(--gray-500);margin-top:4px;">Départements couverts</div>
+            </div>
+            <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:12px;padding:18px;">
+              <div style="font-size:22px;font-weight:900;color:var(--teal);letter-spacing:-0.03em;">48h</div>
+              <div style="font-size:13px;color:var(--gray-500);margin-top:4px;">Délai de réponse devis</div>
+            </div>
+          </div>
+          <button class="btn-primary" style="margin-top:28px;" onclick="showPage('tarifs')">
+            Demander une intervention
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#0B1628;fill:none;stroke-width:2.5;"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="zone-map" style="background:linear-gradient(135deg,#E4FBF9,#F0FDF4);border-radius:20px;height:420px;display:flex;align-items:center;justify-content:center;border:1.5px solid #31DCC8;flex-direction:column;gap:16px;">
+          <svg viewBox="0 0 200 220" width="200" height="220" style="opacity:0.4;">
+            <path d="M80,10 L120,10 L140,40 L160,80 L150,120 L130,160 L100,200 L70,160 L50,120 L40,80 L60,40 Z" fill="none" stroke="#142346" stroke-width="2"/>
+          </svg>
+          <div style="text-align:center;">
+            <div style="font-size:14px;font-weight:700;color:var(--navy);">Carte interactive disponible</div>
+            <div style="font-size:12px;color:var(--gray-400);margin-top:4px;">sur lavagecamions.com</div>
+          </div>
+          <a href="https://www.lavagecamions.com/station-mobile-lavage-camion-france" target="_blank" style="background:var(--teal);color:var(--navy);font-size:13px;font-weight:700;padding:10px 20px;border-radius:6px;">Voir la carte →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Nos prestations mobiles</div>
+        <h2 class="section-title">Ce que nos équipes font chez vous</h2>
+      </div>
+      <div class="cards-grid cols-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div class="card-title">Lavage extérieur HP</div>
+          <p class="card-text">Haute pression sur carrosserie, bâche, cabine et jantes. Prélavage dégraissant puis rinçage complet. Résultat professionnel garanti.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
+          <div class="card-title">Nettoyage intérieur caisse</div>
+          <p class="card-text">Nettoyage HP de l'intérieur de la caisse ou du frigo. Dégraissage des parois, plancher et accessoires. Idéal avant inspection sanitaire.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div class="card-title">Désinfection HACCP</div>
+          <p class="card-text">Lavage intérieur caisse + désinfection certifiée selon les normes alimentaires. Produits homologués, traçabilité et bordereau fournis.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div class="card-title">Nettoyage intérieur cabine</div>
+          <p class="card-text">Aspiration complète, dépoussiérage, traitement des surfaces, tableau de bord et vitres intérieures. Confort conducteur amélioré.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <div class="card-title">Suivi & traçabilité</div>
+          <p class="card-text">Chaque intervention fait l'objet d'un rapport numérique par véhicule : date, prestation, produits utilisés, signature électronique.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <div class="card-title">Planning flexible</div>
+          <p class="card-text">Intervention quotidienne, hebdomadaire, mensuelle ou ponctuelle. Nous nous adaptons à vos horaires d'exploitation et contraintes d'accès.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Devis gratuit — 48h</div>
+      <h2>Une question ? Demandez un devis</h2>
+      <p>Décrivez votre flotte et vos besoins. Réponse personnalisée sous 48h.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('tarifs')">Demander un devis gratuit →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : CENTRE RUNGIS -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-rungis">
+  <section class="hero" style="min-height:60vh;padding-top:100px;padding-bottom:60px;">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow"><span class="hero-dot"></span>Centre fixe — MIN de Rungis</div>
+        <h1>Centre de lavage <em>Rungis</em><br>au cœur du MIN</h1>
+        <p class="hero-sub">Notre station fixe est implantée à Sogaris, au sein même du Marché International de Rungis. Accessible facilement pour tous les professionnels de la logistique alimentaire en Île-de-France.</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
+          <button class="btn-secondary" onclick="showPage('tarifs')">Simuler un tarif</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-badge">● Infos pratiques</div>
+          <h3>Centre Camion Net — Rungis</h3>
+          <p>Sur rendez-vous uniquement. Fonctionnement du lundi au samedi.</p>
+          <div class="hero-service-list">
+            <div class="hero-service"><div class="hero-service-dot"></div>Sogaris, Pl. de la Logistique, 94150 Rungis</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Réservation en ligne obligatoire</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>+33 6 80 93 61 31</div>
+            <div class="hero-service"><div class="hero-service-dot"></div>Option convoyage disponible</div>
+          </div>
+          <div class="hero-cta-bottom">
+            <a href="https://www.lavagecamions.com/book-online" target="_blank">
+              Réserver en ligne
+              <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--navy);">
+    <div class="section-narrow rungis-inner">
+      <div class="rungis-info">
+        <div class="label">Notre station fixe</div>
+        <h2>Un centre de lavage spécialisé pour les professionnels</h2>
+        <p>Situé au cœur du Marché International de Rungis, notre centre de lavage fixe est spécialement conçu pour répondre aux exigences des professionnels du transport, de la logistique et de la grande distribution.</p>
+        <p>Accessible facilement depuis le MIN, il permet un nettoyage complet et rapide des véhicules utilitaires et poids lourds, dans le respect des normes d'hygiène et de sécurité.</p>
+        <div class="rungis-details">
+          <div class="rungis-detail"><div class="d-label">Adresse</div><div class="d-val">Sogaris, Pl. de la Logistique<br>94150 Rungis</div></div>
+          <div class="rungis-detail"><div class="d-label">Horaires</div><div class="d-val">Lun – Sam<br>Sur rendez-vous</div></div>
+          <div class="rungis-detail"><div class="d-label">Téléphone</div><div class="d-val">+33 6 80 93 61 31</div></div>
+          <div class="rungis-detail"><div class="d-label">Réservation</div><div class="d-val">En ligne — obligatoire</div></div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:28px;flex-wrap:wrap;">
+          <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
+          <button class="btn-secondary" onclick="window.open('https://www.google.com/maps/place/Camion+Net+Ecomobile+Lavage+Pl/@48.7521566,2.3606119','_blank')">Voir sur Google Maps</button>
+        </div>
+      </div>
+      <div>
+        <div class="rungis-map-card">
+          <div class="label">Nos prestations Rungis</div>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Lavage extérieur haute pression</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Nettoyage intérieur caisse frigo</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Désinfection alimentaire certifiée</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Nettoyage cabine intérieure</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:rgba(255,255,255,0.05);border-radius:10px;">
+              <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div>
+              <div style="font-size:14px;color:rgba(255,255,255,0.85);">Option convoyage vers le centre</div>
+            </div>
+          </div>
+          <div style="margin-top:20px;padding:14px;background:rgba(49,220,200,0.1);border:1px solid rgba(49,220,200,0.25);border-radius:10px;">
+            <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--teal);margin-bottom:6px;">Simulation tarifaire disponible</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.65);line-height:1.5;">Estimez le coût de votre prestation en ligne via notre simulateur de tarifs HT.</div>
+            <button class="btn-primary" style="margin-top:12px;padding:9px 18px;font-size:13px;" onclick="showPage('tarifs')">Simuler un tarif →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Réservation en ligne</div>
+      <h2>Réservez votre créneau au centre Rungis</h2>
+      <p>Choisissez votre date et heure en quelques clics. Confirmation immédiate.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver en ligne →</button>
+        <button class="btn-secondary" onclick="showPage('tarifs')">Demander un devis</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : VÉHICULES -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-vehicules">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Tous types de véhicules</div>
+      <h1>Du VUL au <em>train routier</em>,<br>nous lavons tout</h1>
+      <p class="hero-sub">Camion Net est équipé pour traiter tous les types de véhicules industriels, sur votre site ou dans notre centre de Rungis.</p>
+    </div>
+  </section>
+
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Nos catégories de véhicules</div>
+        <h2 class="section-title">Solutions de lavage par type de véhicule</h2>
+        <p class="section-sub">Chaque catégorie de véhicule bénéficie d'une approche et d'une tarification adaptées.</p>
+      </div>
+      <div class="cards-grid cols-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">VUL</div>
+          <div class="card-title">Camionnette & Utilitaire léger</div>
+          <p class="card-text">Sprinter, Crafter, Boxer, Transit, Trafic, Kangoo, Berlingo… Lavage extérieur HP, intérieur et cabine. Service sur site ou à Rungis.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">20m³</div>
+          <div class="card-title">Camion 20m³</div>
+          <p class="card-text">Grand fourgon Master L3H2, Ducato XL, Crafter XXL… Lavage complet extérieur et intérieur. Traçabilité par véhicule.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1z"/><polygon points="16,8 20,8 23,11 23,16 16,16 16,8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">PL</div>
+          <div class="card-title">Poids lourd</div>
+          <p class="card-text">Porteur 6T, 13T, 26T, benne, citerne, plateau. Tracteur routier, semi-remorque, train routier. Nettoyage complet carrosserie et cabine.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">Frigo</div>
+          <div class="card-title">Camion frigorifique & alimentaire</div>
+          <p class="card-text">Lavage extérieur + nettoyage intérieur caisse frigo + désinfection HACCP certifiée. Produits homologués, bordereau d'intervention fourni.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="10" rx="2"/><path d="M3 10h18M7 6V4M17 6V4"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">Bus</div>
+          <div class="card-title">Bus, car & minibus</div>
+          <p class="card-text">Transport scolaire, interurbain, touristique. Nettoyage extérieur complet, vitres, chromes et accessoires. Lavage régulier ou ponctuel.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
+          <div style="display:inline-block;background:#E4FBF9;color:#0FBDAD;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em;">TP</div>
+          <div class="card-title">Engins & matériel de chantier</div>
+          <p class="card-text">Pelleteuses, chargeuses, chariots élévateurs, tombereaux… Décroûtage boue, nettoyage HP complet. Devis sur mesure.</p>
+          <div class="card-link" onclick="showPage('tarifs')">Demander un devis <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESTATIONS PAR TYPE -->
+  <section class="section">
+    <div class="section-narrow">
+      <div class="section-header">
+        <div class="section-label">Nos prestations de lavage</div>
+        <h2 class="section-title">4 niveaux de prestation</h2>
+      </div>
+      <div class="cards-grid cols-2">
+        <div style="background:var(--off);border:1.5px solid var(--gray-100);border-radius:16px;padding:28px;display:flex;gap:16px;">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg style="width:22px;height:22px;stroke:var(--teal-dark);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Lavage extérieur</div>
+            <p style="font-size:13px;color:var(--gray-400);line-height:1.6;">Haute pression sur toute la carrosserie, cabine, bâche et jantes. Prélavage dégraissant + rinçage. Applicable à tous types de véhicules.</p>
+          </div>
+        </div>
+        <div style="background:var(--off);border:1.5px solid var(--gray-100);border-radius:16px;padding:28px;display:flex;gap:16px;">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg style="width:22px;height:22px;stroke:var(--teal-dark);fill:none;stroke-width:2;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/></svg></div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Nettoyage intérieur caisse</div>
+            <p style="font-size:13px;color:var(--gray-400);line-height:1.6;">Nettoyage HP des parois intérieures, plancher et accessoires. Idéal pour les caisses alimentaires. Peut être combiné avec le lavage extérieur.</p>
+          </div>
+        </div>
+        <div style="background:var(--off);border:1.5px solid var(--gray-100);border-radius:16px;padding:28px;display:flex;gap:16px;">
+          <div style="width:44px;height:44px;background:var(--teal-light);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg style="width:22px;height:22px;stroke:var(--teal-dark);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Nettoyage intérieur cabine</div>
+            <p style="font-size:13px;color:var(--gray-400);line-height:1.6;">Aspiration, dépoussiérage, surfaces, tableau de bord et vitres intérieures. Sur devis uniquement — prestation non disponible au simulateur Rungis.</p>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(49,220,200,0.08),rgba(49,220,200,0.02));border:1.5px solid rgba(49,220,200,0.25);border-radius:16px;padding:28px;display:flex;gap:16px;">
+          <div style="width:44px;height:44px;background:rgba(49,220,200,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg style="width:22px;height:22px;stroke:var(--teal-dark);fill:none;stroke-width:2;" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">Désinfection alimentaire (HACCP) <span style="background:var(--teal);color:var(--navy);font-size:10px;padding:2px 7px;border-radius:100px;font-weight:700;margin-left:6px;">Inclut lavage intérieur</span></div>
+            <p style="font-size:13px;color:var(--gray-400);line-height:1.6;">Lavage intérieur caisse + désinfection certifiée HACCP. Produits homologués, traçabilité et bordereau d'intervention fournis. Conforme normes alimentaires.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Tous types de véhicules</div>
+      <h2>Quel que soit votre véhicule, on s'en occupe</h2>
+      <p>Remplissez notre formulaire — réponse tarifaire personnalisée sous 48h.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('tarifs')">Demander un devis gratuit →</button>
+        <button class="btn-secondary" onclick="showPage('rungis')">Réserver à Rungis</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : NETTOYAGE INDUSTRIEL -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-industriel">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Nettoyage industriel</div>
+      <h1>Nettoyage <em>haute pression</em><br>industriel & infrastructure</h1>
+      <p class="hero-sub">Au-delà du lavage de véhicules, Camion Net intervient sur vos bâtiments, entrepôts, chambres froides et mobiliers urbains avec les mêmes équipements haute pression.</p>
+      <div class="hero-actions"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis</button></div>
+    </div>
+  </section>
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="cards-grid cols-3">
+        <div class="card" onclick="showPage('froid')" style="cursor:pointer;">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+          <div class="card-title">Chambres froides</div>
+          <p class="card-text">Nettoyage et décontamination bactériologique des chambres froides positives et négatives. Conformité HACCP, bordereau fourni.</p>
+          <div class="card-link">En savoir plus <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card" onclick="showPage('batiment')" style="cursor:pointer;">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <div class="card-title">Bardage & bâtiments</div>
+          <p class="card-text">Nettoyage haute pression des façades, bardages métalliques, entrepôts, toitures et sols industriels. Traitement anti-mousse et dégraissage.</p>
+          <div class="card-link">En savoir plus <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card" onclick="showPage('urbain')" style="cursor:pointer;">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+          <div class="card-title">Mobilier urbain</div>
+          <p class="card-text">Entretien et nettoyage d'abribus, abris-vélos, bacs à ordures, panneaux de signalisation, équipements collectifs.</p>
+          <div class="card-link">En savoir plus <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></div>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div class="card-title">Nettoyage quais & sols</div>
+          <p class="card-text">Nettoyage haute pression des quais de chargement, rampes, dalles et sols béton. Dégraissage intensif pour les zones de transit.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <div class="card-title">Nettoyage station-service</div>
+          <p class="card-text">Entretien des stations-service, bornes de lavage et abords. Nettoyage dégraissant des pistes, îlots et équipements.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <div class="card-title">Nettoyage équipements industriels</div>
+          <p class="card-text">Chaînes de production, convoyeurs, cuves, silos, équipements de manutention. Nettoyage sur mesure avec produits adaptés.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Nettoyage industriel</div>
+      <h2>Un besoin de nettoyage industriel ?</h2>
+      <p>Contactez-nous pour une étude personnalisée de votre besoin.</p>
+      <div class="cta-btns"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE : CHAMBRES FROIDES -->
+<div class="page" id="page-froid">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Secteur alimentaire</div>
+      <h1>Nettoyage <em>chambres froides</em><br>positive & négative</h1>
+      <p class="hero-sub">Décontamination bactériologique et nettoyage haute pression de vos chambres froides et locaux frigorifiques, dans le strict respect des normes HACCP.</p>
+      <div class="hero-actions"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis</button></div>
+    </div>
+  </section>
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="two-col">
+        <div class="two-col-text">
+          <div class="label">Notre expertise alimentaire</div>
+          <h2>Nettoyage conforme aux normes HACCP</h2>
+          <p>Nos équipes interviennent sur vos chambres froides positives (+) et négatives (-) avec des produits désinfectants homologués pour le contact alimentaire.</p>
+          <p>Chaque intervention fait l'objet d'un <strong>bordereau de traçabilité</strong> mentionnant les produits utilisés, la concentration, les températures et la signature de l'intervenant.</p>
+          <ul class="list">
+            <li>Chambres froides positives et négatives</li>
+            <li>Locaux frigorifiques et entrepôts alimentaires</li>
+            <li>Tunnels et armoires frigorifiques</li>
+            <li>Produits homologués contact alimentaire</li>
+            <li>Bordereau d'intervention traçabilité fourni</li>
+            <li>Conforme HACCP — idéal avant audit sanitaire</li>
+          </ul>
+          <button class="btn-primary" style="margin-top:24px;" onclick="showPage('tarifs')">Demander un devis →</button>
+        </div>
+        <div class="two-col-visual">
+          <div class="img-placeholder" style="background:linear-gradient(135deg,#E4FBF9,#F0FDF4);height:350px;">
+            <svg viewBox="0 0 80 80" style="opacity:0.4;"><path d="M40 10 L40 70 M10 40 L70 40 M17 17 L63 63 M63 17 L17 63" stroke="#0B1628" stroke-width="3" fill="none"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Secteur alimentaire</div>
+      <h2>Prêt pour votre prochain audit sanitaire ?</h2>
+      <p>Nos équipes interviennent sous 48h pour un nettoyage conforme HACCP.</p>
+      <div class="cta-btns"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis →</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE : BÂTIMENT -->
+<div class="page" id="page-batiment">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Nettoyage bâtiment</div>
+      <h1>Nettoyage <em>bardage & bâtiments</em><br>industriels</h1>
+      <p class="hero-sub">Nos unités mobiles haute pression interviennent sur vos façades, bardages métalliques, entrepôts et infrastructures industrielles pour un nettoyage complet et durable.</p>
+      <div class="hero-actions"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis</button></div>
+    </div>
+  </section>
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="cards-grid cols-3">
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div class="card-title">Bardages métalliques</div><p class="card-text">Nettoyage haute pression des bardages acier, aluminium, zinc. Traitement anti-mousse et rouille. Résultat durable.</p></div>
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2"/></svg></div><div class="card-title">Entrepôts & hangars</div><p class="card-text">Nettoyage des façades, portes sectionnelles, quais, sols béton. Dégraissage intensif pour les zones de production et stockage.</p></div>
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div><div class="card-title">Sols industriels</div><p class="card-text">Nettoyage haute pression des sols béton, résine, carrelage industriel. Traitement des tâches d'huile et graisses tenaces.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section"><div class="cta-inner"><div class="cta-eyebrow">● Nettoyage bâtiment</div><h2>Un bâtiment à nettoyer ?</h2><p>Demandez un devis pour votre infrastructure industrielle.</p><div class="cta-btns"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis →</button></div></div></div>
+</div>
+
+<!-- PAGE : MOBILIER URBAIN -->
+<div class="page" id="page-urbain">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Collectivités & urbanisme</div>
+      <h1>Nettoyage <em>mobilier urbain</em><br>& équipements publics</h1>
+      <p class="hero-sub">Camion Net assure l'entretien et le nettoyage de vos équipements urbains : abribus, abris-vélos, bacs à ordures, panneaux, kiosques et mobiliers collectifs.</p>
+      <div class="hero-actions"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis</button></div>
+    </div>
+  </section>
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="cards-grid cols-3">
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div><div class="card-title">Abribus & abris-vélos</div><p class="card-text">Nettoyage haute pression des structures, vitres et revêtements. Élimination des graffitis, chewing-gums et traces incrustées.</p></div>
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div><div class="card-title">Bacs & poubelles publiques</div><p class="card-text">Nettoyage intérieur et extérieur des bacs de collecte, containers et bornes à verre. Désinfection et traitement des odeurs.</p></div>
+        <div class="card"><div class="card-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg></div><div class="card-title">Panneaux & signalétique</div><p class="card-text">Entretien des panneaux de signalisation, totems, panneaux publicitaires et équipements de jalonnement.</p></div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-section"><div class="cta-inner"><div class="cta-eyebrow">● Mobilier urbain</div><h2>Vous gérez des équipements urbains ?</h2><p>Demandez un devis pour votre plan d'entretien.</p><div class="cta-btns"><button class="btn-primary" onclick="showPage('tarifs')">Demander un devis →</button></div></div></div>
+</div>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : À PROPOS -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-apropos">
+  <section class="hero" style="min-height:50vh;padding-top:100px;padding-bottom:60px;">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;">
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Notre histoire</div>
+      <h1>Spécialiste du lavage <em>industriel</em><br>depuis plus de 20 ans</h1>
+      <p class="hero-sub">Fondée en 2002 par des professionnels du transport et de la logistique, Camion Net est aujourd'hui une référence nationale dans le lavage industriel de véhicules.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-narrow">
+      <div class="two-col">
+        <div class="two-col-text">
+          <div class="label">Notre ADN</div>
+          <h2>Lavage de camion et d'infrastructures — la propreté dans notre ADN</h2>
+          <p>Fondée en 2002, Camion Net est une entreprise spécialisée dans le <strong>lavage industriel de véhicules</strong>, couvrant l'ensemble du territoire national. Nos 20+ ans d'expérience nous ont permis de développer des processus éprouvés et une expertise reconnue par les plus grands acteurs du transport français.</p>
+          <p>Fort de plus de <strong>20 ans d'expérience</strong>, nous proposons des services de nettoyage pour tous types de véhicules industriels, du véhicule utilitaire léger au semi-remorque, ainsi que pour les infrastructures.</p>
+          <ul class="list">
+            <li>Fondée en 2002 par des professionnels du transport</li>
+            <li>60 collaborateurs formés aux techniques de lavage industriel</li>
+            <li>25 unités mobiles haute pression déployables sur tout le territoire</li>
+            <li>Présence dans 75 départements français</li>
+            <li>Centre fixe au MIN de Rungis, Île-de-France</li>
+            <li>160 000+ véhicules traités par an</li>
+          </ul>
+        </div>
+        <div class="two-col-visual">
+          <div class="img-placeholder">
+            <svg viewBox="0 0 80 80" style="opacity:0.3;"><circle cx="40" cy="28" r="16"/><path d="M10 70 C10 50 70 50 70 70"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bg">
+    <div class="section-narrow">
+      <div class="section-header" style="text-align:center;">
+        <div class="section-label" style="text-align:center;">Nos engagements</div>
+        <h2 class="section-title" style="text-align:center;max-width:520px;margin:0 auto 16px;">Ce qui nous différencie</h2>
+      </div>
+      <div class="cards-grid cols-3">
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+          <div class="card-title">Traçabilité numérique</div>
+          <p class="card-text">Rapport d'intervention par véhicule pour chaque lavage. Bordereau signé, produits utilisés, date et prestation. Accessible en ligne.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="card-title">Qualité uniforme nationale</div>
+          <p class="card-text">Mêmes produits, mêmes techniques et mêmes standards sur l'ensemble du territoire. Exigences identiques pour toutes nos équipes.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="card-title">Réactivité & flexibilité</div>
+          <p class="card-text">Intervention selon votre planning, vos horaires et vos contraintes d'accès. Réponse à votre devis sous 48h ouvrées.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg></div>
+          <div class="card-title">Expertise alimentaire HACCP</div>
+          <p class="card-text">Maîtrise des normes d'hygiène du secteur alimentaire. Produits désinfectants homologués, procédures adaptées aux audits sanitaires.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <div class="card-title">Expertise 20+ ans</div>
+          <p class="card-text">Fondée en 2002, notre entreprise a développé une expertise reconnue par les plus grands groupes de transport et logistique en France.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg viewBox="0 0 24 24"><line x1="22" y1="12" x2="2" y2="12"/><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"/></svg></div>
+          <div class="card-title">Couverture nationale</div>
+          <p class="card-text">75 départements couverts par nos 25 unités mobiles haute pression. Capacité à traiter les flottes multi-sites avec une cohérence de service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOS CHIFFRES -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><div class="num">2002</div><div class="lbl">Année de création</div></div>
+      <div class="trust-item"><div class="num">60</div><div class="lbl">Collaborateurs</div></div>
+      <div class="trust-item"><div class="num">25</div><div class="lbl">Unités mobiles HP</div></div>
+      <div class="trust-item"><div class="num">160k+</div><div class="lbl">Véhicules / an</div></div>
+      <div class="trust-item"><div class="num">75</div><div class="lbl">Départements</div></div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">● Depuis 2002</div>
+      <h2>Faites confiance à 20 ans d'expertise</h2>
+      <p>Rejoignez les centaines d'entreprises qui nous font confiance pour le nettoyage de leur flotte.</p>
+      <div class="cta-btns">
+        <button class="btn-primary" onclick="showPage('tarifs')">Demander un devis gratuit →</button>
+        <button class="btn-secondary" onclick="showPage('mobile')">Nos services</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- PAGE : TARIFS / DEVIS -->
+<!-- ══════════════════════════════════════════════════════ -->
+<div class="page" id="page-tarifs">
+  <section class="hero" style="min-height:40vh;padding-top:100px;padding-bottom:40px;">
+    <div style="max-width:860px;margin:0 auto;padding:0 32px;text-align:center;">
+      <div class="hero-eyebrow" style="margin:0 auto 20px;"><span class="hero-dot"></span>Devis gratuit — Réponse sous 48h</div>
+      <h1 style="font-size:clamp(32px,4vw,48px);">Demandez votre <em>devis personnalisé</em></h1>
+      <p class="hero-sub" style="margin:0 auto 28px;text-align:center;">Décrivez votre flotte et vos besoins — notre équipe commerciale vous adresse une proposition tarifaire sur mesure sous 48h ouvrées.</p>
+    </div>
+  </section>
+
+  <section class="section section-bg">
+    <div class="section-narrow" style="max-width:960px;">
+      <!-- Embed iframe devis -->
+      <div style="background:#fff;border:1.5px solid var(--gray-100);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);">
+        <iframe
+          src="./index.html"
+          style="width:100%;min-height:900px;border:none;display:block;"
+          scrolling="auto"
+          title="Formulaire de devis Camion Net"
+          id="devisFrame"
+          onload="resizeDevisFrame(this)"
+        ></iframe>
+      </div>
+      <div style="margin-top:16px;text-align:center;">
+        <p style="font-size:13px;color:var(--gray-400);">Vous préférez nous contacter directement ? Appelez le <a href="tel:+33680936131" style="color:var(--teal);font-weight:600;">+33 6 80 93 61 31</a> ou écrivez à <a href="mailto:contact@camionnet.fr" style="color:var(--teal);font-weight:600;">contact@camionnet.fr</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENTRE RUNGIS : SIMULATEUR -->
+  <section class="section">
+    <div class="section-narrow" style="max-width:960px;">
+      <div style="background:linear-gradient(135deg,#0B1628,#142346);border-radius:20px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;">Centre Rungis — Tarifs HT indicatifs</div>
+          <h3 style="font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;letter-spacing:-0.02em;">Simuler un tarif pour Rungis</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,0.65);max-width:420px;line-height:1.6;">Obtenez une estimation tarifaire immédiate pour notre centre de lavage fixe de Rungis. Le simulateur est intégré dans le formulaire ci-dessus (étape 2 → choisir "Centre Rungis" → Simulation tarifaire).</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button class="btn-primary" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver un créneau →</button>
+          <a href="tel:+33680936131" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;">
+            <svg style="width:14px;height:14px;stroke:var(--teal);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+            +33 6 80 93 61 31
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- FOOTER COMMUN -->
+<!-- ══════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <div class="brand">Camion<span>net</span></div>
+        <p>Spécialiste du lavage industriel de véhicules depuis 2002. Intervention sur site ou centre fixe à Rungis.</p>
+        <div class="footer-socials">
+          <div class="footer-social" onclick="window.open('https://www.linkedin.com/company/camion-net','_blank')">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div class="footer-social" onclick="window.open('https://www.instagram.com/camionnet','_blank')">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <span class="footer-link" onclick="showPage('mobile')">Stations mobiles</span>
+        <span class="footer-link" onclick="showPage('rungis')">Centre Rungis</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Lavage véhicules</span>
+        <span class="footer-link" onclick="showPage('industriel')">Nettoyage industriel</span>
+        <span class="footer-link" onclick="showPage('froid')">Chambres froides</span>
+        <span class="footer-link" onclick="showPage('batiment')">Bardage & bâtiments</span>
+        <span class="footer-link" onclick="showPage('urbain')">Mobilier urbain</span>
+      </div>
+      <div class="footer-col">
+        <h4>Véhicules</h4>
+        <span class="footer-link" onclick="showPage('vehicules')">Camionnette & VUL</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Camion 20m³</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Poids lourd (SPL)</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Camion frigorifique</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Bus & car</span>
+        <span class="footer-link" onclick="showPage('vehicules')">Engins TP</span>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="tel:+33680936131" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6);font-size:13px;">
+            <svg style="width:14px;height:14px;stroke:var(--teal);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14v2.92z"/></svg>
+            +33 6 80 93 61 31
+          </a>
+          <a href="mailto:contact@camionnet.fr" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.6);font-size:13px;">
+            <svg style="width:14px;height:14px;stroke:var(--teal);fill:none;stroke-width:2;" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            contact@camionnet.fr
+          </a>
+          <div style="display:flex;align-items:flex-start;gap:8px;color:rgba(255,255,255,0.6);font-size:13px;margin-top:4px;">
+            <svg style="width:14px;height:14px;stroke:var(--teal);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px;" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Sogaris, Pl. de la Logistique<br>94150 Rungis (centre fixe)</span>
+          </div>
+        </div>
+        <button class="btn-devis" style="margin-top:20px;width:100%;" onclick="showPage('tarifs')">Demander un devis →</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        © 2025 Camion Net by LZ net — Tous droits réservés
+        <a href="#" onclick="showPage('accueil');return false;">Mentions légales</a>
+        <a href="#" onclick="showPage('accueil');return false;">Politique de confidentialité</a>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.25);">Design staging — non publié en production</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- JAVASCRIPT NAVIGATION -->
+<!-- ══════════════════════════════════════════════════════ -->
+<script>
+function showPage(pageId) {
+  // Hide all pages
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  // Show target page
+  var target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+  // Update nav active state
+  document.querySelectorAll('.nav-link').forEach(function(l) {
+    l.classList.remove('active');
+  });
+  // Update URL hash for bookmarking
+  if (history.pushState) {
+    history.pushState(null, null, '#' + pageId);
+  }
+  // Resize devis iframe if needed
+  if (pageId === 'tarifs') {
+    setTimeout(function() {
+      var frame = document.getElementById('devisFrame');
+      if (frame) {
+        frame.style.minHeight = '900px';
+      }
+    }, 300);
+  }
+}
+
+function toggleMobileMenu() {
+  var menu = document.getElementById('mobileMenu');
+  menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+}
+
+function resizeDevisFrame(frame) {
+  try {
+    frame.style.height = frame.contentWindow.document.body.scrollHeight + 'px';
+  } catch(e) {}
+}
+
+// Handle back button
+window.addEventListener('popstate', function() {
+  var hash = location.hash.replace('#', '') || 'accueil';
+  showPage(hash);
+});
+
+// Init from URL hash
+(function() {
+  var hash = location.hash.replace('#', '') || 'accueil';
+  showPage(hash);
+})();
+
+// Listen to resize messages from devis iframe
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'resize') {
+    var frame = document.getElementById('devisFrame');
+    if (frame && e.data.height > 400) {
+      frame.style.height = (e.data.height + 40) + 'px';
+      frame.style.minHeight = 'auto';
+    }
+  }
+});
+</script>
+</body>
+</html>
