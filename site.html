@@ -44,6 +44,8 @@ img{max-width:100%;display:block;}
 .nav-ctas{display:flex;align-items:center;gap:10px;}
 .btn-devis{background:var(--teal);color:var(--navy);font-size:13px;font-weight:700;padding:9px 20px;border-radius:var(--radius);border:none;cursor:pointer;transition:all 0.15s;}
 .btn-devis:hover{background:var(--teal-dark);}
+.btn-membres{background:transparent;border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:8px 16px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.btn-membres:hover{border-color:var(--teal);color:var(--teal);}
 .btn-resa{background:transparent;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.15s;}
 .btn-resa:hover{border-color:var(--teal);color:var(--teal);}
 .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
@@ -345,9 +347,11 @@ img{max-width:100%;display:block;}
           <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camion frigorifique</span>
         </div>
       </div>
+      <span class="nav-link" onclick="showPage('tracabilite')">Traçabilité & Qualité</span>
       <span class="nav-link" onclick="showPage('tarifs')">Devis & Tarifs</span>
     </div>
     <div class="nav-ctas">
+      <button class="btn-membres" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')">Espace membres</button>
       <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
       <button class="btn-devis" onclick="showPage('tarifs')">Demander un devis →</button>
     </div>
@@ -1508,5 +1512,151 @@ window.addEventListener('message', function(e) {
   }
 });
 </script>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- PAGE : TRAÇABILITÉ & QUALITÉ -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="page" id="page-tracabilite">
+
+    <!-- HERO -->
+    <section class="hero" style="min-height:45vh;padding:150px 32px 60px;">
+      <div class="hero-inner" style="max-width:1200px;margin:0 auto;">
+        <div style="max-width:700px;">
+          <div class="hero-badge">● ENGAGEMENT QUALITÉ</div>
+          <h1 class="hero-title" style="font-size:clamp(2rem,4vw,3rem);">Traçabilité, Démarche qualité<br><span style="color:var(--teal);">& Fiches techniques</span></h1>
+          <p class="hero-sub">Transparence totale sur chaque intervention — suivi en ligne, exports de données et produits certifiés.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : SUIVI QUALITÉ -->
+    <section style="background:#fff;padding:80px 32px;">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:48px;">
+          <span class="section-badge">NOS ENGAGEMENTS</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--navy);margin-top:12px;">Importance du Suivi Qualité</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;">
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <h3>Image de marque</h3>
+            <p>Des véhicules propres reflètent une image professionnelle et fiable, influençant positivement vos clients et partenaires.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Préservation du véhicule</h3>
+            <p>Un lavage régulier protège la carrosserie contre la corrosion et l'usure prématurée causées par la saleté et les produits chimiques.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">✅</div>
+            <h3>Conformité sanitaire</h3>
+            <p>Pour les véhicules alimentaires, notre suivi qualité rigoureux garantit le respect des normes sanitaires à chaque intervention.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Formation continue</h3>
+            <p>Nos opérateurs sont formés régulièrement aux techniques et produits les plus efficaces pour un service de qualité constante.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Réduction des coûts</h3>
+            <p>En maintenant vos véhicules propres, vous réduisez les coûts d'entretien et prolongez leur durée de vie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : INTRANET CLIENT -->
+    <section style="background:var(--navy);padding:80px 32px;">
+      <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+        <div>
+          <span class="section-badge" style="background:rgba(49,220,200,0.15);color:var(--teal);border:1px solid rgba(49,220,200,0.3);">INTRANET CLIENT</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;margin-top:16px;margin-bottom:20px;">Suivi des lavages & traçabilité en ligne</h2>
+          <p style="color:rgba(255,255,255,0.75);line-height:1.7;margin-bottom:24px;">Dans une logique de transparence totale, Camion Net met à disposition un intranet dédié permettant un suivi précis de chaque intervention sur l'ensemble de votre parc.</p>
+          <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;">
+            <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);"><span style="color:var(--teal);font-size:18px;">●</span> Dates d'intervention, sites et véhicules</li>
+            <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);"><span style="color:var(--teal);font-size:18px;">●</span> Fréquence et historique des lavages</li>
+            <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);"><span style="color:var(--teal);font-size:18px;">●</span> Exports Excel / CSV par période, site ou véhicule</li>
+            <li style="display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.85);"><span style="color:var(--teal);font-size:18px;">●</span> Support pour audits internes et externes</li>
+          </ul>
+          <button class="btn-devis" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')" style="display:inline-flex;align-items:center;gap:8px;">Accéder à l'intranet →</button>
+        </div>
+        <div style="background:var(--navy-mid);border-radius:16px;padding:36px;border:1px solid rgba(49,220,200,0.2);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div style="width:40px;height:40px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;">📊</div>
+            <div>
+              <div style="color:#fff;font-weight:700;">Tableau de bord client</div>
+              <div style="color:rgba(255,255,255,0.5);font-size:13px;">Suivi en temps réel</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:rgba(255,255,255,0.7);font-size:14px;">Lavages ce mois</span>
+              <span style="color:var(--teal);font-weight:700;font-size:18px;">—</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:rgba(255,255,255,0.7);font-size:14px;">Dernier rapport</span>
+              <span style="color:var(--teal);font-weight:700;font-size:14px;">PDF disponible</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);border-radius:8px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;">
+              <span style="color:rgba(255,255,255,0.7);font-size:14px;">Export données</span>
+              <span style="color:var(--teal);font-weight:700;font-size:14px;">Excel / CSV</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION : PRODUITS -->
+    <section style="background:#fff;padding:80px 32px;">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div style="text-align:center;margin-bottom:48px;">
+          <span class="section-badge">NOS PRODUITS</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:var(--navy);margin-top:12px;">Produits utilisés & Fiches techniques</h2>
+          <p style="color:var(--gray-500);max-width:600px;margin:12px auto 0;">Des produits certifiés, adaptés à chaque usage — extérieur, intérieur frigorifique, traitement antibactérien.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-bottom:48px;">
+          <div class="card">
+            <div class="card-icon">🚛</div>
+            <h3>Lavage extérieur carrosserie</h3>
+            <p>Détergent haute performance éliminant graisses, poussières, insectes et saletés tenaces sans endommager la peinture ni les joints.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚙️</div>
+            <h3>Nettoyant jantes & châssis</h3>
+            <p>Formule spéciale pour déloger boue, goudron et résidus de freinage dans les zones les plus difficiles d'accès.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">❄️</div>
+            <h3>Désinfectant alimentaire</h3>
+            <p>Produit homologué usage alimentaire — élimine résidus, moisissures et odeurs dans les caisses frigorifiques.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🧫</div>
+            <h3>Traitement antibactérien</h3>
+            <p>Protection prolongée entre les lavages, réduisant la prolifération de bactéries et moisissures, conforme aux normes sanitaires.</p>
+          </div>
+        </div>
+        <!-- FICHES TECHNIQUES -->
+        <div style="background:var(--off);border-radius:12px;padding:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;">
+          <div style="font-weight:700;color:var(--navy);font-size:16px;margin-right:8px;">📄 Télécharger les fiches techniques :</div>
+          <a href="https://www.lavagecamions.com/tra%C3%A7abilit%C3%A9-rse-qualit%C3%A9" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:10px 20px;border-radius:var(--radius);font-weight:600;font-size:14px;text-decoration:none;">
+            📥 Fiche PL99
+          </a>
+          <a href="https://www.lavagecamions.com/tra%C3%A7abilit%C3%A9-rse-qualit%C3%A9" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:10px 20px;border-radius:var(--radius);font-weight:600;font-size:14px;text-decoration:none;">
+            📥 Fiche DEFI V
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section style="background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);padding:60px 32px;text-align:center;">
+      <h2 style="color:var(--navy);font-size:clamp(1.4rem,3vw,2rem);font-weight:800;margin-bottom:16px;">Vous souhaitez accéder à votre espace de suivi ?</h2>
+      <p style="color:rgba(11,22,40,0.8);margin-bottom:28px;">Connectez-vous à votre espace client pour consulter vos rapports de lavage.</p>
+      <button class="btn-devis" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')" style="background:var(--navy);color:#fff;">Accéder à l'espace membres →</button>
+    </section>
+
+  </div>
 </body>
 </html>
