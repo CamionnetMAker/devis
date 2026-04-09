@@ -49,6 +49,7 @@ img{max-width:100%;display:block;}
 .btn-membres:hover{border-color:var(--teal);color:var(--teal);}
 .btn-resa{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);color:#fff;padding:7px 14px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .btn-resa:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
+.btn-resa-mobile{display:none;}
 .btn-devis{background:var(--teal);color:var(--navy);padding:8px 18px;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;white-space:nowrap;}
 .btn-devis:hover{background:var(--teal-dark);transform:translateY(-1px);}
 .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;}
@@ -63,7 +64,7 @@ img{max-width:100%;display:block;}
 .nav-mobile-ctas{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
 .nav-mobile-ctas .btn-membres,.nav-mobile-ctas .btn-resa,.nav-mobile-ctas .btn-devis{width:100%;text-align:center;padding:12px;font-size:14px;}
 @media(min-width:1025px){.nav-mobile-btn{display:none!important;}.nav-links{display:flex!important;}.nav-ctas{display:flex!important;}.nav-mobile-menu{display:none!important;}}
-@media(max-width:1024px){.nav-links{display:none;}.nav-ctas{display:none;}.nav-mobile-btn{display:flex!important;}}
+@media(max-width:1024px){.nav-links{display:none;}.nav-ctas{display:none;}.nav-mobile-btn{display:flex!important;}.btn-resa-mobile{display:block;font-size:12px;padding:6px 10px;white-space:nowrap;}}
 /* ── HERO ── */
 .hero{background:linear-gradient(150deg,#0B1628 0%,#142346 60%,#0B1628 100%);padding:150px 32px 80px;min-height:100vh;display:flex;align-items:center;}
 .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
@@ -386,11 +387,12 @@ img{max-width:100%;display:block;}
     <!-- CTAs DESKTOP -->
     <div class="nav-ctas">
       <button class="btn-membres" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')">Espace membres</button>
-      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
+      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réservation Rungis</button>
       <button class="btn-devis" onclick="showPage('tarifs')">Devis →</button>
     </div>
 
     <!-- BURGER MOBILE -->
+    <button class="btn-resa btn-resa-mobile" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réservation Rungis</button>
     <button class="nav-mobile-btn" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -410,7 +412,7 @@ img{max-width:100%;display:block;}
     <span class="nav-mobile-link" onclick="showPage('tarifs');toggleMobileMenu()">Devis & Tarifs</span>
     <div class="nav-mobile-ctas">
       <button class="btn-membres" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')">Espace membres</button>
-      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank');toggleMobileMenu()">Réserver Rungis</button>
+      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank');toggleMobileMenu()">Réservation Rungis</button>
       <button class="btn-devis" onclick="showPage('tarifs');toggleMobileMenu()">Demander un devis →</button>
     </div>
   </div>
