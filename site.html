@@ -25,32 +25,45 @@ img{max-width:100%;display:block;}
 
 /* ── NAV ── */
 .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--navy-mid);border-bottom:2px solid var(--teal);box-shadow:0 4px 24px rgba(0,0,0,0.4);}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:110px;}
-.nav-logo{display:flex;align-items:center;gap:12px;}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px;}
+.nav-logo{display:flex;align-items:center;flex-shrink:0;}
 .nav-logo-mark{background:none;border-radius:0;display:flex;align-items:center;justify-content:center;overflow:visible;}
-.nav-logo-mark svg{overflow:visible;}
+.nav-logo-mark img{height:70px;width:auto;display:block;mix-blend-mode:screen;}
 .nav-brand{font-size:18px;font-weight:900;color:#fff;letter-spacing:-0.5px;}
 .nav-brand span{color:var(--teal);}
 .nav-tagline{font-size:11px;color:rgba(255,255,255,0.45);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-top:1px;}
-.nav-links{display:flex;align-items:center;gap:4px;}
-.nav-link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:var(--radius);transition:all 0.15s;cursor:pointer;}
+.nav-links{display:flex;align-items:center;gap:2px;flex:1;justify-content:center;flex-wrap:nowrap;}
+.nav-link{font-size:13px;font-weight:500;color:rgba(255,255,255,0.75);padding:7px 10px;border-radius:var(--radius);transition:all 0.15s;cursor:pointer;white-space:nowrap;}
 .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.08);}
 .nav-dropdown{position:relative;}
-.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);min-width:240px;overflow:hidden;border:1px solid var(--gray-100);}
+.nav-dropdown-toggle{font-size:13px;font-weight:500;color:rgba(255,255,255,0.75);padding:7px 10px;border-radius:var(--radius);transition:all 0.15s;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.nav-dropdown-toggle::after{content:'▾';font-size:10px;opacity:0.6;}
+.nav-dropdown-toggle:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;min-width:200px;background:var(--navy-mid);border:1px solid rgba(49,220,200,0.2);border-radius:var(--radius-lg);box-shadow:0 8px 32px rgba(0,0,0,0.4);z-index:100;overflow:hidden;}
 .nav-dropdown:hover .nav-dropdown-menu{display:block;}
-.nav-dropdown-item{display:block;padding:10px 16px;font-size:13px;font-weight:500;color:var(--gray-700);border-bottom:1px solid var(--gray-50);cursor:pointer;}
-.nav-dropdown-item:hover{background:var(--teal-light);color:var(--navy);}
+.nav-dropdown-item{display:block;padding:10px 16px;font-size:13px;color:rgba(255,255,255,0.75);cursor:pointer;transition:all 0.15s;border-bottom:1px solid rgba(255,255,255,0.05);}
 .nav-dropdown-item:last-child{border-bottom:none;}
-.nav-ctas{display:flex;align-items:center;gap:10px;}
-.btn-devis{background:var(--teal);color:var(--navy);font-size:13px;font-weight:700;padding:9px 20px;border-radius:var(--radius);border:none;cursor:pointer;transition:all 0.15s;}
-.btn-devis:hover{background:var(--teal-dark);}
-.btn-membres{background:transparent;border:1.5px solid rgba(255,255,255,0.4);color:#fff;padding:8px 16px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.nav-dropdown-item:hover{color:#fff;background:rgba(49,220,200,0.1);}
+.nav-ctas{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.btn-membres{background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:7px 14px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .btn-membres:hover{border-color:var(--teal);color:var(--teal);}
-.btn-resa{background:transparent;color:#fff;font-size:13px;font-weight:600;padding:9px 18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.25);cursor:pointer;transition:all 0.15s;}
-.btn-resa:hover{border-color:var(--teal);color:var(--teal);}
-.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;}
-.nav-mobile-btn span{display:block;width:22px;height:2px;background:#fff;margin:4px 0;border-radius:2px;transition:all 0.2s;}
-
+.btn-resa{background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);color:#fff;padding:7px 14px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.btn-resa:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4);}
+.btn-devis{background:var(--teal);color:var(--navy);padding:8px 18px;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s;white-space:nowrap;}
+.btn-devis:hover{background:var(--teal-dark);transform:translateY(-1px);}
+.nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px;}
+.nav-mobile-btn span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+/* ── NAV MOBILE ── */
+.nav-mobile-menu{display:none;position:fixed;top:80px;left:0;right:0;background:var(--navy-mid);border-top:1px solid rgba(49,220,200,0.2);z-index:999;padding:16px 20px 24px;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+.nav-mobile-menu.open{display:block;}
+.nav-mobile-link{display:block;padding:12px 0;font-size:15px;font-weight:500;color:rgba(255,255,255,0.8);border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer;transition:color .15s;}
+.nav-mobile-link:hover{color:var(--teal);}
+.nav-mobile-link:last-of-type{border-bottom:none;}
+.nav-mobile-sub{padding-left:16px;font-size:14px;color:rgba(255,255,255,0.6);}
+.nav-mobile-ctas{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.nav-mobile-ctas .btn-membres,.nav-mobile-ctas .btn-resa,.nav-mobile-ctas .btn-devis{width:100%;text-align:center;padding:12px;font-size:14px;}
+@media(min-width:1025px){.nav-mobile-btn{display:none!important;}.nav-links{display:flex!important;}.nav-ctas{display:flex!important;}.nav-mobile-menu{display:none!important;}}
+@media(max-width:1024px){.nav-links{display:none;}.nav-ctas{display:none;}.nav-mobile-btn{display:flex!important;}}
 /* ── HERO ── */
 .hero{background:linear-gradient(150deg,#0B1628 0%,#142346 60%,#0B1628 100%);padding:150px 32px 80px;min-height:100vh;display:flex;align-items:center;}
 .hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
@@ -320,59 +333,79 @@ img{max-width:100%;display:block;}
 <!-- ── NAVIGATION ── -->
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
-    <div class="nav-logo">
-      <div class="nav-logo-mark"><img src="logo-camionnet.png" alt="Camionnet" style="height:110px;width:auto;display:block;mix-blend-mode:screen;"></div>
+    <!-- LOGO -->
+    <div class="nav-logo" onclick="showPage('accueil')" style="cursor:pointer;">
+      <div class="nav-logo-mark">
+        <img src="logo-camionnet.png" alt="Camionnet" style="height:70px;width:auto;display:block;mix-blend-mode:screen;">
+      </div>
     </div>
+
+    <!-- LIENS DESKTOP -->
     <div class="nav-links">
       <span class="nav-link" onclick="showPage('accueil')">Accueil</span>
-      <span class="nav-link" onclick="showPage('apropos')">À propos</span>
+
+      <!-- Dropdown : À propos -->
       <div class="nav-dropdown">
-        <span class="nav-link">Services ▾</span>
+        <div class="nav-dropdown-toggle">À propos</div>
         <div class="nav-dropdown-menu">
-          <span class="nav-dropdown-item" onclick="showPage('mobile')">Stations mobiles (sur site)</span>
-          <span class="nav-dropdown-item" onclick="showPage('rungis')">Centre de lavage Rungis</span>
-          <span class="nav-dropdown-item" onclick="showPage('industriel')">Nettoyage industriel HP</span>
-          <span class="nav-dropdown-item" onclick="showPage('froid')">Chambres froides</span>
-          <span class="nav-dropdown-item" onclick="showPage('batiment')">Bardage & bâtiments</span>
-          <span class="nav-dropdown-item" onclick="showPage('urbain')">Mobilier urbain</span>
+          <div class="nav-dropdown-item" onclick="showPage('apropos')">Notre entreprise</div>
+          <div class="nav-dropdown-item" onclick="showPage('tracabilite')">Traçabilité & Qualité</div>
         </div>
       </div>
+
+      <!-- Dropdown : Services -->
       <div class="nav-dropdown">
-        <span class="nav-link">Véhicules ▾</span>
+        <div class="nav-dropdown-toggle">Services</div>
         <div class="nav-dropdown-menu">
-          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Tous types de véhicules</span>
-          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camionnette / VUL</span>
-          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camion 20m³</span>
-          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Poids lourd / SPL</span>
-          <span class="nav-dropdown-item" onclick="showPage('vehicules')">Camion frigorifique</span>
+          <div class="nav-dropdown-item" onclick="showPage('mobile')">Stations mobiles (sur site)</div>
+          <div class="nav-dropdown-item" onclick="showPage('rungis')">Centre de lavage Rungis</div>
+          <div class="nav-dropdown-item" onclick="showPage('industriel')">Nettoyage industriel HP</div>
+          <div class="nav-dropdown-item" onclick="showPage('froid')">Chambres froides</div>
+          <div class="nav-dropdown-item" onclick="showPage('batiment')">Bardage & Bâtiments</div>
+          <div class="nav-dropdown-item" onclick="showPage('urbain')">Mobilier urbain</div>
         </div>
       </div>
-      <span class="nav-link" onclick="showPage('tracabilite')">Traçabilité & Qualité</span>
+
+      <!-- Dropdown : Véhicules -->
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Véhicules</div>
+        <div class="nav-dropdown-menu">
+          <div class="nav-dropdown-item" onclick="showPage('vehicules')">Tous types de véhicules</div>
+        </div>
+      </div>
+
       <span class="nav-link" onclick="showPage('tarifs')">Devis & Tarifs</span>
     </div>
+
+    <!-- CTAs DESKTOP -->
     <div class="nav-ctas">
       <button class="btn-membres" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')">Espace membres</button>
       <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
-      <button class="btn-devis" onclick="showPage('tarifs')">Demander un devis →</button>
+      <button class="btn-devis" onclick="showPage('tarifs')">Devis →</button>
     </div>
+
+    <!-- BURGER MOBILE -->
     <button class="nav-mobile-btn" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <!-- Mobile menu -->
-  <div id="mobileMenu" style="display:none;background:#0B1628;border-top:1px solid rgba(255,255,255,0.08);padding:16px 20px;">
-    <div style="display:flex;flex-direction:column;gap:4px;">
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('accueil');toggleMobileMenu()">Accueil</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('mobile');toggleMobileMenu()">Stations mobiles</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('rungis');toggleMobileMenu()">Centre Rungis</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('vehicules');toggleMobileMenu()">Nos véhicules</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('industriel');toggleMobileMenu()">Nettoyage industriel</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('apropos');toggleMobileMenu()">À propos</span>
-      <span style="padding:10px;color:rgba(255,255,255,0.8);font-size:14px;font-weight:500;cursor:pointer;border-radius:6px;" onclick="showPage('tarifs');toggleMobileMenu()">Devis & Tarifs</span>
-      <div style="margin-top:12px;display:flex;gap:8px;">
-        <button class="btn-resa" style="flex:1" onclick="window.open('https://www.lavagecamions.com/book-online','_blank')">Réserver Rungis</button>
-        <button class="btn-devis" style="flex:1" onclick="showPage('tarifs');toggleMobileMenu()">Devis →</button>
-      </div>
+
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile-menu" id="mobileMenu">
+    <span class="nav-mobile-link" onclick="showPage('accueil');toggleMobileMenu()">Accueil</span>
+    <span class="nav-mobile-link" onclick="showPage('apropos');toggleMobileMenu()">Notre entreprise</span>
+    <span class="nav-mobile-link" onclick="showPage('tracabilite');toggleMobileMenu()">Traçabilité & Qualité</span>
+    <span class="nav-mobile-link" onclick="showPage('mobile');toggleMobileMenu()">Stations mobiles</span>
+    <span class="nav-mobile-link" onclick="showPage('rungis');toggleMobileMenu()">Centre Rungis</span>
+    <span class="nav-mobile-link" onclick="showPage('industriel');toggleMobileMenu()">Nettoyage industriel</span>
+    <span class="nav-mobile-link" onclick="showPage('froid');toggleMobileMenu()">Chambres froides</span>
+    <span class="nav-mobile-link" onclick="showPage('batiment');toggleMobileMenu()">Bardage & Bâtiments</span>
+    <span class="nav-mobile-link" onclick="showPage('vehicules');toggleMobileMenu()">Nos véhicules</span>
+    <span class="nav-mobile-link" onclick="showPage('tarifs');toggleMobileMenu()">Devis & Tarifs</span>
+    <div class="nav-mobile-ctas">
+      <button class="btn-membres" onclick="window.open('https://www.lavagecamions.com/members-area','_blank')">Espace membres</button>
+      <button class="btn-resa" onclick="window.open('https://www.lavagecamions.com/book-online','_blank');toggleMobileMenu()">Réserver Rungis</button>
+      <button class="btn-devis" onclick="showPage('tarifs');toggleMobileMenu()">Demander un devis →</button>
     </div>
   </div>
 </nav>
