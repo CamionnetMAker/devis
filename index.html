@@ -6,72 +6,37 @@
 <title>Demande de devis — Camion Net</title>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ── PALETTE & TOKENS ── */
+/* ══════════════════════════════════════════════════════════════════ */
+/* TOKENS & BASE                                                       */
+/* ══════════════════════════════════════════════════════════════════ */
 :root{
-  /* Couleurs de base */
-  --navy:#0F2140;
-  --navy-mid:#1A3A6A;
-  --blue:#2563EB;
-  --sky:#EBF4FF;
-  --white:#FFFFFF;
-  --off-white:#F8F9FC;
-  --gray-50:#F4F6F9;
-  --gray-100:#EAECF2;
-  --gray-200:#D0D5E2;
-  --gray-300:#A8B0C4;
-  --gray-400:#7A84A0;
-  --gray-500:#556080;
-  --gray-700:#2D3550;
-  --gray-900:#141A2E;
-
-  /* Couleur primaire du formulaire (alias) */
-  --green:#1A3A6A;
-  --green-light:#E8EEF8;
-  --green-dark:#0F2140;
-
-  /* Couleurs d'étape */
-  --s1:#1A3A6A;  --s1-light:#E8EEF7;  /* Intervention — bleu marine */
-  --s2:#0D7A5F;  --s2-light:#E5F5F0;  /* Site — vert eau */
-  --s3:#1565A8;  --s3-light:#E8F1FB;  /* Flotte — bleu roi */
-  --s4:#147A55;  --s4-light:#E5F4EE;  /* Coordonnées — vert forêt */
-  --s5:#0A6E7C;  --s5-light:#E4F3F5;  /* Récap — bleu-vert teal */
-
+  --navy:#0F2140; --navy-mid:#1A3A6A; --blue:#2563EB; --sky:#EBF4FF;
+  --white:#FFFFFF; --off-white:#F8F9FC;
+  --gray-50:#F4F6F9; --gray-100:#EAECF2; --gray-200:#D0D5E2; --gray-300:#A8B0C4;
+  --gray-400:#7A84A0; --gray-500:#556080; --gray-700:#2D3550; --gray-900:#141A2E;
+  --green:#1A3A6A; --green-light:#E8EEF8; --green-dark:#0F2140;
+  --s1:#1A3A6A; --s1-light:#E8EEF7;
+  --s2:#0D7A5F; --s2-light:#E5F5F0;
+  --s3:#1565A8; --s3-light:#E8F1FB;
+  --s4:#147A55; --s4-light:#E5F4EE;
+  --s5:#0A6E7C; --s5-light:#E4F3F5;
   --red:#DC2626; --red-light:#FEE2E2;
   --amber:#D97706; --amber-light:#FEF3C7;
-
   --radius:10px; --radius-lg:16px; --radius-xl:24px;
   --shadow-sm:0 1px 3px rgba(15,33,64,0.06);
   --shadow:0 4px 20px rgba(15,33,64,0.08);
   --shadow-lg:0 12px 40px rgba(15,33,64,0.14);
-
   --font:'Raleway',-apple-system,BlinkMacSystemFont,sans-serif;
-  --font-display:'Raleway',sans-serif;
-
-  /* Étape courante (mise à jour par JS) */
-  --step-color:var(--s1);
-  --step-light:var(--s1-light);
+  --step-color:var(--s1); --step-light:var(--s1-light);
 }
-
-/* ── BASE ── */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:var(--font);background:var(--off-white);color:var(--gray-900);min-height:auto;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-
-/* ── HEADER ── */
 .hdr{display:none;}
-.logo{font-family:var(--font);font-size:20px;font-weight:900;color:#fff;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
-.logo span{color:#4ECBA8;}
-.hdr-right{display:flex;align-items:center;gap:20px;}
-.hdr-tel{font-size:13px;color:rgba(255,255,255,0.6);font-weight:400;}
-.hdr-cta{background:rgba(255,255,255,0.12);color:#fff;font-size:13px;font-weight:600;padding:8px 18px;border-radius:var(--radius);text-decoration:none;transition:background 0.15s;border:1px solid rgba(255,255,255,0.2);}
-.hdr-cta:hover{background:rgba(255,255,255,0.22);}
-
-/* ── PROGRESS BAR ── */
 .pbar-wrap{height:4px;background:rgba(255,255,255,0.15);}
 .pbar{height:4px;background:linear-gradient(90deg,var(--step-color),var(--step-color));transition:width 0.5s cubic-bezier(0.4,0,0.2,1),background 0.4s ease;}
 
-/* ── STEPPER ── */
+/* STEPPER */
 .stepper-outer{border-bottom:1px solid var(--gray-100);background:var(--white);position:sticky;top:0;z-index:90;box-shadow:0 2px 12px rgba(15,33,64,0.06);}
-  .stepper-outer{top:0;}
 .stepper{display:flex;max-width:860px;margin:0 auto;padding:0 48px;}
 .step-item{flex:1;display:flex;align-items:center;gap:8px;padding:14px 0;position:relative;cursor:default;}
 .step-item:not(:last-child)::after{content:'';position:absolute;right:-2px;top:50%;transform:translateY(-50%);width:1px;height:18px;background:var(--gray-100);}
@@ -82,7 +47,7 @@ body{font-family:var(--font);background:var(--off-white);color:var(--gray-900);m
 .step-item.active .step-label{color:var(--step-color);font-weight:700;}
 .step-item.done .step-label{color:var(--gray-700);}
 
-/* ── HERO ── */
+/* HERO */
 .hero{padding:36px 48px 28px;max-width:860px;margin:0 auto;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(26,58,106,0.08);color:var(--s1);font-size:12px;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:12px;letter-spacing:0.5px;border:1px solid rgba(26,58,106,0.15);}
 .hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--s2);animation:pulse2 2s infinite;}
@@ -95,13 +60,11 @@ body{font-family:var(--font);background:var(--off-white);color:var(--gray-900);m
 .stat-num{font-family:var(--font);font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-1px;display:block;line-height:1;}
 .stat-label{font-size:9px;color:var(--gray-400);font-weight:500;margin-top:3px;display:block;letter-spacing:0.2px;line-height:1.3;word-break:break-word;}
 
-/* ── MAIN ── */
+/* MAIN & PANELS */
 .main{max-width:860px;margin:0 auto;padding:20px 48px 32px;}
 .panel{display:none;}
 .panel.active{display:block;animation:fadeUp 0.3s cubic-bezier(0.4,0,0.2,1);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-
-/* Bannière colorée d'étape */
 .panel-banner{border-radius:var(--radius-xl);padding:22px 28px;margin-bottom:16px;background:linear-gradient(135deg,var(--step-color) 0%,var(--step-color) 100%);position:relative;overflow:hidden;}
 .panel-banner::after{content:'';position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.07);}
 .panel-banner::before{content:'';position:absolute;right:40px;bottom:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);}
@@ -109,43 +72,43 @@ body{font-family:var(--font);background:var(--off-white);color:var(--gray-900);m
 .panel-title{font-family:var(--font);font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:4px;position:relative;z-index:1;}
 .panel-sub{font-size:14px;color:rgba(255,255,255,0.7);position:relative;z-index:1;}
 
-/* ── SECTIONS ── */
+/* SECTIONS & FIELDS */
 .form-section{background:var(--white);border:1.5px solid var(--gray-100);border-radius:var(--radius-lg);padding:22px;margin-bottom:10px;box-shadow:var(--shadow-sm);transition:border-color 0.2s,box-shadow 0.2s;}
 .form-section:focus-within{border-color:var(--step-color);box-shadow:0 0 0 3px rgba(0,0,0,0.04),var(--shadow-sm);}
 .section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--step-color);margin-bottom:18px;display:flex;align-items:center;gap:7px;padding-bottom:12px;border-bottom:2px solid var(--step-light);}
 .section-label svg{width:13px;height:13px;stroke:var(--step-color);fill:none;stroke-width:2;}
-
-/* ── CHAMPS ── */
 .field{margin-bottom:16px;}
 .field:last-child{margin-bottom:0;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 label{display:block;font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:6px;}
 label .req{color:var(--step-color);margin-left:2px;}
+label .opt{color:var(--gray-300);font-weight:500;font-size:11px;margin-left:4px;}
 input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
   width:100%;padding:12px 15px;border:1.5px solid var(--gray-200);border-radius:var(--radius);
   font-family:var(--font);font-size:14px;color:var(--gray-900);background:var(--white);
-  transition:border-color 0.15s,box-shadow 0.15s;outline:none;-webkit-appearance:none;
-}
+  transition:border-color 0.15s,box-shadow 0.15s;outline:none;-webkit-appearance:none;}
 input:focus,select:focus,textarea:focus{border-color:var(--step-color);box-shadow:0 0 0 3px var(--step-light);}
 input::placeholder,textarea::placeholder{color:var(--gray-300);}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237A84A0' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer;}
 textarea{min-height:90px;resize:vertical;line-height:1.6;}
 
-/* ── CARTES DE CHOIX (étape 1 — grandes et engageantes) ── */
+/* CHOICE CARDS */
 .choice-grid{display:grid;gap:14px;}
 .choice-grid.cols-2{grid-template-columns:1fr 1fr;}
-.choice-card{border:2px solid var(--gray-100);border-radius:var(--radius-xl);padding:28px 24px 24px;cursor:pointer;transition:all 0.2s cubic-bezier(0.4,0,0.2,1);background:var(--white);position:relative;overflow:hidden;}
+.choice-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
+.choice-card{border:2px solid var(--gray-100);border-radius:var(--radius-xl);padding:24px 20px 22px;cursor:pointer;transition:all 0.2s cubic-bezier(0.4,0,0.2,1);background:var(--white);position:relative;overflow:hidden;}
 .choice-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gray-100);transition:background 0.2s;}
 .choice-card:hover{border-color:var(--step-color);box-shadow:var(--shadow);transform:translateY(-2px);}
 .choice-card:hover::before{background:var(--step-color);}
 .choice-card.selected{border-color:var(--step-color);background:var(--step-light);box-shadow:0 0 0 1px var(--step-color),var(--shadow);}
 .choice-card.selected::before{background:var(--step-color);}
 .choice-card.selected::after{content:'✓';position:absolute;top:14px;right:16px;width:24px;height:24px;background:var(--step-color);color:#fff;border-radius:50%;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:24px;text-align:center;}
+.choice-icon{font-size:28px;margin-bottom:10px;display:block;line-height:1;}
 .choice-eyebrow{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--step-color);margin-bottom:8px;}
-.choice-title{font-family:var(--font);font-size:17px;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:8px;}
-.choice-sub{font-size:13px;color:var(--gray-400);font-weight:400;line-height:1.55;}
+.choice-title{font-family:var(--font);font-size:16px;font-weight:800;color:var(--navy);line-height:1.2;margin-bottom:6px;}
+.choice-sub{font-size:12px;color:var(--gray-400);font-weight:400;line-height:1.5;}
 
-/* ── TOGGLE OUI/NON ── */
+/* TOGGLES, COUNTERS, TABLES, PRESTATIONS, TAGS, FREQ, OPTIONS */
 .toggle-group{display:flex;gap:8px;}
 .toggle-btn{flex:1;padding:11px 14px;border:2px solid var(--gray-100);border-radius:var(--radius);background:var(--white);cursor:pointer;font-family:var(--font);font-size:13px;font-weight:600;color:var(--gray-400);transition:all 0.15s;text-align:center;}
 .toggle-btn:hover{border-color:var(--gray-300);color:var(--gray-700);}
@@ -153,7 +116,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .toggle-btn.no.selected{border-color:var(--red);background:var(--red-light);color:var(--red);}
 .toggle-btn[data-val="nsp"].selected{border-color:var(--amber);background:var(--amber-light);color:var(--amber);}
 
-/* ── TABLEAU VÉHICULES ── */
 .vehicle-table{width:100%;border-collapse:collapse;}
 .vehicle-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-300);padding:0 0 12px;text-align:left;border-bottom:1px solid var(--gray-100);}
 .vehicle-table th:nth-child(2){text-align:center;}
@@ -163,7 +125,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .veh-name{font-size:13px;font-weight:600;color:var(--gray-900);line-height:1.3;}
 .veh-desc{font-size:11px;color:var(--gray-300);font-weight:400;margin-top:1px;}
 
-/* ── COMPTEUR ── */
 .counter{display:flex;align-items:center;justify-content:center;}
 .counter-btn{width:30px;height:30px;border:1.5px solid var(--gray-200);background:var(--white);cursor:pointer;font-size:18px;color:var(--gray-500);display:flex;align-items:center;justify-content:center;transition:all 0.15s;line-height:1;font-weight:300;}
 .counter-btn:first-child{border-radius:8px 0 0 8px;}
@@ -171,7 +132,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .counter-btn:hover{background:var(--step-color);color:#fff;border-color:var(--step-color);}
 .counter-val{width:44px;height:30px;border-top:1.5px solid var(--gray-200);border-bottom:1.5px solid var(--gray-200);text-align:center;font-size:14px;font-weight:700;color:var(--gray-900);display:flex;align-items:center;justify-content:center;background:var(--gray-50);user-select:none;}
 
-/* ── PRESTATIONS ── */
 .prestation-grid{display:flex;flex-direction:column;gap:10px;}
 .prestation-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:2px solid var(--gray-100);border-radius:var(--radius-lg);cursor:pointer;transition:all 0.2s;background:var(--white);}
 .prestation-item:hover{border-color:var(--step-color);background:var(--step-light);}
@@ -182,13 +142,11 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .prestation-title{font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:2px;}
 .prestation-desc{font-size:12px;color:var(--gray-400);font-weight:400;line-height:1.5;}
 
-/* ── JOURS / PLAGES ── */
 .tag-group{display:flex;flex-wrap:wrap;gap:8px;}
 .jour-btn,.plage-btn{padding:8px 16px;border:1.5px solid var(--gray-100);border-radius:20px;font-size:12px;font-weight:600;color:var(--gray-400);cursor:pointer;transition:all 0.15s;background:var(--white);user-select:none;font-family:var(--font);}
 .jour-btn:hover,.plage-btn:hover{border-color:var(--step-color);color:var(--step-color);}
 .jour-btn.selected,.plage-btn.selected{border-color:var(--step-color);background:var(--step-color);color:#fff;border-width:2px;}
 
-/* ── FRÉQUENCE ── */
 .freq-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
 .freq-card{border:2px solid var(--gray-100);border-radius:var(--radius);padding:14px 10px;text-align:center;cursor:pointer;background:var(--white);transition:all 0.2s;}
 .freq-card:hover{border-color:var(--step-color);background:var(--step-light);}
@@ -197,7 +155,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .freq-card.selected .freq-main{color:var(--step-color);}
 .freq-sub{font-size:10px;color:var(--gray-300);margin-top:3px;}
 
-/* ── OPTION CARDS ── */
 .option-card{border:2px solid var(--gray-100);border-radius:var(--radius-lg);padding:18px 20px;cursor:pointer;transition:all 0.2s;background:var(--white);display:flex;align-items:flex-start;gap:14px;margin-top:14px;}
 .option-card:hover{border-color:var(--step-color);background:var(--step-light);}
 .option-card.selected{border-color:var(--step-color);background:var(--step-light);box-shadow:0 0 0 1px var(--step-color);}
@@ -209,19 +166,15 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .option-desc{font-size:12px;color:var(--gray-400);font-weight:400;line-height:1.5;}
 .option-zones{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
 .option-zone{font-size:11px;font-weight:600;background:var(--gray-100);color:var(--gray-500);padding:3px 9px;border-radius:20px;}
-.option-card.selected .option-zone{background:rgba(0,0,0,0.08);color:inherit;}
 
-/* ── DISTANCE ── */
 .distance-field{display:flex;gap:10px;align-items:center;margin-top:12px;padding:12px 16px;background:var(--step-light);border:1px solid var(--step-color);border-radius:var(--radius);opacity:0.9;}
 .distance-field label{margin:0;white-space:nowrap;flex-shrink:0;font-size:13px;color:var(--step-color);font-weight:600;text-transform:none;letter-spacing:0;}
 
-/* ── INFO / WARN ── */
 .info-box{background:var(--sky);border:1px solid #BFDBFE;border-radius:var(--radius);padding:12px 16px;display:flex;gap:10px;font-size:13px;color:#1E40AF;line-height:1.6;}
 .info-box svg{width:15px;height:15px;stroke:#2563EB;fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px;}
 .warn-box{background:#FFF7ED;border:1px solid #FDBA74;border-radius:var(--radius);padding:12px 16px;display:flex;gap:10px;font-size:13px;color:#9A3412;line-height:1.6;}
 .warn-box svg{width:15px;height:15px;stroke:#EA580C;fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px;}
 
-/* ── RUNGIS ── */
 .rungis-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:20px;display:flex;gap:14px;align-items:flex-start;}
 .rungis-box svg{width:18px;height:18px;stroke:var(--gray-400);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px;}
 .rungis-box strong{font-size:14px;color:var(--navy);display:block;margin-bottom:4px;font-weight:700;}
@@ -230,7 +183,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .address-pill{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;background:var(--navy);color:#fff;font-size:11px;font-weight:600;padding:5px 12px;border-radius:20px;margin-top:10px;}
 .address-pill svg{width:10px;height:10px;stroke:#fff;fill:none;stroke-width:2;}
 
-/* ── AUTOCOMPLETE ── */
 .suggestion-item{padding:10px 14px;font-size:13px;color:var(--gray-900);cursor:pointer;border-bottom:1px solid var(--gray-50);display:flex;align-items:flex-start;gap:10px;}
 .suggestion-item:hover,.suggestion-item.focused{background:var(--gray-50);}
 .suggestion-item svg{width:13px;height:13px;stroke:var(--step-color);fill:none;stroke-width:2;flex-shrink:0;margin-top:2px;}
@@ -238,15 +190,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .suggestion-sub{font-size:11px;color:var(--gray-300);margin-top:1px;}
 .addr-loading{padding:10px 14px;font-size:13px;color:var(--gray-300);}
 
-/* ── SIMULATEUR ── */
 .sim-presta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
-.sim-presta-card{border:2px solid var(--gray-100);border-radius:var(--radius);padding:14px 15px;cursor:pointer;transition:all 0.15s;background:var(--white);}
-.sim-presta-card:hover:not(.disabled){border-color:var(--step-color);}
-.sim-presta-card.selected{border-color:var(--step-color);background:var(--step-light);}
-.sim-presta-card.disabled{opacity:0.5;cursor:pointer;border-style:dashed;}
-.sim-presta-title{font-size:13px;font-weight:700;color:var(--gray-900);margin-bottom:2px;}
-.sim-presta-card.selected .sim-presta-title{color:var(--step-color);}
-.sim-presta-sub{font-size:11px;color:var(--gray-300);}
 .sim-result-box{background:var(--navy);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;}
 .sim-result-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.45);margin-bottom:10px;}
 .sim-result-price{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1;margin-bottom:6px;}
@@ -255,7 +199,6 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .sim-resa-btn{display:inline-block;background:var(--s2);color:#fff;font-size:14px;font-weight:600;padding:11px 24px;border-radius:var(--radius);text-decoration:none;transition:opacity 0.15s;}
 .sim-resa-btn:hover{opacity:0.88;}
 
-/* ── RÉCAPITULATIF ── */
 .recap-card{background:var(--white);border:1.5px solid var(--gray-100);border-radius:var(--radius-lg);padding:24px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
 .recap-section{margin-bottom:20px;}
 .recap-section:last-child{margin-bottom:0;}
@@ -265,7 +208,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .recap-val{font-weight:600;color:var(--gray-900);text-align:right;max-width:62%;}
 .recap-tag{display:inline-block;background:var(--step-light);color:var(--step-color);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;margin:2px;}
 
-/* ── BOUTONS ── */
+/* BOUTONS */
 .btn-row{display:flex;justify-content:space-between;align-items:center;margin-top:20px;gap:12px;}
 .btn-next{background:var(--step-color);color:#fff;border:none;padding:14px 32px;border-radius:var(--radius);font-family:var(--font);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,0.15);}
 .btn-next:hover{opacity:0.88;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,0.18);}
@@ -278,7 +221,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .btn-submit svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;}
 .btn-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
 
-/* ── SUCCESS ── */
+/* SUCCESS */
 .success-screen{display:none;text-align:center;padding:80px 24px;animation:fadeUp 0.5s ease;}
 .success-icon{width:72px;height:72px;background:var(--s2-light);border-radius:50%;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(13,122,95,0.08);}
 .success-icon svg{width:32px;height:32px;stroke:var(--s2);fill:none;stroke-width:2.5;}
@@ -288,122 +231,61 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 .success-detail{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:var(--radius);padding:12px 20px;font-size:13px;display:flex;align-items:center;gap:8px;color:var(--gray-500);font-weight:500;}
 .success-detail svg{width:14px;height:14px;stroke:var(--s2);fill:none;stroke-width:2;}
 
-/* ── RESPONSIVE ── */
-
-/* ── Tablette (≤ 768px) ── */
+/* RESPONSIVE */
 @media(max-width:768px){
-  .hero{padding:24px 24px 20px;}
-  .hero h1{font-size:34px;letter-spacing:-1px;}
-  .stepper{padding:0 24px;}
-  .main{padding:16px 24px 28px;}
+  .hero{padding:24px 24px 20px;} .hero h1{font-size:34px;letter-spacing:-1px;}
+  .stepper{padding:0 24px;} .main{padding:16px 24px 28px;}
   .hero-stats{grid-template-columns:repeat(3,1fr);}
-  .choice-grid.cols-2{grid-template-columns:1fr 1fr;}
-  .freq-grid{grid-template-columns:repeat(3,1fr);}
-  .panel-title{font-size:22px;}
-  .panel-banner{padding:20px 22px;}
-  .option-card{padding:16px 18px;}
+  .choice-grid.cols-2{grid-template-columns:1fr 1fr;} .choice-grid.cols-3{grid-template-columns:1fr 1fr;}
+  .freq-grid{grid-template-columns:repeat(3,1fr);} .panel-title{font-size:22px;}
+  .panel-banner{padding:20px 22px;} .option-card{padding:16px 18px;}
 }
-
-/* ── Mobile (≤ 640px) ── */
 @media(max-width:640px){
-  /* Header */
   .hdr{padding:0 16px;height:52px;}
-  .logo{font-size:16px;}
-  .hdr-tel{display:none;}
-  .hdr-cta{display:none;}
-
-  /* Hero */
-  .hero{padding:14px 14px 12px;}
-  .hero h1{font-size:24px;letter-spacing:-0.5px;margin-bottom:6px;}
+  .hero{padding:14px 14px 12px;} .hero h1{font-size:24px;letter-spacing:-0.5px;margin-bottom:6px;}
   .hero-eyebrow{font-size:10px;padding:4px 10px;margin-bottom:8px;}
   .hero-sub{font-size:13px;margin-bottom:12px;line-height:1.5;}
-
-  /* Stats : 3 colonnes, textes réduits */
   .hero-stats{grid-template-columns:repeat(3,1fr) !important;}
   .hero-stat{padding:7px 3px;}
   .stat-num{font-size:15px !important;letter-spacing:-0.3px !important;line-height:1.1 !important;}
   .stat-label{font-size:7.5px !important;margin-top:2px;line-height:1.2 !important;word-break:break-word;}
-
-  /* Stepper */
-  .stepper-outer{top:0;}
-  .stepper{padding:0 10px;}
-  .step-item{padding:9px 0;gap:3px;justify-content:center;}
-  .step-label{display:none;}
-  .step-num{width:20px;height:20px;font-size:9px;}
+  .stepper{padding:0 10px;} .step-item{padding:9px 0;gap:3px;justify-content:center;}
+  .step-label{display:none;} .step-num{width:20px;height:20px;font-size:9px;}
   .step-item:not(:last-child)::after{display:none;}
-
-  /* Scène camion : masquée sur très petit écran pour gagner de l'espace */
   #truckTrack{padding:6px 3% 5px;}
   .tl{font-size:7.5px !important;}
   .tb{width:18px !important;height:18px !important;font-size:8px !important;}
   #truckSVG{width:54px;height:20px;}
-
-  /* Main & sections */
   .main{padding:8px 12px 20px;}
   .form-section{padding:14px 13px;margin-bottom:7px;border-radius:12px;}
   .section-label{font-size:9px;margin-bottom:14px;padding-bottom:10px;}
-
-  /* Banner */
   .panel-banner{padding:16px 15px;border-radius:16px;margin-bottom:12px;}
   .panel-title{font-size:19px;letter-spacing:-0.2px;}
   .panel-sub{font-size:12px;line-height:1.5;}
   .panel-step-num{font-size:10px;margin-bottom:4px;}
   .panel-banner::after,.panel-banner::before{display:none;}
-
-  /* Champs */
-  .field{margin-bottom:13px;}
-  .field-row{grid-template-columns:1fr;}
+  .field{margin-bottom:13px;} .field-row{grid-template-columns:1fr;}
   label{font-size:12px;margin-bottom:5px;}
-  /* font-size:16px pour éviter le zoom iOS */
-  input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{
-    font-size:16px !important;
-    padding:10px 12px;
-  }
+  input[type=text],input[type=email],input[type=tel],input[type=number],select,textarea{font-size:16px !important;padding:10px 12px;}
   textarea{min-height:72px;}
-
-  /* Toggle oui/non */
   .toggle-btn{padding:10px 10px;font-size:12px;}
-
-  /* Choice cards : 1 colonne, plus compactes */
-  .choice-grid.cols-2{grid-template-columns:1fr;}
+  .choice-grid.cols-2,.choice-grid.cols-3{grid-template-columns:1fr;}
   .choice-card{padding:16px 14px 14px;}
-  .choice-title{font-size:15px;}
-  .choice-sub{font-size:12px;}
-  .choice-eyebrow{font-size:9px;}
-
-  /* Option cards : flex column sur très petits écrans */
+  .choice-title{font-size:15px;} .choice-sub{font-size:12px;} .choice-eyebrow{font-size:9px;}
+  .choice-icon{font-size:24px;margin-bottom:6px;}
   .option-card{padding:13px 13px;gap:11px;margin-top:10px;}
-  .option-title{font-size:12px;}
-  .option-desc{font-size:11px;line-height:1.45;}
+  .option-title{font-size:12px;} .option-desc{font-size:11px;line-height:1.45;}
   .option-badge{font-size:9px;padding:2px 6px;}
-  .option-zones{gap:5px;margin-top:6px;}
-  .option-zone{font-size:10px;padding:2px 7px;}
-
-  /* Rungis box : colonne sur mobile */
+  .option-zones{gap:5px;margin-top:6px;} .option-zone{font-size:10px;padding:2px 7px;}
   .rungis-box{flex-direction:column;gap:10px;padding:15px;}
-  .rungis-box strong{font-size:13px;}
-  .rungis-box p{font-size:12px;line-height:1.6;}
+  .rungis-box strong{font-size:13px;} .rungis-box p{font-size:12px;line-height:1.6;}
   .address-pill{font-size:10px;padding:4px 10px;flex-wrap:wrap;}
-
-  /* Info / warn boxes */
   .info-box,.warn-box{font-size:12px;padding:10px 13px;gap:8px;line-height:1.5;}
-
-  /* Prestations */
   .prestation-item{padding:12px 13px;gap:11px;}
-  .prestation-title{font-size:12px;}
-  .prestation-desc{font-size:11px;line-height:1.45;}
-
-  /* Fréquence */
+  .prestation-title{font-size:12px;} .prestation-desc{font-size:11px;line-height:1.45;}
   .freq-grid{grid-template-columns:1fr 1fr;}
-  .freq-card{padding:11px 7px;}
-  .freq-main{font-size:11px;}
-  .freq-sub{font-size:9px;margin-top:2px;}
-
-  /* Tags jours/plages */
-  .tag-group{gap:5px;}
-  .jour-btn,.plage-btn{padding:6px 10px;font-size:11px;}
-
-  /* Tableau véhicules : layout carte mobile (pas de scroll horizontal) */
+  .freq-card{padding:11px 7px;} .freq-main{font-size:11px;} .freq-sub{font-size:9px;margin-top:2px;}
+  .tag-group{gap:5px;} .jour-btn,.plage-btn{padding:6px 10px;font-size:11px;}
   .vehicle-table thead{display:none;}
   .vehicle-table,.vehicle-table tbody,.vehicle-table tr{display:block;width:100%;}
   .vehicle-table tr{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-bottom:none;background:var(--gray-50);border-radius:8px;margin-bottom:6px;}
@@ -414,63 +296,41 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   .vehicle-table td:nth-child(2){flex:0 0 auto;}
   .vehicle-table td:nth-child(3){flex:1 1 140px;min-width:0;}
   .vehicle-table td:nth-child(3) select{width:100%;font-size:13px;padding:6px 8px;}
-
-  /* Compteurs */
-  .counter-btn{width:27px;height:27px;font-size:15px;}
-  .counter-val{width:34px;height:27px;font-size:12px;}
-
-  /* Simulateur */
-  .sim-presta-grid{grid-template-columns:1fr;}
-  #simFlotteTable{font-size:11px;}
+  .counter-btn{width:27px;height:27px;font-size:15px;} .counter-val{width:34px;height:27px;font-size:12px;}
+  .sim-presta-grid{grid-template-columns:1fr;} #simFlotteTable{font-size:11px;}
   .sim-result-price{font-size:32px;letter-spacing:-1px;}
-  .sim-result-label{font-size:9px;}
-  .sim-result-detail{font-size:11px;}
-  .sim-result-note{font-size:9px;}
-  .sim-resa-btn{font-size:13px;padding:10px 18px;}
-
-  /* Recap */
+  .sim-result-label{font-size:9px;} .sim-result-detail{font-size:11px;}
+  .sim-result-note{font-size:9px;} .sim-resa-btn{font-size:13px;padding:10px 18px;}
   .recap-card{padding:16px;border-radius:12px;}
   .recap-row{flex-direction:column;gap:1px;padding:5px 0;}
   .recap-val{text-align:left;max-width:100%;font-size:12px;}
-  .recap-key{font-size:12px;}
-  .recap-section-title{font-size:9px;}
-  .recap-tag{font-size:10px;}
-
-  /* Boutons navigation */
+  .recap-key{font-size:12px;} .recap-section-title{font-size:9px;} .recap-tag{font-size:10px;}
   .btn-row{flex-direction:column-reverse;gap:8px;margin-top:14px;}
   .btn-next,.btn-back,.btn-submit{width:100%;justify-content:center;padding:13px 18px;font-size:14px;}
-
-  /* Success */
   .success-screen{padding:40px 14px;}
-  .success-screen h2{font-size:22px;}
-  .success-screen p{font-size:13px;}
-  .success-details{flex-direction:column;}
-  .success-detail{font-size:12px;padding:10px 14px;}
+  .success-screen h2{font-size:22px;} .success-screen p{font-size:13px;}
+  .success-details{flex-direction:column;} .success-detail{font-size:12px;padding:10px 14px;}
 }
-
-/* ── Très petit mobile (≤ 375px) ── */
 @media(max-width:375px){
-  .hero h1{font-size:21px;}
-  .stat-num{font-size:13px !important;}
-  .stat-label{font-size:7px !important;}
-  .hero-stats{grid-template-columns:repeat(3,1fr) !important;}
-  .step-num{width:18px;height:18px;font-size:8px;}
-  .main{padding:6px 10px 18px;}
-  .form-section{padding:12px 11px;}
-  .panel-title{font-size:17px;}
-  .freq-grid{grid-template-columns:1fr 1fr;}
-  .choice-title{font-size:14px;}
+  .hero h1{font-size:21px;} .stat-num{font-size:13px !important;}
+  .stat-label{font-size:7px !important;} .hero-stats{grid-template-columns:repeat(3,1fr) !important;}
+  .step-num{width:18px;height:18px;font-size:8px;} .main{padding:6px 10px 18px;}
+  .form-section{padding:12px 11px;} .panel-title{font-size:17px;}
+  .freq-grid{grid-template-columns:1fr 1fr;} .choice-title{font-size:14px;}
 }
 
+/* SCÈNE CAMION */
+.tp{display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;}
+.tb{width:24px;height:24px;border-radius:50%;background:#fff;color:#ccc;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all 0.35s;border:2px solid #e0e0e0;box-shadow:0 0 0 3px #fff;}
+.tb.active{background:#1A3A6A;color:#fff;border-color:#1A3A6A;}
+.tb.done{background:#1A3A6A;color:#fff;border-color:#1A3A6A;}
+.tl{font-size:9px;color:#bbb;font-weight:600;letter-spacing:0.2px;white-space:nowrap;transition:color 0.3s;}
+.tp:has(.tb.active) .tl,.tp:has(.tb.done) .tl{color:#1A3A6A;}
 </style>
 </head>
 <body>
-
 <header class="hdr">
   <div class="logo">Camion <span>Net</span></div>
-  <div class="hdr-right">
-    <div class="hdr-tel"><a href="/cdn-cgi/l/email-protection#80e3efeef4e1e3f4c0e3e1ede9efeeeee5f4aee6f2" style="color:var(--gray-500);text-decoration:none;font-weight:500;"><span class="__cf_email__" data-cfemail="caa9a5a4beaba9be8aa9aba7a3a5a4a4afbee4acb8">[email&#160;protected]</span></a></div>
-  </div>
 </header>
 <div class="pbar-wrap" style="display:block;background:var(--gray-100);height:6px;position:relative;">
   <div class="pbar" id="pbar" style="width:20%;height:6px;background:linear-gradient(90deg,#1A3A6A,#3B7BC8);transition:width 0.5s cubic-bezier(0.4,0,0.2,1);"></div>
@@ -479,7 +339,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 <section class="hero">
   <div class="hero-eyebrow"><div class="hero-eyebrow-dot"></div>Devis gratuit · Réponse sous 48h ouvrées</div>
   <h1>Demande de <em>devis</em></h1>
-  <p class="hero-sub">Décrivez votre flotte et vos besoins — nous vous adressons une proposition tarifaire personnalisée sous 48h.</p>
+  <p class="hero-sub">Décrivez votre besoin — nous vous adressons une proposition tarifaire personnalisée sous 48h.</p>
   <div class="hero-stats">
     <div class="hero-stat"><span class="stat-num">160k</span><span class="stat-label">véhicules / an</span></div>
     <div class="hero-stat"><span class="stat-num">60</span><span class="stat-label">collaborateurs</span></div>
@@ -492,91 +352,89 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 
 <div class="stepper-outer">
   <div class="stepper">
-    <div class="step-item active" id="si0"><div class="step-num" id="sn0">1</div><div class="step-label">Intervention</div></div>
-    <div class="step-item" id="si1"><div class="step-num" id="sn1">2</div><div class="step-label">Site</div></div>
-    <div class="step-item" id="si2"><div class="step-num" id="sn2">3</div><div class="step-label">Flotte & besoins</div></div>
-    <div class="step-item" id="si3"><div class="step-num" id="sn3">4</div><div class="step-label">Coordonnées</div></div>
-    <div class="step-item" id="si4"><div class="step-num" id="sn4">5</div><div class="step-label">Récapitulatif</div></div>
+    <div class="step-item active" id="si0"><div class="step-num" id="sn0">1</div><div class="step-label" id="sl0">Prestation</div></div>
+    <div class="step-item" id="si1"><div class="step-num" id="sn1">2</div><div class="step-label" id="sl1">Site</div></div>
+    <div class="step-item" id="si2"><div class="step-num" id="sn2">3</div><div class="step-label" id="sl2">Détails</div></div>
+    <div class="step-item" id="si3"><div class="step-num" id="sn3">4</div><div class="step-label" id="sl3">Coordonnées</div></div>
+    <div class="step-item" id="si4"><div class="step-num" id="sn4">5</div><div class="step-label" id="sl4">Récap</div></div>
   </div>
 </div>
 
-<!-- SCÈNE CAMION SVG -->
+<!-- SCÈNE CAMION -->
 <div id="truckTrack" style="background:#fff;border-bottom:1px solid #EBEBEB;padding:12px 5% 8px;position:relative;overflow:hidden;">
-
-  <!-- Étapes + route + camion sur une seule ligne -->
   <div style="position:relative;display:flex;align-items:center;height:56px;">
-
-    <!-- Ligne de route en fond -->
     <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:3px;background:#EBEBEB;z-index:0;border-radius:2px;"></div>
-    <!-- Ligne de progression colorée -->
     <div id="progressLine" style="position:absolute;left:0;top:50%;transform:translateY(-50%);height:3px;background:#1A3A6A;z-index:1;border-radius:2px;width:0%;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);"></div>
-
-    <!-- 5 pastilles étapes -->
     <div style="position:absolute;left:0;right:0;top:0;bottom:0;display:flex;justify-content:space-between;align-items:center;z-index:2;padding:0 2px;">
-      <div class="tp" id="tp0"><div class="tb active" id="tb0">1</div><span class="tl">Intervention</span></div>
-      <div class="tp" id="tp1"><div class="tb" id="tb1">2</div><span class="tl">Site</span></div>
-      <div class="tp" id="tp2"><div class="tb" id="tb2">3</div><span class="tl">Flotte</span></div>
-      <div class="tp" id="tp3"><div class="tb" id="tb3">4</div><span class="tl">Coordonnées</span></div>
-      <div class="tp" id="tp4"><div class="tb" id="tb4">5</div><span class="tl">Récap</span></div>
+      <div class="tp" id="tp0"><div class="tb active" id="tb0">1</div><span class="tl" id="tbl0">Prestation</span></div>
+      <div class="tp" id="tp1"><div class="tb" id="tb1">2</div><span class="tl" id="tbl1">Site</span></div>
+      <div class="tp" id="tp2"><div class="tb" id="tb2">3</div><span class="tl" id="tbl2">Détails</span></div>
+      <div class="tp" id="tp3"><div class="tb" id="tb3">4</div><span class="tl" id="tbl3">Contact</span></div>
+      <div class="tp" id="tp4"><div class="tb" id="tb4">5</div><span class="tl" id="tbl4">Récap</span></div>
     </div>
-
-    <!-- Camion picto qui se déplace -->
     <div id="truckMover" style="position:absolute;left:0%;top:50%;transform:translate(-50%,-60%);transition:left 0.7s cubic-bezier(0.4,0,0.2,1);z-index:3;">
       <svg id="truckSVG" viewBox="0 0 80 30" width="80" height="30" xmlns="http://www.w3.org/2000/svg">
-        <!-- Remorque -->
         <rect id="tr" x="1" y="2" width="50" height="18" rx="2" fill="#e8e8e8" stroke="#1A3A6A" stroke-width="1.5"/>
-        <!-- Cabine -->
         <path id="cab" d="M51,20 L51,5 Q51,2 54,2 L68,2 Q74,2 74,8 L74,20 Z" fill="#e8e8e8" stroke="#1A3A6A" stroke-width="1.5"/>
-        <!-- Pare-brise -->
         <path id="pw" d="M54,4 L67,4 Q72,4 72,8 L72,13 L54,13 Z" fill="#B8D4E8" stroke="#1A3A6A" stroke-width="0.8"/>
-        <!-- Phare -->
         <circle id="ph" cx="73" cy="17" r="2" fill="#ddd" stroke="#1A3A6A" stroke-width="0.8"/>
-        <!-- Saleté (éclaboussures stylisées) -->
         <g id="dirt">
-          <circle cx="12" cy="7"  r="3" fill="#bbb" opacity="0.6"/>
-          <circle cx="28" cy="5"  r="2" fill="#bbb" opacity="0.5"/>
+          <circle cx="12" cy="7" r="3" fill="#bbb" opacity="0.6"/>
+          <circle cx="28" cy="5" r="2" fill="#bbb" opacity="0.5"/>
           <circle cx="40" cy="14" r="3" fill="#bbb" opacity="0.55"/>
           <circle cx="20" cy="15" r="2" fill="#bbb" opacity="0.45"/>
         </g>
-        <!-- Roues -->
         <circle cx="15" cy="22" r="5.5" fill="#1A3A6A"/><circle cx="15" cy="22" r="2.5" fill="#fff"/>
         <circle cx="40" cy="22" r="5.5" fill="#1A3A6A"/><circle cx="40" cy="22" r="2.5" fill="#fff"/>
         <circle cx="63" cy="22" r="5.5" fill="#1A3A6A"/><circle cx="63" cy="22" r="2.5" fill="#fff"/>
       </svg>
     </div>
-
   </div>
 </div>
-<style>
-.tp{display:flex;flex-direction:column;align-items:center;gap:3px;position:relative;}
-.tb{width:24px;height:24px;border-radius:50%;background:#fff;color:#ccc;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all 0.35s;border:2px solid #e0e0e0;box-shadow:0 0 0 3px #fff;}
-.tb.active{background:#1A3A6A;color:#fff;border-color:#1A3A6A;}
-.tb.done{background:#1A3A6A;color:#fff;border-color:#1A3A6A;}
-.tl{font-size:9px;color:#bbb;font-weight:600;letter-spacing:0.2px;white-space:nowrap;transition:color 0.3s;}
-.tp:has(.tb.active) .tl,.tp:has(.tb.done) .tl{color:#1A3A6A;}
-</style>
 
 <div class="main">
 
-<!-- ÉTAPE 1 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- ÉTAPE 1 — QUELLE PRESTATION ?                       -->
+<!-- ═══════════════════════════════════════════════════ -->
 <div class="panel active" id="panel0">
   <div class="panel-banner">
     <div class="panel-step-num">Étape 1 / 5</div>
-    <div class="panel-title">Type d'intervention</div>
-    <p class="panel-sub">Comment souhaitez-vous bénéficier de nos services ?</p>
+    <div class="panel-title">Quelle prestation ?</div>
+    <p class="panel-sub">Sélectionnez le type de prestation dont vous avez besoin.</p>
   </div>
   <div class="form-section">
-    <div class="section-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Sélectionnez votre mode d'intervention</div>
-    <div class="choice-grid cols-2" id="interventionChoice">
-      <div class="choice-card" data-val="mobile">
-        <div class="choice-eyebrow">Sur site</div>
-        <div class="choice-title">Intervention sur votre site</div>
-        <div class="choice-sub">Intervention sur votre site, partout en France (soumis à conditions)</div>
+    <div class="section-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Votre besoin</div>
+    <div class="choice-grid cols-3" id="prestationChoice">
+      <div class="choice-card" data-val="vehicules">
+        <div class="choice-eyebrow">Véhicules</div>
+        <div class="choice-title">Lavage de véhicules</div>
+        <div class="choice-sub">VL, VUL, PL, SPL, bus, frigorifiques, engins TP</div>
       </div>
-      <div class="choice-card" data-val="rungis">
-        <div class="choice-eyebrow">Centre fixe</div>
-        <div class="choice-title">Centre de lavage Rungis</div>
-        <div class="choice-sub">Station fixe au MIN de Rungis, Sogaris — Île-de-France. Sur rendez-vous.</div>
+      <div class="choice-card" data-val="chambre-froide">
+        <div class="choice-eyebrow">Froid alimentaire</div>
+        <div class="choice-title">Nettoyage chambre froide</div>
+        <div class="choice-sub">Chambres positives, négatives, désinfection HACCP</div>
+      </div>
+      <div class="choice-card" data-val="batiment">
+        <div class="choice-eyebrow">Industriel</div>
+        <div class="choice-title">Bâtiment & bardage</div>
+        <div class="choice-sub">Bardages métalliques, toitures, façades, entrepôts</div>
+      </div>
+      <div class="choice-card" data-val="mobilier-urbain">
+        <div class="choice-eyebrow">Urbain</div>
+        <div class="choice-title">Mobilier urbain</div>
+        <div class="choice-sub">Abribus, bacs, panneaux, signalétique</div>
+      </div>
+      <div class="choice-card" data-val="station-service">
+        <div class="choice-eyebrow">Station</div>
+        <div class="choice-title">Station-service</div>
+        <div class="choice-sub">Auvents, pistes, îlots, dalles, bardages</div>
+      </div>
+      <div class="choice-card" data-val="autre">
+        <div class="choice-eyebrow">Sur mesure</div>
+        <div class="choice-title">Autre / combinaison</div>
+        <div class="choice-sub">Décrivez librement votre besoin</div>
       </div>
     </div>
   </div>
@@ -586,17 +444,39 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   </div>
 </div>
 
-<!-- ÉTAPE 2 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- ÉTAPE 2 — MODE D'INTERVENTION (véhicules) OU ADRESSE -->
+<!-- ═══════════════════════════════════════════════════ -->
 <div class="panel" id="panel1">
   <div class="panel-banner">
     <div class="panel-step-num">Étape 2 / 5</div>
-    <div class="panel-title" id="step2Title">Informations sur votre site</div>
-    <p class="panel-sub" id="step2Sub">Ces données nous permettent de dimensionner l'intervention.</p>
+    <div class="panel-title" id="step2Title">Mode d'intervention</div>
+    <p class="panel-sub" id="step2Sub">Comment souhaitez-vous bénéficier de nos services ?</p>
   </div>
 
-  <!-- MOBILE -->
-  <div id="mobileBlock">
+  <!-- 2A : Choix Sur site / Rungis (véhicules uniquement) -->
+  <div id="modeChoiceBlock">
     <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>Sélectionnez votre mode d'intervention</div>
+      <div class="choice-grid cols-2" id="interventionChoice">
+        <div class="choice-card" data-val="mobile">
+          <div class="choice-eyebrow">Sur site</div>
+          <div class="choice-title">Intervention sur votre site</div>
+          <div class="choice-sub">Partout en France (soumis à conditions)</div>
+        </div>
+        <div class="choice-card" data-val="rungis">
+          <div class="choice-eyebrow">Centre fixe</div>
+          <div class="choice-title">Centre de lavage Rungis</div>
+          <div class="choice-sub">MIN de Rungis, Sogaris. Sur rendez-vous.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2B : Infos site mobile (lavage véhicules sur site + chambre froide + bâtiment + mobilier + station-service) -->
+  <div id="mobileBlock" style="display:none">
+    <!-- Conformité environnementale : véhicules + station-service seulement -->
+    <div class="form-section" id="envBlock">
       <div class="section-label"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Conformité environnementale</div>
       <div class="field">
         <label>Votre site est-il équipé d'un séparateur d'hydrocarbures ? <span class="req">*</span></label>
@@ -607,15 +487,15 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
         </div>
       </div>
     </div>
-    <div class="form-section">
+    <!-- Accès eau : véhicules + bâtiment + station-service (pas chambre froide/mobilier) -->
+    <div class="form-section" id="eauBlock">
       <div class="section-label"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>Accès à l'eau sur site</div>
       <div class="field">
-        <label>Arrivée d'eau à moins de 50 m de la zone de lavage ? <span class="req">*</span></label>
+        <label>Arrivée d'eau à moins de 50 m de la zone d'intervention ? <span class="req">*</span></label>
         <div class="toggle-group" data-key="eau">
           <button class="toggle-btn yes" data-val="yes">Oui</button>
           <button class="toggle-btn no" data-val="no">Non</button>
         </div>
-        <!-- Si OUI : champ distance -->
         <div id="distanceField" style="display:none;margin-top:12px">
           <div class="distance-field">
             <label style="margin:0;font-size:13px;color:var(--blue);font-weight:600;">Distance approximative :</label>
@@ -623,32 +503,33 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
             <span style="font-size:13px;color:var(--gray-500);">mètres</span>
           </div>
         </div>
-        <!-- Si NON : prestation non réalisable -->
         <div id="eauWarn" style="display:none;margin-top:12px">
           <div style="background:#FEE2E2;border:1.5px solid #FCA5A5;border-radius:var(--radius);padding:14px 16px;display:flex;gap:10px;align-items:flex-start;">
             <svg style="width:16px;height:16px;flex-shrink:0;margin-top:1px;stroke:#DC2626;fill:none;stroke-width:2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
             <div>
               <div style="font-size:13px;font-weight:700;color:#991B1B;margin-bottom:3px;">Prestation non réalisable sans accès à l'eau</div>
-              <div style="font-size:12px;color:#B91C1C;line-height:1.6;">Nos unités mobiles nécessitent un point d'eau sur site. Sans alimentation disponible, nous ne pouvons pas intervenir. Contactez-nous au <strong>06 80 93 61 31</strong> pour étudier votre situation.</div>
+              <div style="font-size:12px;color:#B91C1C;line-height:1.6;">Nos unités nécessitent un point d'eau sur site. Contactez-nous au <strong>06 80 93 61 31</strong> pour étudier votre situation.</div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Adresse : toujours -->
     <div class="form-section">
       <div class="section-label"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Adresse du site</div>
       <div class="field" style="position:relative">
         <label>Adresse <span class="req">*</span></label>
         <input type="text" id="adresse" placeholder="Commencez à taper votre adresse..." autocomplete="off">
-        <div id="adresse-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--black);border-top:none;border-radius:0 0 var(--radius) var(--radius);z-index:200;box-shadow:var(--shadow-lg);max-height:220px;overflow-y:auto;"></div>
+        <div id="adresse-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1.5px solid var(--gray-100);border-top:none;border-radius:0 0 var(--radius) var(--radius);z-index:200;box-shadow:var(--shadow-lg);max-height:220px;overflow-y:auto;"></div>
       </div>
       <div class="field field-row">
         <div><label>Code postal <span class="req">*</span></label><input type="text" id="codePostal" placeholder="75000" maxlength="5"></div>
         <div><label>Ville <span class="req">*</span></label><input type="text" id="ville" placeholder="Paris"></div>
       </div>
-      <div class="field"><label>Contraintes d'accès</label><textarea id="accesComment" placeholder="Hauteur limite, largeur portail, horaires autorisés, accès de nuit..."></textarea></div>
+      <div class="field"><label>Contraintes d'accès <span class="opt">(optionnel)</span></label><textarea id="accesComment" placeholder="Hauteur limite, largeur portail, horaires autorisés, accès de nuit..."></textarea></div>
     </div>
-    <div class="form-section">
+    <!-- Option chauffeur : véhicules sur site seulement -->
+    <div class="form-section" id="chauffeurBlock">
       <div class="section-label"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Option chauffeur PL</div>
       <p style="font-size:13px;color:var(--gray-500);margin-bottom:4px;">Avez-vous besoin d'un chauffeur PL pour déplacer vos véhicules vers la zone de lavage ?</p>
       <div class="option-card" id="chauffeurCard" data-option="chauffeur">
@@ -661,10 +542,8 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
     </div>
   </div>
 
-  <!-- RUNGIS -->
+  <!-- 2C : Rungis (véhicules uniquement) -->
   <div id="rungisBlock" style="display:none">
-
-    <!-- Info centre -->
     <div class="form-section">
       <div class="section-label"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Centre de lavage Rungis</div>
       <div class="rungis-box">
@@ -677,17 +556,9 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             Sogaris, Pl. de la Logistique, 94150 Rungis
           </div>
-          <div style="margin-top:8px">
-            <a href="https://www.google.com/maps/place/Camion+Net+Ecomobile+Lavage+Pl/@48.7521566,2.3580316,735m/data=!3m2!1e3!4b1!4m6!3m5!1s0x47e67420fb31e8e9:0xb37167578c19c6c3!8m2!3d48.7521566!4d2.3606119!16s%2Fg%2F11gcyv3v4_?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="font-size:12px;color:var(--gray-500);font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:5px;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Voir sur Google Maps →
-            </a>
-          </div>
         </div>
       </div>
     </div>
-
-    <!-- Option convoyage -->
     <div class="form-section">
       <div class="section-label"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Option convoyage</div>
       <p style="font-size:13px;color:var(--gray-500);margin-bottom:4px;">Souhaitez-vous que Camion Net assure le convoyage de vos véhicules jusqu'au centre de Rungis ?</p>
@@ -703,41 +574,34 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
           </div>
         </div>
       </div>
-      <!-- Message si convoyage coché -->
       <div id="convoyageDevisMsg" class="warn-box" style="display:none;margin-top:14px">
         <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <span>Le convoyage nécessite une <strong>demande de devis personnalisée</strong>. La simulation tarifaire n'est pas disponible avec cette option — veuillez sélectionner <strong>Demande de devis</strong> ci-dessous.</span>
       </div>
     </div>
-
-    <!-- Choix simulateur ou devis -->
     <div class="form-section">
       <div class="section-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Que souhaitez-vous faire ?</div>
       <div class="choice-grid cols-2" id="rungisMode">
         <div class="choice-card" data-val="simulateur" id="rungisSimCard">
           <div class="choice-eyebrow">Instantané</div>
           <div class="choice-title">Simulation tarifaire</div>
-          <div class="choice-sub">Obtenez une estimation de prix immédiate basée sur notre grille tarifaire en vigueur</div>
+          <div class="choice-sub">Obtenez une estimation de prix immédiate basée sur notre grille tarifaire</div>
         </div>
         <div class="choice-card" data-val="devis" id="rungisDevisCard">
           <div class="choice-eyebrow">Personnalisé</div>
           <div class="choice-title">Demande de devis</div>
-          <div class="choice-sub">Notre équipe vous adresse une proposition tarifaire détaillée sous 48h ouvrées</div>
+          <div class="choice-sub">Proposition tarifaire détaillée sous 48h ouvrées</div>
         </div>
       </div>
     </div>
-
-    <!-- SIMULATEUR TARIFAIRE -->
     <div id="simulateurBlock" style="display:none">
       <div class="form-section">
         <div class="section-label"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Simulateur tarifaire</div>
         <p style="font-size:13px;color:var(--gray-500);margin-bottom:20px;">Tarifs <strong>HT</strong> indicatifs — susceptibles d'évolution. Indiquez pour chaque type de véhicule la quantité et la prestation souhaitée.</p>
-
         <div id="cabineMsg" class="warn-box" style="display:none;margin-bottom:16px">
           <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           <span>Le nettoyage intérieur cabine nécessite une <strong>demande de devis personnalisée</strong>.</span>
         </div>
-
         <div style="overflow-x:auto">
         <table id="simFlotteTable" style="width:100%;border-collapse:collapse;min-width:580px">
           <thead>
@@ -748,11 +612,9 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
               <th style="text-align:right;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);padding-bottom:10px;width:16%">Sous-total</th>
             </tr>
           </thead>
-          <tbody id="simTbody">
-          </tbody>
+          <tbody id="simTbody"></tbody>
         </table>
         </div>
-
         <div id="simTotalRow" style="display:none;margin-top:20px">
           <div class="sim-result-box">
             <div class="sim-result-label">Estimation tarifaire HT</div>
@@ -762,13 +624,11 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
             <a href="https://www.lavagecamions.com/book-online" target="_blank" class="sim-resa-btn">Réserver un créneau →</a>
           </div>
         </div>
-
         <div style="margin-top:18px;text-align:center">
           <button class="btn-back" id="simSwitchDevis" style="margin:0 auto;">Plutôt faire une demande de devis →</button>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="btn-row">
@@ -777,45 +637,181 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   </div>
 </div>
 
-<!-- ÉTAPE 3 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- ÉTAPE 3 — DÉTAILS (adaptée selon prestation)        -->
+<!-- ═══════════════════════════════════════════════════ -->
 <div class="panel" id="panel2">
   <div class="panel-banner">
     <div class="panel-step-num">Étape 3 / 5</div>
-    <div class="panel-title">Flotte & besoins</div>
-    <p class="panel-sub">Composition de la flotte, prestations et disponibilités.</p>
+    <div class="panel-title" id="step3Title">Détails du besoin</div>
+    <p class="panel-sub" id="step3Sub">Composition et prestations souhaitées.</p>
   </div>
 
-  <div class="form-section">
-    <div class="section-label"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Composition de la flotte</div>
-    <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Indiquez le nombre de véhicules de chaque catégorie.</p>
-    <div class="vehicle-table-wrap" style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="vehicle-table" style="width:100%;border-collapse:collapse">
-      <thead><tr><th style="width:50%">Type de véhicule</th><th style="width:22%;text-align:center">Quantité</th><th style="width:28%">Gabarit</th></tr></thead>
-      <tbody>
-        <tr><td><div class="veh-name">VL — Véhicule léger<div class="veh-desc">Berline, citadine, petit utilitaire type Kangoo</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vl" data-delta="-1">−</button><div class="counter-val" id="vl-val">0</div><button class="counter-btn" data-type="vl" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Berline / citadine</option><option>SUV / Break</option><option>Petit utilitaire (Kangoo, Berlingo…)</option></select></td></tr>
-        <tr><td><div class="veh-name">VUL — Utilitaire léger<div class="veh-desc">Sprinter, Crafter, Boxer, Transit, Trafic…</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vul" data-delta="-1">−</button><div class="counter-val" id="vul-val">0</div><button class="counter-btn" data-type="vul" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Sprinter / Crafter / Boxer</option><option>Transit / Trafic / Jumper</option></select></td></tr>
-        <tr><td><div class="veh-name">VUL 20m³<div class="veh-desc">Grand fourgon 20m³ (Master L3H2, Ducato XL…)</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vul20" data-delta="-1">−</button><div class="counter-val" id="vul20-val">0</div><button class="counter-btn" data-type="vul20" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Master L3H2</option><option>Ducato XL</option><option>Crafter XXL</option></select></td></tr>
-        <tr><td><div class="veh-name">PL — Porteur<div class="veh-desc">Camion porteur &gt; 3,5t</div></div></td><td><div class="counter"><button class="counter-btn" data-type="pl" data-delta="-1">−</button><div class="counter-val" id="pl-val">0</div><button class="counter-btn" data-type="pl" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>12t</option><option>19t</option><option>26t</option><option>Benne TP</option><option>Citerne</option></select></td></tr>
-        <tr><td><div class="veh-name">Tracteur routier<div class="veh-desc">Cabine seule, sans remorque</div></div></td><td><div class="counter"><button class="counter-btn" data-type="tracteur" data-delta="-1">−</button><div class="counter-val" id="tracteur-val">0</div><button class="counter-btn" data-type="tracteur" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Cabine jour</option><option>Cabine couchette</option><option>Grande route</option></select></td></tr>
-        <tr><td><div class="veh-name">Semi-remorque<div class="veh-desc">Ensemble complet tracteur + remorque</div></div></td><td><div class="counter"><button class="counter-btn" data-type="semi" data-delta="-1">−</button><div class="counter-val" id="semi-val">0</div><button class="counter-btn" data-type="semi" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Tautliner / bâché</option><option>Frigo / ATP</option><option>Citerne</option><option>Benne</option><option>Plateau</option></select></td></tr>
-        <tr><td><div class="veh-name">Bus / Car / Minibus<div class="veh-desc">Transport en commun, scolaire</div></div></td><td><div class="counter"><button class="counter-btn" data-type="bus" data-delta="-1">−</button><div class="counter-val" id="bus-val">0</div><button class="counter-btn" data-type="bus" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Minibus &lt; 22 places</option><option>Car standard</option><option>Car articulé</option></select></td></tr>
-        <tr><td><div class="veh-name">Engin / matériel TP<div class="veh-desc">Pelleteuse, chariot, autre</div></div></td><td><div class="counter"><button class="counter-btn" data-type="engin" data-delta="-1">−</button><div class="counter-val" id="engin-val">0</div><button class="counter-btn" data-type="engin" data-delta="1">+</button></div></td><td><input type="text" placeholder="Précisez le type"></td></tr>
-      </tbody>
-    </table></div>
-  </div>
-
-  <div class="form-section">
-    <div class="section-label"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Prestations souhaitées</div>
-    <div class="prestation-grid">
-      <div class="prestation-item" data-prestation="exterieur"><div class="prestation-check"></div><div><div class="prestation-title">Lavage extérieur</div><div class="prestation-desc">Haute pression sur carrosserie, cabine, bâche et jantes. Prélavage dégraissant + rinçage complet.</div></div></div>
-      <div class="prestation-item" data-prestation="interieur-caisse"><div class="prestation-check"></div><div><div class="prestation-title">Nettoyage intérieur caisse <span style="font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:20px;margin-left:6px;">exclusif avec ci-dessous</span></div><div class="prestation-desc">Nettoyage HP de l'intérieur de la caisse ou du frigo, sans désinfection.</div></div></div>
-      <div class="prestation-item" data-prestation="interieur-cabine"><div class="prestation-check"></div><div><div class="prestation-title">Nettoyage intérieur cabine</div><div class="prestation-desc">Aspiration, dépoussiérage, surfaces, tableau de bord et vitres intérieures.</div></div></div>
-      <div class="prestation-item" data-prestation="desinfection"><div class="prestation-check"></div><div><div class="prestation-title">Désinfection alimentaire (HACCP) <span style="font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:20px;margin-left:6px;">inclut lavage intérieur</span></div><div class="prestation-desc">Lavage intérieur caisse + désinfection certifiée. Produits homologués, traçabilité fournie.</div></div></div>
+  <!-- 3A : VÉHICULES -->
+  <div id="detailVehicules" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>Composition de la flotte</div>
+      <p style="font-size:13px;color:var(--gray-500);margin-bottom:16px;">Indiquez le nombre de véhicules de chaque catégorie.</p>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="vehicle-table" style="width:100%;border-collapse:collapse">
+        <thead><tr><th style="width:50%">Type de véhicule</th><th style="width:22%;text-align:center">Quantité</th><th style="width:28%">Gabarit</th></tr></thead>
+        <tbody>
+          <tr><td><div class="veh-name">VL — Véhicule léger<div class="veh-desc">Berline, citadine, petit utilitaire type Kangoo</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vl" data-delta="-1">−</button><div class="counter-val" id="vl-val">0</div><button class="counter-btn" data-type="vl" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Berline / citadine</option><option>SUV / Break</option><option>Petit utilitaire (Kangoo, Berlingo…)</option></select></td></tr>
+          <tr><td><div class="veh-name">VUL — Utilitaire léger<div class="veh-desc">Sprinter, Crafter, Boxer, Transit, Trafic…</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vul" data-delta="-1">−</button><div class="counter-val" id="vul-val">0</div><button class="counter-btn" data-type="vul" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Sprinter / Crafter / Boxer</option><option>Transit / Trafic / Jumper</option></select></td></tr>
+          <tr><td><div class="veh-name">VUL 20m³<div class="veh-desc">Grand fourgon 20m³ (Master L3H2, Ducato XL…)</div></div></td><td><div class="counter"><button class="counter-btn" data-type="vul20" data-delta="-1">−</button><div class="counter-val" id="vul20-val">0</div><button class="counter-btn" data-type="vul20" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Master L3H2</option><option>Ducato XL</option><option>Crafter XXL</option></select></td></tr>
+          <tr><td><div class="veh-name">PL — Porteur<div class="veh-desc">Camion porteur &gt; 3,5t</div></div></td><td><div class="counter"><button class="counter-btn" data-type="pl" data-delta="-1">−</button><div class="counter-val" id="pl-val">0</div><button class="counter-btn" data-type="pl" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>12t</option><option>19t</option><option>26t</option><option>Benne TP</option><option>Citerne</option></select></td></tr>
+          <tr><td><div class="veh-name">Tracteur routier<div class="veh-desc">Cabine seule, sans remorque</div></div></td><td><div class="counter"><button class="counter-btn" data-type="tracteur" data-delta="-1">−</button><div class="counter-val" id="tracteur-val">0</div><button class="counter-btn" data-type="tracteur" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Cabine jour</option><option>Cabine couchette</option><option>Grande route</option></select></td></tr>
+          <tr><td><div class="veh-name">Semi-remorque<div class="veh-desc">Ensemble complet tracteur + remorque</div></div></td><td><div class="counter"><button class="counter-btn" data-type="semi" data-delta="-1">−</button><div class="counter-val" id="semi-val">0</div><button class="counter-btn" data-type="semi" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Tautliner / bâché</option><option>Frigo / ATP</option><option>Citerne</option><option>Benne</option><option>Plateau</option></select></td></tr>
+          <tr><td><div class="veh-name">Bus / Car / Minibus<div class="veh-desc">Transport en commun, scolaire</div></div></td><td><div class="counter"><button class="counter-btn" data-type="bus" data-delta="-1">−</button><div class="counter-val" id="bus-val">0</div><button class="counter-btn" data-type="bus" data-delta="1">+</button></div></td><td><select><option value="">—</option><option>Minibus &lt; 22 places</option><option>Car standard</option><option>Car articulé</option></select></td></tr>
+          <tr><td><div class="veh-name">Engin / matériel TP<div class="veh-desc">Pelleteuse, chariot, autre</div></div></td><td><div class="counter"><button class="counter-btn" data-type="engin" data-delta="-1">−</button><div class="counter-val" id="engin-val">0</div><button class="counter-btn" data-type="engin" data-delta="1">+</button></div></td><td><input type="text" placeholder="Précisez le type"></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>Prestations souhaitées</div>
+      <div class="prestation-grid">
+        <div class="prestation-item" data-prestation="exterieur"><div class="prestation-check"></div><div><div class="prestation-title">Lavage extérieur</div><div class="prestation-desc">Haute pression sur carrosserie, cabine, bâche et jantes.</div></div></div>
+        <div class="prestation-item" data-prestation="interieur-caisse"><div class="prestation-check"></div><div><div class="prestation-title">Nettoyage intérieur caisse <span style="font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:20px;margin-left:6px;">exclusif avec désinfection</span></div><div class="prestation-desc">Nettoyage HP de l'intérieur de la caisse ou du frigo, sans désinfection.</div></div></div>
+        <div class="prestation-item" data-prestation="interieur-cabine"><div class="prestation-check"></div><div><div class="prestation-title">Nettoyage intérieur cabine</div><div class="prestation-desc">Aspiration, dépoussiérage, surfaces, tableau de bord et vitres intérieures.</div></div></div>
+        <div class="prestation-item" data-prestation="desinfection"><div class="prestation-check"></div><div><div class="prestation-title">Désinfection alimentaire (HACCP) <span style="font-size:10px;font-weight:600;color:var(--gray-400);background:var(--gray-100);padding:2px 7px;border-radius:20px;margin-left:6px;">inclut lavage intérieur</span></div><div class="prestation-desc">Lavage intérieur caisse + désinfection certifiée. Produits homologués, traçabilité fournie.</div></div></div>
+      </div>
     </div>
   </div>
 
-  <div class="form-section" id="sectionDispos">
+  <!-- 3B : CHAMBRE FROIDE -->
+  <div id="detailChambreFroide" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg>Votre installation</div>
+      <div class="field">
+        <label>Combien de chambres froides à nettoyer ?</label>
+        <div class="counter" style="justify-content:flex-start"><button class="counter-btn" data-type="cfCount" data-delta="-1">−</button><div class="counter-val" id="cfCount-val">1</div><button class="counter-btn" data-type="cfCount" data-delta="1">+</button></div>
+      </div>
+      <div class="field">
+        <label>Type de chambres froides</label>
+        <div class="choice-grid cols-3" id="cfTypeChoice">
+          <div class="choice-card" data-val="positive" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Positive</div><div class="choice-sub" style="font-size:11px">0° à +8°C</div></div>
+          <div class="choice-card" data-val="negative" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Négative</div><div class="choice-sub" style="font-size:11px">&lt; 0°C</div></div>
+          <div class="choice-card" data-val="mixte" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Mixte / les deux</div><div class="choice-sub" style="font-size:11px">Positives et négatives</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Volume total approximatif</label>
+        <div class="choice-grid cols-3" id="cfVolumeChoice">
+          <div class="choice-card" data-val="petit" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Petit</div><div class="choice-sub" style="font-size:11px">&lt; 50 m³</div></div>
+          <div class="choice-card" data-val="moyen" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Moyen</div><div class="choice-sub" style="font-size:11px">50 – 200 m³</div></div>
+          <div class="choice-card" data-val="grand" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Grand</div><div class="choice-sub" style="font-size:11px">&gt; 200 m³</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Désinfection HACCP souhaitée ?</label>
+        <div class="toggle-group" data-key="cfHaccp">
+          <button class="toggle-btn yes" data-val="yes">Oui</button>
+          <button class="toggle-btn no" data-val="no">Non</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3C : BÂTIMENT / BARDAGE -->
+  <div id="detailBatiment" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Votre bâtiment</div>
+      <div class="field">
+        <label>Type de surface à nettoyer</label>
+        <div class="choice-grid cols-2" id="batTypeChoice">
+          <div class="choice-card" data-val="bardage" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Bardage métallique</div><div class="choice-sub" style="font-size:11px">Façades tôle, panneaux</div></div>
+          <div class="choice-card" data-val="toiture" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Toiture</div><div class="choice-sub" style="font-size:11px">Panneaux, tuiles, verrières</div></div>
+          <div class="choice-card" data-val="facade" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Façade / enduit</div><div class="choice-sub" style="font-size:11px">Béton, crépi, brique</div></div>
+          <div class="choice-card" data-val="interieur" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Intérieur entrepôt</div><div class="choice-sub" style="font-size:11px">Murs, sols industriels</div></div>
+          <div class="choice-card" data-val="mixte" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Mixte</div><div class="choice-sub" style="font-size:11px">Plusieurs surfaces</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Surface approximative à traiter</label>
+        <div class="choice-grid cols-3" id="batSurfaceChoice">
+          <div class="choice-card" data-val="petit" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Petit</div><div class="choice-sub" style="font-size:11px">&lt; 200 m²</div></div>
+          <div class="choice-card" data-val="moyen" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Moyen</div><div class="choice-sub" style="font-size:11px">200 – 1000 m²</div></div>
+          <div class="choice-card" data-val="grand" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Grand</div><div class="choice-sub" style="font-size:11px">&gt; 1000 m²</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Hauteur d'intervention maximale</label>
+        <div class="choice-grid cols-3" id="batHauteurChoice">
+          <div class="choice-card" data-val="bas" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">&lt; 6 m</div><div class="choice-sub" style="font-size:11px">Perche HP suffisante</div></div>
+          <div class="choice-card" data-val="moyen" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">6 – 12 m</div><div class="choice-sub" style="font-size:11px">Nacelle possible</div></div>
+          <div class="choice-card" data-val="haut" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">&gt; 12 m</div><div class="choice-sub" style="font-size:11px">Nacelle / cordistes</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D : MOBILIER URBAIN -->
+  <div id="detailMobilier" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/></svg>Équipements à nettoyer</div>
+      <div class="field">
+        <label>Type d'équipements</label>
+        <div class="choice-grid cols-2" id="muTypeChoice">
+          <div class="choice-card" data-val="abribus" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Abribus / abris vélos</div><div class="choice-sub" style="font-size:11px">Structures, vitres, assises</div></div>
+          <div class="choice-card" data-val="bacs" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Bacs & poubelles</div><div class="choice-sub" style="font-size:11px">Collecte, containers, bornes</div></div>
+          <div class="choice-card" data-val="panneaux" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Panneaux / totems</div><div class="choice-sub" style="font-size:11px">Signalétique, jalonnement</div></div>
+          <div class="choice-card" data-val="mixte" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">Mixte</div><div class="choice-sub" style="font-size:11px">Plusieurs types</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Nombre approximatif d'équipements</label>
+        <div class="choice-grid cols-3" id="muNombreChoice">
+          <div class="choice-card" data-val="petit" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">&lt; 20</div><div class="choice-sub" style="font-size:11px">Petite commune</div></div>
+          <div class="choice-card" data-val="moyen" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">20 – 100</div><div class="choice-sub" style="font-size:11px">Ville moyenne</div></div>
+          <div class="choice-card" data-val="grand" style="padding:16px 14px"><div class="choice-title" style="font-size:14px;margin-bottom:4px">&gt; 100</div><div class="choice-sub" style="font-size:11px">Agglomération</div></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Traitement anti-graffiti nécessaire ?</label>
+        <div class="toggle-group" data-key="muGraffiti">
+          <button class="toggle-btn yes" data-val="yes">Oui</button>
+          <button class="toggle-btn no" data-val="no">Non</button>
+          <button class="toggle-btn" data-val="nsp" style="flex:1.3">Ponctuellement</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3E : STATION-SERVICE -->
+  <div id="detailStationService" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><path d="M3 22h18"/><rect x="5" y="2" width="10" height="20" rx="1"/><path d="M15 8h2a2 2 0 012 2v8a2 2 0 002 2"/></svg>Votre station</div>
+      <div class="field">
+        <label>Combien de stations à nettoyer ?</label>
+        <div class="counter" style="justify-content:flex-start"><button class="counter-btn" data-type="ssCount" data-delta="-1">−</button><div class="counter-val" id="ssCount-val">1</div><button class="counter-btn" data-type="ssCount" data-delta="1">+</button></div>
+      </div>
+      <div class="field">
+        <label>Zones à nettoyer</label>
+        <div class="prestation-grid">
+          <div class="prestation-item" data-prestation="ss-auvent"><div class="prestation-check"></div><div><div class="prestation-title">Auvents & plafonds</div><div class="prestation-desc">Structures métalliques, plafonds, poutres</div></div></div>
+          <div class="prestation-item" data-prestation="ss-pistes"><div class="prestation-check"></div><div><div class="prestation-title">Pistes & îlots de distribution</div><div class="prestation-desc">Dalles autour des pompes, îlots carburant</div></div></div>
+          <div class="prestation-item" data-prestation="ss-pompes"><div class="prestation-check"></div><div><div class="prestation-title">Pompes & distributeurs</div><div class="prestation-desc">Habillages, lecteurs, totems</div></div></div>
+          <div class="prestation-item" data-prestation="ss-dalles"><div class="prestation-check"></div><div><div class="prestation-title">Dalles & caniveaux</div><div class="prestation-desc">Sols béton, caniveaux d'évacuation</div></div></div>
+          <div class="prestation-item" data-prestation="ss-bardages"><div class="prestation-check"></div><div><div class="prestation-title">Bardages & totems prix</div><div class="prestation-desc">Façades extérieures, signalétique</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3F : AUTRE -->
+  <div id="detailAutre" style="display:none">
+    <div class="form-section">
+      <div class="section-label"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Décrivez votre besoin</div>
+      <div class="field">
+        <label>Nature de la prestation <span class="req">*</span></label>
+        <textarea id="autreDescription" placeholder="Décrivez votre besoin : type de prestation, localisation, fréquence souhaitée, contraintes particulières..." style="min-height:140px"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dispos & fréquence — commun à toutes sauf Autre et véhicules Rungis -->
+  <div id="sectionDispos" class="form-section" style="display:none">
     <div class="field">
-      <label style="margin-bottom:10px;">Jours disponibles</label>
+      <label style="margin-bottom:10px;">Jours disponibles <span class="opt">(optionnel)</span></label>
       <div class="tag-group" id="joursGroup">
         <div class="jour-btn" data-jour="lundi">Lundi</div>
         <div class="jour-btn" data-jour="mardi">Mardi</div>
@@ -827,7 +823,7 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
       </div>
     </div>
     <div class="field">
-      <label style="margin-bottom:10px;">Plages horaires acceptées</label>
+      <label style="margin-bottom:10px;">Plages horaires acceptées <span class="opt">(optionnel)</span></label>
       <div class="tag-group" id="plagesGroup">
         <div class="plage-btn" data-plage="matin">Matin (6h–12h)</div>
         <div class="plage-btn" data-plage="aprem">Après-midi (12h–18h)</div>
@@ -835,13 +831,10 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
         <div class="plage-btn" data-plage="nuit">Nuit (22h–6h)</div>
       </div>
     </div>
-    <div class="field">
-      <label>Précisions horaires <span style="font-weight:400;font-size:12px;color:var(--gray-400)">(optionnel)</span></label>
-      <input type="text" id="horairesComment" placeholder="ex : uniquement entre 7h et 9h avant le départ des chauffeurs...">
-    </div>
   </div>
 
-  <div class="form-section" id="sectionFreq">
+  <div id="sectionFreq" class="form-section" style="display:none">
+    <div class="section-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Fréquence souhaitée</div>
     <div class="freq-grid" id="freqGroup">
       <div class="freq-card" data-freq="quotidien"><div class="freq-main">Quotidienne</div><div class="freq-sub">Chaque jour</div></div>
       <div class="freq-card" data-freq="hebdo"><div class="freq-main">Hebdomadaire</div><div class="freq-sub">1× / semaine</div></div>
@@ -862,7 +855,9 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   </div>
 </div>
 
-<!-- ÉTAPE 4 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- ÉTAPE 4 — COORDONNÉES (allégée)                     -->
+<!-- ═══════════════════════════════════════════════════ -->
 <div class="panel" id="panel3">
   <div class="panel-banner">
     <div class="panel-step-num">Étape 4 / 5</div>
@@ -870,28 +865,27 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
     <p class="panel-sub">Pour vous adresser votre devis personnalisé sous 48h ouvrées.</p>
   </div>
   <div class="form-section">
-    <div class="section-label"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Contact principal</div>
+    <div class="section-label"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Vous</div>
     <div class="field field-row">
       <div><label>Prénom <span class="req">*</span></label><input type="text" id="prenom" placeholder="Jean"></div>
-      <div><label>Nom <span class="req">*</span></label><input type="text" id="nom" placeholder="Dupont"></div>
+      <div><label>Nom <span class="opt">(optionnel)</span></label><input type="text" id="nom" placeholder="Dupont"></div>
     </div>
-    <div class="field"><label>Fonction / poste</label><input type="text" id="fonction" placeholder="Responsable exploitation, Gestionnaire de parc..."></div>
+    <div class="info-box" style="margin-bottom:14px">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><strong>Au moins un moyen de contact</strong> est nécessaire — email <u>ou</u> téléphone. Si vous préférez être rappelé, laissez juste votre numéro.</span>
+    </div>
     <div class="field field-row">
-      <div><label>Email professionnel <span class="req">*</span></label><input type="email" id="email" placeholder="jean.dupont@entreprise.fr"></div>
-      <div><label>Téléphone <span class="req">*</span></label><input type="tel" id="tel" placeholder="06 00 00 00 00"></div>
+      <div><label>Email <span class="opt">(ou téléphone)</span></label><input type="email" id="email" placeholder="jean.dupont@entreprise.fr"></div>
+      <div><label>Téléphone <span class="opt">(ou email)</span></label><input type="tel" id="tel" placeholder="06 00 00 00 00"></div>
     </div>
   </div>
   <div class="form-section">
     <div class="section-label"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>Votre entreprise</div>
     <div class="field"><label>Raison sociale <span class="req">*</span></label><input type="text" id="societe" placeholder="SARL Transport Dupont"></div>
-    <div class="field field-row">
-      <div><label>Secteur d'activité</label><select id="secteur"><option value="">Sélectionnez...</option><option>Transport routier de marchandises</option><option>Logistique / entreposage</option><option>Transport alimentaire / froid</option><option>Transport de personnes</option><option>BTP / travaux publics</option><option>Distribution / grande distribution</option><option>Agriculture</option><option>Collectivité / service public</option><option>Autre</option></select></div>
-      <div><label>Comment nous avez-vous connu ?</label><select id="origine"><option value="">Sélectionnez...</option><option>Recommandation / bouche-à-oreille</option><option>Recherche Google</option><option>LinkedIn</option><option>Salon professionnel</option><option>Déjà client</option><option>Autre</option></select></div>
-    </div>
   </div>
   <div class="form-section">
-    <div class="section-label"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Message complémentaire</div>
-    <textarea id="message" placeholder="Contraintes particulières, délai souhaité, besoin de traçabilité par véhicule, sites multiples..."></textarea>
+    <div class="section-label"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Message <span class="opt">(optionnel)</span></div>
+    <textarea id="message" placeholder="Contraintes particulières, délai souhaité, sites multiples, autres précisions..."></textarea>
   </div>
   <div class="btn-row">
     <button class="btn-back" id="btn-back-3"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Retour</button>
@@ -899,7 +893,9 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
   </div>
 </div>
 
-<!-- ÉTAPE 5 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- ÉTAPE 5 — RÉCAP                                     -->
+<!-- ═══════════════════════════════════════════════════ -->
 <div class="panel" id="panel4">
   <div class="panel-banner">
     <div class="panel-step-num">Étape 5 / 5</div>
@@ -932,432 +928,817 @@ textarea{min-height:90px;resize:vertical;line-height:1.6;}
 
 </div><!-- /main -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 function initForm() {
 
-var truckSetStep = null; // sera défini par le moteur canvas
-
+// ══════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════
 var state = {
-  intervention:null, separateur:null, eau:null, frequence:null,
-  prestations:[], options:{chauffeur:false,convoyage:false},
-  jours:[], plages:[]
+  prestation: null,             // vehicules | chambre-froide | batiment | mobilier-urbain | station-service | autre
+  intervention: null,           // mobile | rungis (uniquement si prestation=vehicules)
+  separateur: null, eau: null,
+  frequence: null,
+  prestations: [],              // véhicules : liste cochée
+  ssZones: [],                  // station-service : zones cochées
+  options: { chauffeur: false, convoyage: false },
+  jours: [], plages: [],
+  cf: { count: 1, type: null, volume: null, haccp: null },
+  bat: { surface: null, hauteur: null, type: null },
+  mu: { type: null, nombre: null, graffiti: null },
+  ss: { count: 1 },
+  autreDescription: ''
 };
-var vc = {vl:0,vul:0,vul20:0,pl:0,tracteur:0,semi:0,bus:0,engin:0};
-var PCTS = [20,40,60,80,100];
-
+var vc = { vl:0, vul:0, vul20:0, pl:0, tracteur:0, semi:0, bus:0, engin:0 };
+var PCTS = [20, 40, 60, 80, 100];
 var STEP_COLORS = [
-  {c:'--s1',l:'--s1-light'},
-  {c:'--s2',l:'--s2-light'},
-  {c:'--s3',l:'--s3-light'},
-  {c:'--s4',l:'--s4-light'},
-  {c:'--s5',l:'--s5-light'}
+  {c:'--s1', l:'--s1-light'},
+  {c:'--s2', l:'--s2-light'},
+  {c:'--s3', l:'--s3-light'},
+  {c:'--s4', l:'--s4-light'},
+  {c:'--s5', l:'--s5-light'}
 ];
 
-function updateStepper(s){
-  for(var i=0;i<5;i++){
-    document.getElementById('si'+i).className='step-item'+(i===s?' active':i<s?' done':'');
-    document.getElementById('sn'+i).textContent=i<s?'✓':i+1;
+// Labels du stepper selon prestation (adapte dynamiquement)
+var STEP_LABELS = {
+  vehicules:        ['Prestation', 'Site / Rungis', 'Flotte & besoins', 'Coordonnées', 'Récap'],
+  'chambre-froide': ['Prestation', 'Adresse',       'Installation',    'Coordonnées', 'Récap'],
+  batiment:         ['Prestation', 'Adresse',       'Bâtiment',        'Coordonnées', 'Récap'],
+  'mobilier-urbain':['Prestation', 'Adresse',       'Équipements',     'Coordonnées', 'Récap'],
+  'station-service':['Prestation', 'Adresse',       'Station',         'Coordonnées', 'Récap'],
+  autre:            ['Prestation', '—',             '—',               'Coordonnées', 'Récap']
+};
+
+// ══════════════════════════════════════════════════════════════════
+// STEPPER / TRUCK
+// ══════════════════════════════════════════════════════════════════
+function updateStepper(s) {
+  for (var i = 0; i < 5; i++) {
+    document.getElementById('si'+i).className = 'step-item' + (i===s?' active':i<s?' done':'');
+    document.getElementById('sn'+i).textContent = i<s?'✓':i+1;
   }
-  document.getElementById('pbar').style.width=PCTS[s]+'%';
-  // Changer la couleur d'étape
+  document.getElementById('pbar').style.width = PCTS[s]+'%';
   var sc = STEP_COLORS[s];
-  var root = document.documentElement;
-  root.style.setProperty('--step-color', 'var('+sc.c+')');
-  root.style.setProperty('--step-light', 'var('+sc.l+')');
+  document.documentElement.style.setProperty('--step-color', 'var('+sc.c+')');
+  document.documentElement.style.setProperty('--step-light', 'var('+sc.l+')');
+
+  // Mettre à jour les labels stepper selon la prestation
+  var labels = STEP_LABELS[state.prestation] || STEP_LABELS.vehicules;
+  for (var j = 0; j < 5; j++) {
+    var sl = document.getElementById('sl'+j);
+    var tbl = document.getElementById('tbl'+j);
+    if (sl) sl.textContent = labels[j];
+    if (tbl) tbl.textContent = labels[j];
+  }
+
   updateTruck(s);
 }
 
-function updateTruck(s){
+function updateTruck(s) {
   var POSITIONS = ['2%','25%','50%','75%','96%'];
   var PROGRESS  = ['0%','25%','50%','75%','100%'];
   var CLEAN = [0, 0.25, 0.5, 0.75, 1];
-
   var mover = document.getElementById('truckMover');
   var pline = document.getElementById('progressLine');
-  if(mover) mover.style.left = POSITIONS[s];
-  if(pline) pline.style.width = PROGRESS[s];
-
+  if (mover) mover.style.left = POSITIONS[s];
+  if (pline) pline.style.width = PROGRESS[s];
   var p = CLEAN[s];
   var g = Math.round(200 + p * 55);
   var fill = 'rgb('+g+','+g+','+g+')';
   var tr = document.getElementById('tr');
   var cab = document.getElementById('cab');
-  if(tr)  tr.setAttribute('fill', fill);
-  if(cab) cab.setAttribute('fill', fill);
-
+  if (tr) tr.setAttribute('fill', fill);
+  if (cab) cab.setAttribute('fill', fill);
   var dirt = document.getElementById('dirt');
-  if(dirt) dirt.setAttribute('opacity', Math.max(0, 1 - p * 2).toFixed(2));
-
+  if (dirt) dirt.setAttribute('opacity', Math.max(0, 1 - p * 2).toFixed(2));
   var pw = document.getElementById('pw');
-  if(pw){ var b=Math.round(160+p*80); pw.setAttribute('fill','rgb('+(b-30)+','+b+','+(b+40)+')'); }
-
+  if (pw) { var b = Math.round(160 + p * 80); pw.setAttribute('fill','rgb('+(b-30)+','+b+','+(b+40)+')'); }
   var ph = document.getElementById('ph');
-  if(ph){ var phv=Math.round(180+p*70); ph.setAttribute('fill','rgb('+phv+','+phv+','+Math.round(phv*0.55)+')'); }
-
-  for(var i=0;i<5;i++){
-    var tb=document.getElementById('tb'+i);
-    if(tb) tb.className='tb'+(i<s?' done':i===s?' active':'');
+  if (ph) { var phv = Math.round(180 + p * 70); ph.setAttribute('fill','rgb('+phv+','+phv+','+Math.round(phv*0.55)+')'); }
+  for (var i = 0; i < 5; i++) {
+    var tb = document.getElementById('tb'+i);
+    if (tb) tb.className = 'tb' + (i<s?' done':i===s?' active':'');
   }
 }
-
-// Init camion position 0
 updateTruck(0);
 
-function goTo(from,to){
+// ══════════════════════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════════════════════
+function goTo(from, to) {
   document.getElementById('panel'+from).classList.remove('active');
   document.getElementById('panel'+to).classList.add('active');
   updateStepper(to);
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function updateStep2(){
-  var mob=state.intervention==='mobile';
-  document.getElementById('mobileBlock').style.display=mob?'block':'none';
-  document.getElementById('rungisBlock').style.display=mob?'none':'block';
-  document.getElementById('step2Title').textContent=mob?'Informations sur votre site':'Options centre de lavage Rungis';
-  document.getElementById('step2Sub').textContent=mob?'Ces données nous permettent de dimensionner l\'intervention.':'Précisez vos besoins pour le centre de Rungis.';
-  // Pour Rungis : masquer disponibilités et fréquence (gérées via réservation en ligne)
-  var showDispoFreq = mob;
-  document.getElementById('sectionDispos').style.display = showDispoFreq ? 'block' : 'none';
-  document.getElementById('sectionFreq').style.display   = showDispoFreq ? 'block' : 'none';
+// ══════════════════════════════════════════════════════════════════
+// CONFIGURATION ÉTAPE 2 ET 3 SELON PRESTATION
+// ══════════════════════════════════════════════════════════════════
+function configureStep2() {
+  var p = state.prestation;
+  var modeChoiceBlock = document.getElementById('modeChoiceBlock');
+  var mobileBlock     = document.getElementById('mobileBlock');
+  var rungisBlock     = document.getElementById('rungisBlock');
+  var envBlock        = document.getElementById('envBlock');
+  var eauBlock        = document.getElementById('eauBlock');
+  var chauffeurBlock  = document.getElementById('chauffeurBlock');
+  var title           = document.getElementById('step2Title');
+  var sub             = document.getElementById('step2Sub');
+
+  // Reset affichages
+  modeChoiceBlock.style.display = 'none';
+  mobileBlock.style.display = 'none';
+  rungisBlock.style.display = 'none';
+  envBlock.style.display = 'none';
+  eauBlock.style.display = 'none';
+  chauffeurBlock.style.display = 'none';
+
+  if (p === 'vehicules') {
+    // Si l'intervention a déjà été choisie : montrer le bloc correspondant
+    // Sinon : montrer le choix Sur site / Rungis
+    if (state.intervention === 'mobile') {
+      title.textContent = 'Informations sur votre site';
+      sub.textContent = "Ces données nous permettent de dimensionner l'intervention.";
+      mobileBlock.style.display = 'block';
+      envBlock.style.display = 'block';
+      eauBlock.style.display = 'block';
+      chauffeurBlock.style.display = 'block';
+    } else if (state.intervention === 'rungis') {
+      title.textContent = 'Options centre de lavage Rungis';
+      sub.textContent = 'Précisez vos besoins pour le centre de Rungis.';
+      rungisBlock.style.display = 'block';
+    } else {
+      title.textContent = "Mode d'intervention";
+      sub.textContent = 'Comment souhaitez-vous bénéficier de nos services ?';
+      modeChoiceBlock.style.display = 'block';
+    }
+  } else if (p === 'chambre-froide') {
+    title.textContent = 'Adresse du site';
+    sub.textContent = "Où se trouve l'installation à nettoyer ?";
+    mobileBlock.style.display = 'block';
+    // Pas de séparateur ni eau (intérieur bâtiment, eau déjà accessible)
+  } else if (p === 'batiment') {
+    title.textContent = 'Adresse du site';
+    sub.textContent = "Où se trouve le bâtiment à nettoyer ?";
+    mobileBlock.style.display = 'block';
+    eauBlock.style.display = 'block';
+  } else if (p === 'mobilier-urbain') {
+    title.textContent = 'Zone d\'intervention';
+    sub.textContent = "Quelle commune ou secteur ?";
+    mobileBlock.style.display = 'block';
+  } else if (p === 'station-service') {
+    title.textContent = 'Adresse de la station';
+    sub.textContent = "Où se trouve la station à nettoyer ?";
+    mobileBlock.style.display = 'block';
+    envBlock.style.display = 'block';
+    eauBlock.style.display = 'block';
+  }
+  // prestation='autre' : jamais affichée (on saute directement étape 4)
 }
 
-function validate(s){
-  if(s===0&&!state.intervention){alert('Veuillez choisir un type d\'intervention.');return false;}
-  if(s===1&&state.intervention==='mobile'){
-    if(!state.separateur){alert('Indiquez l\'équipement séparateur de votre site.');return false;}
-    if(!state.eau){alert('Indiquez l\'accès à l\'eau sur site.');return false;}
-    if(state.eau==='no'){alert('La prestation n\'est pas réalisable sans accès à l\'eau sur site. Contactez-nous au 06 80 93 61 31 pour étudier votre situation.');return false;}
-    if(!document.getElementById('adresse').value.trim()){alert('Veuillez renseigner l\'adresse.');return false;}
-    if(!document.getElementById('codePostal').value.trim()){alert('Veuillez renseigner le code postal.');return false;}
-    if(!document.getElementById('ville').value.trim()){alert('Veuillez renseigner la ville.');return false;}
+function configureStep3() {
+  var p = state.prestation;
+  document.getElementById('detailVehicules').style.display = 'none';
+  document.getElementById('detailChambreFroide').style.display = 'none';
+  document.getElementById('detailBatiment').style.display = 'none';
+  document.getElementById('detailMobilier').style.display = 'none';
+  document.getElementById('detailStationService').style.display = 'none';
+  document.getElementById('detailAutre').style.display = 'none';
+
+  var title = document.getElementById('step3Title');
+  var sub = document.getElementById('step3Sub');
+
+  if (p === 'vehicules') {
+    document.getElementById('detailVehicules').style.display = 'block';
+    title.textContent = 'Flotte & prestations';
+    sub.textContent = 'Composition de la flotte et prestations souhaitées.';
+  } else if (p === 'chambre-froide') {
+    document.getElementById('detailChambreFroide').style.display = 'block';
+    title.textContent = 'Votre installation';
+    sub.textContent = 'Détails des chambres froides à nettoyer.';
+  } else if (p === 'batiment') {
+    document.getElementById('detailBatiment').style.display = 'block';
+    title.textContent = 'Votre bâtiment';
+    sub.textContent = 'Détails des surfaces à traiter.';
+  } else if (p === 'mobilier-urbain') {
+    document.getElementById('detailMobilier').style.display = 'block';
+    title.textContent = 'Équipements urbains';
+    sub.textContent = "Types d'équipements et volumétrie.";
+  } else if (p === 'station-service') {
+    document.getElementById('detailStationService').style.display = 'block';
+    title.textContent = 'Votre station';
+    sub.textContent = 'Détails de la station et zones à nettoyer.';
+  } else if (p === 'autre') {
+    document.getElementById('detailAutre').style.display = 'block';
+    title.textContent = 'Votre besoin';
+    sub.textContent = 'Décrivez librement votre demande.';
   }
-  if(s===2){
-    if(Object.values(vc).reduce(function(a,b){return a+b;},0)===0){alert('Indiquez au moins un véhicule.');return false;}
-    if(state.prestations.length===0){alert('Sélectionnez au moins une prestation.');return false;}
-    if(state.intervention==='mobile'&&!state.frequence){alert('Sélectionnez une fréquence d\'intervention.');return false;}
+
+  // Dispos et fréquence : pas pour Rungis (gérés via réservation en ligne) ni pour Autre
+  var showFreq = p !== 'autre' && !(p === 'vehicules' && state.intervention === 'rungis');
+  var showDispos = showFreq && p !== 'autre';
+  document.getElementById('sectionDispos').style.display = showDispos ? 'block' : 'none';
+  document.getElementById('sectionFreq').style.display   = showFreq ? 'block' : 'none';
+}
+
+// ══════════════════════════════════════════════════════════════════
+// VALIDATION
+// ══════════════════════════════════════════════════════════════════
+function validate(s) {
+  if (s === 0 && !state.prestation) {
+    alert('Veuillez choisir un type de prestation.');
+    return false;
   }
-  if(s===3){
-    if(!document.getElementById('prenom').value.trim()){alert('Renseignez votre prénom.');return false;}
-    if(!document.getElementById('nom').value.trim()){alert('Renseignez votre nom.');return false;}
-    if(!document.getElementById('email').value.includes('@')){alert('Email invalide.');return false;}
-    if(!document.getElementById('tel').value.trim()){alert('Renseignez votre téléphone.');return false;}
-    if(!document.getElementById('societe').value.trim()){alert('Renseignez la raison sociale.');return false;}
+  if (s === 1) {
+    // Autre : pas de validation (l'étape 2 est sautée)
+    if (state.prestation === 'autre') return true;
+    // Véhicules : il faut avoir choisi l'intervention
+    if (state.prestation === 'vehicules' && !state.intervention) {
+      alert("Veuillez choisir entre intervention sur site ou centre Rungis.");
+      return false;
+    }
+    // Véhicules / mobile + chambre froide / bâtiment / mobilier / station-service : valider adresse
+    if (state.prestation !== 'vehicules' || state.intervention === 'mobile') {
+      // Séparateur : véhicules/mobile + station-service
+      if ((state.prestation === 'vehicules' && state.intervention === 'mobile') || state.prestation === 'station-service') {
+        if (!state.separateur) { alert("Indiquez l'équipement séparateur de votre site."); return false; }
+      }
+      // Eau : véhicules/mobile + bâtiment + station-service
+      if ((state.prestation === 'vehicules' && state.intervention === 'mobile') || state.prestation === 'batiment' || state.prestation === 'station-service') {
+        if (!state.eau) { alert("Indiquez l'accès à l'eau sur site."); return false; }
+        if (state.eau === 'no') { alert("La prestation n'est pas réalisable sans accès à l'eau. Contactez-nous au 06 80 93 61 31."); return false; }
+      }
+      // Adresse : toutes les prestations hors Rungis et Autre
+      if (!document.getElementById('adresse').value.trim()) { alert("Veuillez renseigner l'adresse."); return false; }
+      if (!document.getElementById('codePostal').value.trim()) { alert("Veuillez renseigner le code postal."); return false; }
+      if (!document.getElementById('ville').value.trim()) { alert('Veuillez renseigner la ville.'); return false; }
+    }
+  }
+  if (s === 2) {
+    var p = state.prestation;
+    if (p === 'vehicules') {
+      if (Object.values(vc).reduce(function(a,b){return a+b;}, 0) === 0) { alert('Indiquez au moins un véhicule.'); return false; }
+      if (state.prestations.length === 0) { alert('Sélectionnez au moins une prestation.'); return false; }
+      if (state.intervention === 'mobile' && !state.frequence) { alert("Sélectionnez une fréquence d'intervention."); return false; }
+    } else if (p === 'chambre-froide') {
+      if (!state.cf.type) { alert('Sélectionnez le type de chambres froides.'); return false; }
+      if (!state.cf.volume) { alert('Indiquez le volume total approximatif.'); return false; }
+      if (!state.cf.haccp) { alert('Indiquez si une désinfection HACCP est souhaitée.'); return false; }
+      if (!state.frequence) { alert('Sélectionnez une fréquence.'); return false; }
+    } else if (p === 'batiment') {
+      if (!state.bat.type) { alert('Sélectionnez le type de surface.'); return false; }
+      if (!state.bat.surface) { alert('Indiquez la surface approximative.'); return false; }
+      if (!state.bat.hauteur) { alert("Indiquez la hauteur d'intervention."); return false; }
+      if (!state.frequence) { alert('Sélectionnez une fréquence.'); return false; }
+    } else if (p === 'mobilier-urbain') {
+      if (!state.mu.type) { alert("Sélectionnez le type d'équipements."); return false; }
+      if (!state.mu.nombre) { alert("Indiquez le nombre d'équipements."); return false; }
+      if (!state.frequence) { alert('Sélectionnez une fréquence.'); return false; }
+    } else if (p === 'station-service') {
+      if (state.ssZones.length === 0) { alert('Sélectionnez au moins une zone à nettoyer.'); return false; }
+      if (!state.frequence) { alert('Sélectionnez une fréquence.'); return false; }
+    } else if (p === 'autre') {
+      if (!document.getElementById('autreDescription').value.trim()) { alert('Décrivez votre besoin.'); return false; }
+    }
+  }
+  if (s === 3) {
+    if (!document.getElementById('prenom').value.trim()) { alert('Renseignez votre prénom.'); return false; }
+    var email = document.getElementById('email').value.trim();
+    var tel = document.getElementById('tel').value.trim();
+    if (!email && !tel) { alert('Renseignez au moins un moyen de contact : email ou téléphone.'); return false; }
+    if (email && !email.includes('@')) { alert('Email invalide.'); return false; }
+    if (!document.getElementById('societe').value.trim()) { alert('Renseignez la raison sociale.'); return false; }
   }
   return true;
 }
 
-// Choice cards
-document.querySelectorAll('#interventionChoice .choice-card').forEach(function(card){
-  card.addEventListener('click',function(){
-    document.querySelectorAll('#interventionChoice .choice-card').forEach(function(c){c.classList.remove('selected');});
+// ══════════════════════════════════════════════════════════════════
+// HANDLERS
+// ══════════════════════════════════════════════════════════════════
+// Choix prestation (étape 1)
+document.querySelectorAll('#prestationChoice .choice-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('#prestationChoice .choice-card').forEach(function(c){c.classList.remove('selected');});
     card.classList.add('selected');
-    state.intervention=card.dataset.val;
-    updateStep2();
+    state.prestation = card.dataset.val;
+    // Reset des sous-états qui n'ont plus de sens
+    if (state.prestation !== 'vehicules') state.intervention = null;
   });
 });
 
-// Toggle buttons
-document.querySelectorAll('.toggle-group').forEach(function(grp){
-  grp.querySelectorAll('.toggle-btn').forEach(function(btn){
-    btn.addEventListener('click',function(){
+// Choix intervention (étape 2 véhicules)
+document.querySelectorAll('#interventionChoice .choice-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    document.querySelectorAll('#interventionChoice .choice-card').forEach(function(c){c.classList.remove('selected');});
+    card.classList.add('selected');
+    state.intervention = card.dataset.val;
+    configureStep2(); // réaffiche le bon bloc
+  });
+});
+
+// Toggle groupes génériques
+document.querySelectorAll('.toggle-group').forEach(function(grp) {
+  grp.querySelectorAll('.toggle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       grp.querySelectorAll('.toggle-btn').forEach(function(b){b.classList.remove('selected');});
       btn.classList.add('selected');
-      var key=grp.dataset.key;
-      state[key]=btn.dataset.val;
-      if(key==='eau'){
-        document.getElementById('distanceField').style.display=btn.dataset.val==='yes'?'flex':'none';
-        document.getElementById('eauWarn').style.display=btn.dataset.val==='no'?'flex':'none';
+      var key = grp.dataset.key;
+      var val = btn.dataset.val;
+      if (key === 'separateur') state.separateur = val;
+      else if (key === 'eau') {
+        state.eau = val;
+        document.getElementById('distanceField').style.display = val === 'yes' ? 'flex' : 'none';
+        document.getElementById('eauWarn').style.display = val === 'no' ? 'flex' : 'none';
       }
+      else if (key === 'cfHaccp') state.cf.haccp = val;
+      else if (key === 'muGraffiti') state.mu.graffiti = val;
     });
   });
 });
 
-// Option cards
-document.querySelectorAll('.option-card').forEach(function(card){
-  card.addEventListener('click',function(){
-    var key=card.dataset.option;
-    state.options[key]=!state.options[key];
-    var check=document.getElementById(key+'Check');
-    if(state.options[key]){
+// Options cards (chauffeur / convoyage)
+document.querySelectorAll('.option-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var key = card.dataset.option;
+    state.options[key] = !state.options[key];
+    if (state.options[key]) card.classList.add('selected');
+    else card.classList.remove('selected');
+  });
+});
+
+// Choice grids conditionnels (chambre froide, bâtiment, mobilier urbain)
+function wireChoiceGrid(containerId, stateKey, subKey) {
+  var container = document.getElementById(containerId);
+  if (!container) return;
+  container.querySelectorAll('.choice-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      container.querySelectorAll('.choice-card').forEach(function(c){c.classList.remove('selected');});
       card.classList.add('selected');
-    }else{
-      card.classList.remove('selected');
-      check.innerHTML='';
+      if (stateKey) state[stateKey][subKey] = card.dataset.val;
+    });
+  });
+}
+wireChoiceGrid('cfTypeChoice',   'cf', 'type');
+wireChoiceGrid('cfVolumeChoice', 'cf', 'volume');
+wireChoiceGrid('batTypeChoice',  'bat','type');
+wireChoiceGrid('batSurfaceChoice','bat','surface');
+wireChoiceGrid('batHauteurChoice','bat','hauteur');
+wireChoiceGrid('muTypeChoice',   'mu', 'type');
+wireChoiceGrid('muNombreChoice', 'mu', 'nombre');
+
+// Counters (véhicules + cfCount + ssCount)
+document.querySelectorAll('.counter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var type = btn.dataset.type;
+    var delta = parseInt(btn.dataset.delta);
+    if (!type) return;
+    if (type === 'cfCount') {
+      state.cf.count = Math.max(1, state.cf.count + delta);
+      document.getElementById('cfCount-val').textContent = state.cf.count;
+    } else if (type === 'ssCount') {
+      state.ss.count = Math.max(1, state.ss.count + delta);
+      document.getElementById('ssCount-val').textContent = state.ss.count;
+    } else if (vc.hasOwnProperty(type)) {
+      vc[type] = Math.max(0, vc[type] + delta);
+      var el = document.getElementById(type+'-val');
+      if (el) el.textContent = vc[type];
     }
   });
 });
 
-// Counters
-document.querySelectorAll('.counter-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    var type=btn.dataset.type,delta=parseInt(btn.dataset.delta);
-    vc[type]=Math.max(0,vc[type]+delta);
-    document.getElementById(type+'-val').textContent=vc[type];
-  });
-});
-
-// Prestations
-document.querySelectorAll('.prestation-item').forEach(function(item){
-  item.addEventListener('click',function(){
-    var val=item.dataset.prestation;
-
+// Prestations véhicules (checkboxes)
+document.querySelectorAll('#detailVehicules .prestation-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    var val = item.dataset.prestation;
     // Exclusion mutuelle : interieur-caisse ↔ desinfection
-    if(val==='desinfection' && !item.classList.contains('selected')){
-      var caisse=document.querySelector('[data-prestation="interieur-caisse"]');
-      if(caisse && caisse.classList.contains('selected')){
+    if (val === 'desinfection' && !item.classList.contains('selected')) {
+      var caisse = document.querySelector('#detailVehicules [data-prestation="interieur-caisse"]');
+      if (caisse && caisse.classList.contains('selected')) {
         caisse.classList.remove('selected');
-        state.prestations=state.prestations.filter(function(p){return p!=='interieur-caisse';});
+        state.prestations = state.prestations.filter(function(p){return p!=='interieur-caisse';});
       }
     }
-    if(val==='interieur-caisse' && !item.classList.contains('selected')){
-      var desinf=document.querySelector('[data-prestation="desinfection"]');
-      if(desinf && desinf.classList.contains('selected')){
+    if (val === 'interieur-caisse' && !item.classList.contains('selected')) {
+      var desinf = document.querySelector('#detailVehicules [data-prestation="desinfection"]');
+      if (desinf && desinf.classList.contains('selected')) {
         desinf.classList.remove('selected');
-        state.prestations=state.prestations.filter(function(p){return p!=='desinfection';});
+        state.prestations = state.prestations.filter(function(p){return p!=='desinfection';});
       }
     }
-
     item.classList.toggle('selected');
-    if(item.classList.contains('selected')){if(!state.prestations.includes(val))state.prestations.push(val);}
-    else state.prestations=state.prestations.filter(function(p){return p!==val;});
+    if (item.classList.contains('selected')) {
+      if (!state.prestations.includes(val)) state.prestations.push(val);
+    } else {
+      state.prestations = state.prestations.filter(function(p){return p!==val;});
+    }
   });
 });
 
-// Jours
-document.querySelectorAll('.jour-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
-    btn.classList.toggle('selected');
-    var j=btn.dataset.jour;
-    if(btn.classList.contains('selected')){if(!state.jours.includes(j))state.jours.push(j);}
-    else state.jours=state.jours.filter(function(x){return x!==j;});
+// Zones station-service
+document.querySelectorAll('#detailStationService .prestation-item').forEach(function(item) {
+  item.addEventListener('click', function() {
+    var val = item.dataset.prestation;
+    item.classList.toggle('selected');
+    if (item.classList.contains('selected')) {
+      if (!state.ssZones.includes(val)) state.ssZones.push(val);
+    } else {
+      state.ssZones = state.ssZones.filter(function(p){return p!==val;});
+    }
   });
 });
 
-// Plages
-document.querySelectorAll('.plage-btn').forEach(function(btn){
-  btn.addEventListener('click',function(){
+// Jours & Plages
+document.querySelectorAll('.jour-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
     btn.classList.toggle('selected');
-    var p=btn.dataset.plage;
-    if(btn.classList.contains('selected')){if(!state.plages.includes(p))state.plages.push(p);}
-    else state.plages=state.plages.filter(function(x){return x!==p;});
+    var j = btn.dataset.jour;
+    if (btn.classList.contains('selected')) {
+      if (!state.jours.includes(j)) state.jours.push(j);
+    } else {
+      state.jours = state.jours.filter(function(x){return x!==j;});
+    }
+  });
+});
+document.querySelectorAll('.plage-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('selected');
+    var p = btn.dataset.plage;
+    if (btn.classList.contains('selected')) {
+      if (!state.plages.includes(p)) state.plages.push(p);
+    } else {
+      state.plages = state.plages.filter(function(x){return x!==p;});
+    }
   });
 });
 
 // Fréquence
-document.querySelectorAll('.freq-card').forEach(function(card){
-  card.addEventListener('click',function(){
+document.querySelectorAll('.freq-card').forEach(function(card) {
+  card.addEventListener('click', function() {
     document.querySelectorAll('.freq-card').forEach(function(c){c.classList.remove('selected');});
     card.classList.add('selected');
-    state.frequence=card.dataset.freq;
-    document.getElementById('freqAutre').style.display=state.frequence==='autre'?'block':'none';
+    state.frequence = card.dataset.freq;
+    document.getElementById('freqAutre').style.display = state.frequence === 'autre' ? 'block' : 'none';
   });
 });
 
-// Nav
-document.getElementById('btn-next-0').addEventListener('click',function(){if(validate(0))goTo(0,1);});
-document.getElementById('btn-next-1').addEventListener('click',function(){if(validate(1))goTo(1,2);});
-document.getElementById('btn-next-2').addEventListener('click',function(){if(validate(2))goTo(2,3);});
-document.getElementById('btn-next-3').addEventListener('click',function(){if(validate(3)){buildRecap();goTo(3,4);}});
-document.getElementById('btn-back-1').addEventListener('click',function(){goTo(1,0);});
-document.getElementById('btn-back-2').addEventListener('click',function(){goTo(2,1);});
-document.getElementById('btn-back-3').addEventListener('click',function(){goTo(3,2);});
-document.getElementById('btn-back-4').addEventListener('click',function(){goTo(4,3);});
+// ══════════════════════════════════════════════════════════════════
+// NAVIGATION BUTTONS — avec saut conditionnel pour "Autre"
+// ══════════════════════════════════════════════════════════════════
+document.getElementById('btn-next-0').addEventListener('click', function() {
+  if (!validate(0)) return;
+  configureStep2();
+  // "Autre" : saute étapes 2 et 3 → va direct à 3 (coordonnées)
+  if (state.prestation === 'autre') {
+    goTo(0, 3);
+  } else {
+    goTo(0, 1);
+  }
+});
+document.getElementById('btn-next-1').addEventListener('click', function() {
+  if (!validate(1)) return;
+  configureStep3();
+  goTo(1, 2);
+});
+document.getElementById('btn-next-2').addEventListener('click', function() {
+  if (!validate(2)) return;
+  goTo(2, 3);
+});
+document.getElementById('btn-next-3').addEventListener('click', function() {
+  if (!validate(3)) return;
+  buildRecap();
+  goTo(3, 4);
+});
+document.getElementById('btn-back-1').addEventListener('click', function() { goTo(1, 0); });
+document.getElementById('btn-back-2').addEventListener('click', function() { goTo(2, 1); });
+document.getElementById('btn-back-3').addEventListener('click', function() {
+  // Si on est en "Autre", le back doit remonter à 0, pas à 2
+  if (state.prestation === 'autre') { goTo(3, 0); }
+  else { goTo(3, 2); }
+});
+document.getElementById('btn-back-4').addEventListener('click', function() { goTo(4, 3); });
 
-// Recap
-var ILABELS={mobile:'Intervention sur site',rungis:'Centre de lavage Rungis'};
-var PLABELS={'exterieur':'Lavage extérieur','interieur-caisse':'Intérieur caisse','interieur-cabine':'Intérieur cabine','desinfection':'Désinfection HACCP'};
-var FLABELS={quotidien:'Quotidienne',hebdo:'Hebdomadaire',quinzo:'Bimensuelle',mensuel:'Mensuelle',trimestriel:'Trimestrielle',ponctuel:'Ponctuelle',autre:'Autre'};
-var VLABELS={vl:'VL',vul:'VUL',vul20:'VUL 20m³',pl:'Porteur',tracteur:'Tracteur',semi:'Semi-remorque',bus:'Bus/Car',engin:'Engin TP'};
-var PLAGELABELS={matin:'Matin (6h-12h)',aprem:'Après-midi (12h-18h)',soir:'Soir (18h-22h)',nuit:'Nuit (22h-6h)'};
+// ══════════════════════════════════════════════════════════════════
+// RECAP
+// ══════════════════════════════════════════════════════════════════
+var PRESTATION_LABELS = {
+  'vehicules':'Lavage de véhicules',
+  'chambre-froide':'Nettoyage chambre froide',
+  'batiment':'Nettoyage bâtiment & bardage',
+  'mobilier-urbain':'Nettoyage mobilier urbain',
+  'station-service':'Nettoyage station-service',
+  'autre':'Autre prestation / combinaison'
+};
+var ILABELS = {mobile:'Intervention sur site', rungis:'Centre de lavage Rungis'};
+var PLABELS = {'exterieur':'Lavage extérieur','interieur-caisse':'Intérieur caisse','interieur-cabine':'Intérieur cabine','desinfection':'Désinfection HACCP'};
+var SSLABELS = {'ss-auvent':'Auvents & plafonds','ss-pistes':'Pistes & îlots','ss-pompes':'Pompes & distributeurs','ss-dalles':'Dalles & caniveaux','ss-bardages':'Bardages & totems'};
+var FLABELS = {quotidien:'Quotidienne',hebdo:'Hebdomadaire',quinzo:'Bimensuelle',mensuel:'Mensuelle',trimestriel:'Trimestrielle',ponctuel:'Ponctuelle',autre:'Autre'};
+var VLABELS = {vl:'VL',vul:'VUL',vul20:'VUL 20m³',pl:'Porteur',tracteur:'Tracteur',semi:'Semi-remorque',bus:'Bus/Car',engin:'Engin TP'};
+var PLAGELABELS = {matin:'Matin (6h-12h)',aprem:'Après-midi (12h-18h)',soir:'Soir (18h-22h)',nuit:'Nuit (22h-6h)'};
+var CF_TYPE_LBL = {positive:'Positive (0° à +8°C)',negative:'Négative (< 0°C)',mixte:'Mixte'};
+var CF_VOL_LBL = {petit:'Petit (< 50 m³)',moyen:'Moyen (50–200 m³)',grand:'Grand (> 200 m³)'};
+var BAT_TYPE_LBL = {bardage:'Bardage métallique',toiture:'Toiture',facade:'Façade / enduit',interieur:'Intérieur entrepôt',mixte:'Mixte'};
+var BAT_SURF_LBL = {petit:'< 200 m²',moyen:'200–1000 m²',grand:'> 1000 m²'};
+var BAT_HAUT_LBL = {bas:'< 6 m',moyen:'6–12 m',haut:'> 12 m'};
+var MU_TYPE_LBL = {abribus:'Abribus / abris vélos',bacs:'Bacs & poubelles',panneaux:'Panneaux / totems',mixte:'Mixte'};
+var MU_NB_LBL = {petit:'< 20 équipements',moyen:'20–100 équipements',grand:'> 100 équipements'};
 
-function buildRecap(){
-  var mob=state.intervention==='mobile';
-  var vehs=Object.entries(vc).filter(function(e){return e[1]>0;});
-  var total=Object.values(vc).reduce(function(a,b){return a+b;},0);
+function buildRecap() {
+  var p = state.prestation;
+  var html = '';
 
-  var siteHtml=mob?
-  '<div class="recap-section"><div class="recap-section-title">Site & logistique</div>'
-  +'<div class="recap-row"><span class="recap-key">Séparateur hydrocarbures</span><span class="recap-val">'+(state.separateur==='yes'?'Oui':state.separateur==='no'?'Non':'Je ne sais pas')+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Arrivée d\'eau (&lt;50m)</span><span class="recap-val">'+(state.eau==='yes'?'Oui — '+(document.getElementById('distanceVal').value||'—')+' m':'Non')+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Adresse</span><span class="recap-val">'+document.getElementById('adresse').value+', '+document.getElementById('codePostal').value+' '+document.getElementById('ville').value+'</span></div>'
-  +(document.getElementById('accesComment').value?'<div class="recap-row"><span class="recap-key">Accès</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('accesComment').value+'</span></div>':'')
-  +(state.options.chauffeur?'<div class="recap-row"><span class="recap-key">Option</span><span class="recap-val"><span class="recap-tag gold">Chauffeur PL demandé</span></span></div>':'')
-  +'</div>'
-  :
-  '<div class="recap-section"><div class="recap-section-title">Centre Rungis</div>'
-  +'<div class="recap-row"><span class="recap-key">Adresse</span><span class="recap-val">Sogaris, Pl. de la Logistique, 94150 Rungis</span></div>'
-  +(state.options.convoyage?'<div class="recap-row"><span class="recap-key">Option</span><span class="recap-val"><span class="recap-tag gold">Convoyage demandé</span></span></div>':'')
-  +'</div>';
+  // Section prestation
+  html += '<div class="recap-section"><div class="recap-section-title">Type de prestation</div>';
+  html += '<div class="recap-row"><span class="recap-key">Prestation</span><span class="recap-val">'+(PRESTATION_LABELS[p]||'—')+'</span></div>';
+  if (p === 'vehicules' && state.intervention) {
+    html += '<div class="recap-row"><span class="recap-key">Mode</span><span class="recap-val">'+(ILABELS[state.intervention]||'—')+'</span></div>';
+  }
+  html += '</div>';
 
-  document.getElementById('recapContent').innerHTML=
-  '<div class="recap-section"><div class="recap-section-title">Intervention</div>'
-  +'<div class="recap-row"><span class="recap-key">Type</span><span class="recap-val">'+(ILABELS[state.intervention]||'—')+'</span></div></div>'
-  +siteHtml
-  +'<div class="recap-section"><div class="recap-section-title">Flotte — '+total+' véhicule'+(total>1?'s':'')+'</div>'
-  +vehs.map(function(e){return'<div class="recap-row"><span class="recap-key">'+VLABELS[e[0]]+'</span><span class="recap-val">'+e[1]+' véhicule'+(e[1]>1?'s':'')+'</span></div>';}).join('')
-  +'</div>'
-  +'<div class="recap-section"><div class="recap-section-title">Prestations & disponibilités</div>'
-  +'<div class="recap-row"><span class="recap-key">Prestations</span><span class="recap-val">'+state.prestations.map(function(p){return'<span class="recap-tag">'+(PLABELS[p]||p)+'</span>';}).join('')+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Fréquence</span><span class="recap-val">'+(FLABELS[state.frequence]||'—')+(state.frequence==='autre'?' — '+document.getElementById('freqAutreVal').value:'')+'</span></div>'
-  +(state.jours.length?'<div class="recap-row"><span class="recap-key">Jours</span><span class="recap-val">'+state.jours.join(', ')+'</span></div>':'')
-  +(state.plages.length?'<div class="recap-row"><span class="recap-key">Plages</span><span class="recap-val">'+state.plages.map(function(p){return PLAGELABELS[p]||p;}).join(', ')+'</span></div>':'')
-  +(document.getElementById('horairesComment').value?'<div class="recap-row"><span class="recap-key">Précisions</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('horairesComment').value+'</span></div>':'')
-  +'</div>'
-  +'<div class="recap-section"><div class="recap-section-title">Contact</div>'
-  +'<div class="recap-row"><span class="recap-key">Nom</span><span class="recap-val">'+document.getElementById('prenom').value+' '+document.getElementById('nom').value+(document.getElementById('fonction').value?' ('+document.getElementById('fonction').value+')':"")+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Société</span><span class="recap-val">'+document.getElementById('societe').value+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Email</span><span class="recap-val">'+document.getElementById('email').value+'</span></div>'
-  +'<div class="recap-row"><span class="recap-key">Téléphone</span><span class="recap-val">'+document.getElementById('tel').value+'</span></div>'
-  +(document.getElementById('message').value?'<div class="recap-row"><span class="recap-key">Message</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('message').value+'</span></div>':'')
-  +'</div>';
+  // Adresse / site (si pas Rungis ni Autre)
+  var showAdresse = p !== 'autre' && !(p === 'vehicules' && state.intervention === 'rungis');
+  if (showAdresse) {
+    html += '<div class="recap-section"><div class="recap-section-title">Site & logistique</div>';
+    html += '<div class="recap-row"><span class="recap-key">Adresse</span><span class="recap-val">'+(document.getElementById('adresse').value||'—')+', '+(document.getElementById('codePostal').value||'')+' '+(document.getElementById('ville').value||'')+'</span></div>';
+    if (state.separateur) {
+      html += '<div class="recap-row"><span class="recap-key">Séparateur hydrocarbures</span><span class="recap-val">'+(state.separateur==='yes'?'Oui':state.separateur==='no'?'Non':'Je ne sais pas')+'</span></div>';
+    }
+    if (state.eau) {
+      html += '<div class="recap-row"><span class="recap-key">Arrivée d\'eau (&lt;50m)</span><span class="recap-val">'+(state.eau==='yes'?'Oui — '+(document.getElementById('distanceVal').value||'—')+' m':'Non')+'</span></div>';
+    }
+    if (document.getElementById('accesComment').value) {
+      html += '<div class="recap-row"><span class="recap-key">Accès</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('accesComment').value+'</span></div>';
+    }
+    if (state.options.chauffeur) {
+      html += '<div class="recap-row"><span class="recap-key">Option</span><span class="recap-val"><span class="recap-tag">Chauffeur PL demandé</span></span></div>';
+    }
+    html += '</div>';
+  }
+  // Rungis
+  if (p === 'vehicules' && state.intervention === 'rungis') {
+    html += '<div class="recap-section"><div class="recap-section-title">Centre Rungis</div>';
+    html += '<div class="recap-row"><span class="recap-key">Adresse</span><span class="recap-val">Sogaris, Pl. de la Logistique, 94150 Rungis</span></div>';
+    if (state.options.convoyage) {
+      html += '<div class="recap-row"><span class="recap-key">Option</span><span class="recap-val"><span class="recap-tag">Convoyage demandé</span></span></div>';
+    }
+    html += '</div>';
+  }
+
+  // Détails par prestation
+  if (p === 'vehicules') {
+    var vehs = Object.entries(vc).filter(function(e){return e[1]>0;});
+    var total = Object.values(vc).reduce(function(a,b){return a+b;}, 0);
+    html += '<div class="recap-section"><div class="recap-section-title">Flotte — '+total+' véhicule'+(total>1?'s':'')+'</div>';
+    html += vehs.map(function(e){return '<div class="recap-row"><span class="recap-key">'+VLABELS[e[0]]+'</span><span class="recap-val">'+e[1]+' véhicule'+(e[1]>1?'s':'')+'</span></div>';}).join('');
+    html += '</div>';
+    html += '<div class="recap-section"><div class="recap-section-title">Prestations & disponibilités</div>';
+    html += '<div class="recap-row"><span class="recap-key">Prestations</span><span class="recap-val">'+state.prestations.map(function(pr){return '<span class="recap-tag">'+(PLABELS[pr]||pr)+'</span>';}).join('')+'</span></div>';
+  } else if (p === 'chambre-froide') {
+    html += '<div class="recap-section"><div class="recap-section-title">Installation</div>';
+    html += '<div class="recap-row"><span class="recap-key">Nombre</span><span class="recap-val">'+state.cf.count+' chambre'+(state.cf.count>1?'s':'')+' froide'+(state.cf.count>1?'s':'')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Type</span><span class="recap-val">'+(CF_TYPE_LBL[state.cf.type]||'—')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Volume</span><span class="recap-val">'+(CF_VOL_LBL[state.cf.volume]||'—')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Désinfection HACCP</span><span class="recap-val">'+(state.cf.haccp==='yes'?'Oui':'Non')+'</span></div>';
+    html += '</div>';
+    html += '<div class="recap-section"><div class="recap-section-title">Disponibilités</div>';
+  } else if (p === 'batiment') {
+    html += '<div class="recap-section"><div class="recap-section-title">Bâtiment</div>';
+    html += '<div class="recap-row"><span class="recap-key">Type de surface</span><span class="recap-val">'+(BAT_TYPE_LBL[state.bat.type]||'—')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Surface</span><span class="recap-val">'+(BAT_SURF_LBL[state.bat.surface]||'—')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Hauteur</span><span class="recap-val">'+(BAT_HAUT_LBL[state.bat.hauteur]||'—')+'</span></div>';
+    html += '</div>';
+    html += '<div class="recap-section"><div class="recap-section-title">Disponibilités</div>';
+  } else if (p === 'mobilier-urbain') {
+    html += '<div class="recap-section"><div class="recap-section-title">Équipements</div>';
+    html += '<div class="recap-row"><span class="recap-key">Type</span><span class="recap-val">'+(MU_TYPE_LBL[state.mu.type]||'—')+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Nombre</span><span class="recap-val">'+(MU_NB_LBL[state.mu.nombre]||'—')+'</span></div>';
+    if (state.mu.graffiti) {
+      html += '<div class="recap-row"><span class="recap-key">Anti-graffiti</span><span class="recap-val">'+(state.mu.graffiti==='yes'?'Oui':state.mu.graffiti==='no'?'Non':'Ponctuellement')+'</span></div>';
+    }
+    html += '</div>';
+    html += '<div class="recap-section"><div class="recap-section-title">Disponibilités</div>';
+  } else if (p === 'station-service') {
+    html += '<div class="recap-section"><div class="recap-section-title">Station-service</div>';
+    html += '<div class="recap-row"><span class="recap-key">Nombre de stations</span><span class="recap-val">'+state.ss.count+'</span></div>';
+    html += '<div class="recap-row"><span class="recap-key">Zones</span><span class="recap-val">'+state.ssZones.map(function(z){return '<span class="recap-tag">'+(SSLABELS[z]||z)+'</span>';}).join('')+'</span></div>';
+    html += '</div>';
+    html += '<div class="recap-section"><div class="recap-section-title">Disponibilités</div>';
+  } else if (p === 'autre') {
+    html += '<div class="recap-section"><div class="recap-section-title">Description du besoin</div>';
+    html += '<div class="recap-row"><span class="recap-key">Détails</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('autreDescription').value+'</span></div>';
+    html += '</div>';
+  }
+
+  // Fréquence / dispos (sauf Autre et Rungis)
+  var showFreq = p !== 'autre' && !(p === 'vehicules' && state.intervention === 'rungis');
+  if (showFreq) {
+    if (p === 'vehicules') {
+      // pour les véhicules, section "Prestations & disponibilités" a été ouverte plus haut — on ferme
+    }
+    html += '<div class="recap-row"><span class="recap-key">Fréquence</span><span class="recap-val">'+(FLABELS[state.frequence]||'—')+(state.frequence==='autre'?' — '+document.getElementById('freqAutreVal').value:'')+'</span></div>';
+    if (state.jours.length) html += '<div class="recap-row"><span class="recap-key">Jours</span><span class="recap-val">'+state.jours.join(', ')+'</span></div>';
+    if (state.plages.length) html += '<div class="recap-row"><span class="recap-key">Plages</span><span class="recap-val">'+state.plages.map(function(pl){return PLAGELABELS[pl]||pl;}).join(', ')+'</span></div>';
+    html += '</div>'; // fermeture section prestations/dispos
+  }
+
+  // Contact
+  html += '<div class="recap-section"><div class="recap-section-title">Contact</div>';
+  html += '<div class="recap-row"><span class="recap-key">Nom</span><span class="recap-val">'+document.getElementById('prenom').value+(document.getElementById('nom').value?' '+document.getElementById('nom').value:'')+'</span></div>';
+  html += '<div class="recap-row"><span class="recap-key">Société</span><span class="recap-val">'+document.getElementById('societe').value+'</span></div>';
+  if (document.getElementById('email').value) html += '<div class="recap-row"><span class="recap-key">Email</span><span class="recap-val">'+document.getElementById('email').value+'</span></div>';
+  if (document.getElementById('tel').value) html += '<div class="recap-row"><span class="recap-key">Téléphone</span><span class="recap-val">'+document.getElementById('tel').value+'</span></div>';
+  if (document.getElementById('message').value) html += '<div class="recap-row"><span class="recap-key">Message</span><span class="recap-val" style="font-size:12px;font-style:italic">'+document.getElementById('message').value+'</span></div>';
+  html += '</div>';
+
+  document.getElementById('recapContent').innerHTML = html;
 }
 
-// Submit Web3Forms
-document.getElementById('btn-submit').addEventListener('click',function(){
-  var btn=document.getElementById('btn-submit');
-  btn.textContent='Envoi en cours...';
-  btn.disabled=true;
+// ══════════════════════════════════════════════════════════════════
+// SUBMIT
+// ══════════════════════════════════════════════════════════════════
+document.getElementById('btn-submit').addEventListener('click', function() {
+  var btn = document.getElementById('btn-submit');
+  btn.textContent = 'Envoi en cours...';
+  btn.disabled = true;
 
-  var mob=state.intervention==='mobile';
-  var vehs=Object.entries(vc).filter(function(e){return e[1]>0;});
-  var flotteStr=vehs.map(function(e){return VLABELS[e[0]]+' : '+e[1];}).join(' | ')||'—';
-  var prestStr=state.prestations.map(function(p){return PLABELS[p]||p;}).join(', ')||'—';
-  var freqStr=FLABELS[state.frequence]||'—';
-  if(state.frequence==='autre')freqStr+=' — '+document.getElementById('freqAutreVal').value;
-  var joursStr=state.jours.length?state.jours.join(', '):'—';
-  var plagesStr=state.plages.length?state.plages.map(function(p){return PLAGELABELS[p]||p;}).join(', '):'—';
-  var separateurStr=state.separateur==='yes'?'Oui':state.separateur==='no'?'Non':'Je ne sais pas';
+  var p = state.prestation;
+  var body = '=== DEMANDE DE DEVIS CAMION NET ===\n\n';
+  body += 'PRESTATION : '+(PRESTATION_LABELS[p]||'—')+'\n';
+  if (p === 'vehicules' && state.intervention) {
+    body += 'Mode : '+(ILABELS[state.intervention]||'—')+'\n';
+  }
+  body += '\nCONTACT\n';
+  body += 'Nom : '+document.getElementById('prenom').value+(document.getElementById('nom').value?' '+document.getElementById('nom').value:'')+'\n';
+  body += 'Société : '+document.getElementById('societe').value+'\n';
+  if (document.getElementById('email').value) body += 'Email : '+document.getElementById('email').value+'\n';
+  if (document.getElementById('tel').value) body += 'Téléphone : '+document.getElementById('tel').value+'\n';
 
-  var siteStr=mob?[
-    'Adresse : '+document.getElementById('adresse').value+', '+document.getElementById('codePostal').value+' '+document.getElementById('ville').value,
-    'Séparateur hydrocarbures : '+separateurStr,
-    'Arrivée eau (<50m) : '+(state.eau==='yes'?'Oui — '+(document.getElementById('distanceVal').value||'—')+' m':'Non'),
-    document.getElementById('accesComment').value?'Accès : '+document.getElementById('accesComment').value:'',
-    state.options.chauffeur?'Option : Chauffeur PL demandé':''
-  ].filter(Boolean).join('\n')
-  :['Centre : Sogaris, Pl. de la Logistique, 94150 Rungis',state.options.convoyage?'Option : Convoyage demandé':''].filter(Boolean).join('\n');
+  // Site
+  var showAdresse = p !== 'autre' && !(p === 'vehicules' && state.intervention === 'rungis');
+  if (showAdresse) {
+    body += '\nSITE\n';
+    body += 'Adresse : '+document.getElementById('adresse').value+', '+document.getElementById('codePostal').value+' '+document.getElementById('ville').value+'\n';
+    if (state.separateur) body += 'Séparateur hydrocarbures : '+(state.separateur==='yes'?'Oui':state.separateur==='no'?'Non':'Je ne sais pas')+'\n';
+    if (state.eau) body += "Arrivée d'eau (<50m) : "+(state.eau==='yes'?'Oui — '+(document.getElementById('distanceVal').value||'—')+' m':'Non')+'\n';
+    if (document.getElementById('accesComment').value) body += 'Accès : '+document.getElementById('accesComment').value+'\n';
+    if (state.options.chauffeur) body += 'Option : Chauffeur PL demandé\n';
+  }
+  if (p === 'vehicules' && state.intervention === 'rungis') {
+    body += '\nSITE : Centre Rungis — Sogaris, Pl. de la Logistique, 94150 Rungis\n';
+    if (state.options.convoyage) body += 'Option : Convoyage demandé\n';
+  }
 
-  var body='=== DEMANDE DE DEVIS CAMION NET ===\n\n'
-    +'CONTACT\nNom : '+document.getElementById('prenom').value+' '+document.getElementById('nom').value+'\n'
-    +(document.getElementById('fonction').value?'Fonction : '+document.getElementById('fonction').value+'\n':'')
-    +'Société : '+document.getElementById('societe').value+'\n'
-    +'Email : '+document.getElementById('email').value+'\n'
-    +'Téléphone : '+document.getElementById('tel').value+'\n'
-    +(document.getElementById('secteur').value?'Secteur : '+document.getElementById('secteur').value+'\n':'')
-    +(document.getElementById('origine').value?'Source : '+document.getElementById('origine').value+'\n':'')
-    +'\nINTERVENTION\nType : '+(mob?'Intervention sur site':'Centre de lavage Rungis')+'\n'+siteStr
-    +'\n\nFLOTTE\n'+flotteStr
-    +'\n\nPRESTATIONS\n'+prestStr
-    +'\n\nDISPONIBILITÉS\nJours : '+joursStr+'\nPlages : '+plagesStr
-    +(document.getElementById('horairesComment').value?'\nPrécisions : '+document.getElementById('horairesComment').value:'')
-    +'\n\nFRÉQUENCE\n'+freqStr
-    +(document.getElementById('message').value?'\n\nMESSAGE\n'+document.getElementById('message').value:'');
+  // Détails
+  if (p === 'vehicules') {
+    var vehs = Object.entries(vc).filter(function(e){return e[1]>0;});
+    body += '\nFLOTTE\n';
+    body += vehs.map(function(e){return VLABELS[e[0]]+' : '+e[1];}).join(' | ') || '—';
+    body += '\n\nPRESTATIONS\n';
+    body += state.prestations.map(function(pr){return PLABELS[pr]||pr;}).join(', ') || '—';
+  } else if (p === 'chambre-froide') {
+    body += '\nINSTALLATION\n';
+    body += 'Nombre : '+state.cf.count+' chambre(s)\n';
+    body += 'Type : '+(CF_TYPE_LBL[state.cf.type]||'—')+'\n';
+    body += 'Volume : '+(CF_VOL_LBL[state.cf.volume]||'—')+'\n';
+    body += 'Désinfection HACCP : '+(state.cf.haccp==='yes'?'Oui':'Non');
+  } else if (p === 'batiment') {
+    body += '\nBÂTIMENT\n';
+    body += 'Type : '+(BAT_TYPE_LBL[state.bat.type]||'—')+'\n';
+    body += 'Surface : '+(BAT_SURF_LBL[state.bat.surface]||'—')+'\n';
+    body += 'Hauteur : '+(BAT_HAUT_LBL[state.bat.hauteur]||'—');
+  } else if (p === 'mobilier-urbain') {
+    body += '\nÉQUIPEMENTS\n';
+    body += 'Type : '+(MU_TYPE_LBL[state.mu.type]||'—')+'\n';
+    body += 'Nombre : '+(MU_NB_LBL[state.mu.nombre]||'—')+'\n';
+    if (state.mu.graffiti) body += 'Anti-graffiti : '+(state.mu.graffiti==='yes'?'Oui':state.mu.graffiti==='no'?'Non':'Ponctuellement');
+  } else if (p === 'station-service') {
+    body += '\nSTATION-SERVICE\n';
+    body += 'Nombre de stations : '+state.ss.count+'\n';
+    body += 'Zones à nettoyer : '+state.ssZones.map(function(z){return SSLABELS[z]||z;}).join(', ');
+  } else if (p === 'autre') {
+    body += '\nDESCRIPTION DU BESOIN\n';
+    body += document.getElementById('autreDescription').value;
+  }
 
-  fetch('https://api.web3forms.com/submit',{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify({
-      access_key:'11040874-ee4a-4e05-88e3-924eaec0185e',
-      subject:'Nouvelle demande de devis — '+document.getElementById('societe').value+' ('+document.getElementById('prenom').value+' '+document.getElementById('nom').value+')',
-      from_name:'Formulaire Camion Net',
-      replyto:document.getElementById('email').value,
-      message:body
+  // Fréquence / dispos
+  var showFreq = p !== 'autre' && !(p === 'vehicules' && state.intervention === 'rungis');
+  if (showFreq) {
+    body += '\n\nFRÉQUENCE : '+(FLABELS[state.frequence]||'—');
+    if (state.frequence === 'autre') body += ' — '+document.getElementById('freqAutreVal').value;
+    if (state.jours.length) body += '\nJours : '+state.jours.join(', ');
+    if (state.plages.length) body += '\nPlages : '+state.plages.map(function(pl){return PLAGELABELS[pl]||pl;}).join(', ');
+  }
+
+  if (document.getElementById('message').value) body += '\n\nMESSAGE\n'+document.getElementById('message').value;
+
+  var subject = 'Devis '+(PRESTATION_LABELS[p]||'').replace(/ /g,' ')+' — '+document.getElementById('societe').value;
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      access_key: '11040874-ee4a-4e05-88e3-924eaec0185e',
+      subject: subject,
+      from_name: 'Formulaire Camion Net',
+      replyto: document.getElementById('email').value || '',
+      message: body
     })
   })
   .then(function(r){return r.json();})
   .then(function(data){
-    if(data.success){
+    if (data.success) {
       document.getElementById('panel4').classList.remove('active');
-      document.getElementById('successScreen').style.display='block';
-      document.getElementById('pbar').style.width='100%';
-      window.scrollTo({top:0,behavior:'smooth'});
-    }else{
-      btn.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Envoyer ma demande';
-      btn.disabled=false;
-      alert('Erreur lors de l\'envoi. Contactez-nous au 06 80 93 61 31.');
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('pbar').style.width = '100%';
+      window.scrollTo({top:0, behavior:'smooth'});
+    } else {
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Envoyer ma demande';
+      btn.disabled = false;
+      alert("Erreur lors de l'envoi. Contactez-nous au 06 80 93 61 31.");
     }
   })
   .catch(function(){
-    btn.innerHTML='<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Envoyer ma demande';
-    btn.disabled=false;
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Envoyer ma demande';
+    btn.disabled = false;
     alert('Erreur réseau. Contactez-nous au 06 80 93 61 31.');
   });
 });
 
-// Autocomplete adresse
-(function(){
-  var input=document.getElementById('adresse');
-  var box=document.getElementById('adresse-suggestions');
-  var cpEl=document.getElementById('codePostal');
-  var villeEl=document.getElementById('ville');
-  var timer=null,focusIdx=-1,results=[];
-  if(!input||!box)return;
+// ══════════════════════════════════════════════════════════════════
+// AUTOCOMPLETE ADRESSE (api-adresse.data.gouv.fr)
+// ══════════════════════════════════════════════════════════════════
+(function() {
+  var input = document.getElementById('adresse');
+  var box = document.getElementById('adresse-suggestions');
+  var cpEl = document.getElementById('codePostal');
+  var villeEl = document.getElementById('ville');
+  var timer = null, focusIdx = -1, results = [];
+  if (!input || !box) return;
 
   function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-  function showSuggestions(items){
-    results=items;focusIdx=-1;
-    if(!items.length){box.style.display='none';return;}
-    box.innerHTML=items.map(function(item,i){
-      var p=item.properties;
-      return'<div class="suggestion-item" data-idx="'+i+'">'
+  function showSuggestions(items) {
+    results = items; focusIdx = -1;
+    if (!items.length) { box.style.display = 'none'; return; }
+    box.innerHTML = items.map(function(item, i) {
+      var p = item.properties;
+      return '<div class="suggestion-item" data-idx="'+i+'">'
         +'<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'
         +'<div><div class="suggestion-main">'+esc(p.name)+'</div>'
         +'<div class="suggestion-sub">'+esc(p.postcode)+' '+esc(p.city)+'</div></div></div>';
     }).join('');
-    box.style.display='block';
-    box.querySelectorAll('.suggestion-item').forEach(function(el){
-      el.addEventListener('mousedown',function(e){e.preventDefault();selectItem(parseInt(el.dataset.idx));});
+    box.style.display = 'block';
+    box.querySelectorAll('.suggestion-item').forEach(function(el) {
+      el.addEventListener('mousedown', function(e) { e.preventDefault(); selectItem(parseInt(el.dataset.idx)); });
     });
   }
 
-  function selectItem(idx){
-    var p=results[idx].properties;
-    input.value=p.name||'';cpEl.value=p.postcode||'';villeEl.value=p.city||'';
-    box.style.display='none';focusIdx=-1;
+  function selectItem(idx) {
+    var p = results[idx].properties;
+    input.value = p.name || ''; cpEl.value = p.postcode || ''; villeEl.value = p.city || '';
+    box.style.display = 'none'; focusIdx = -1;
   }
 
-  function moveFocus(dir){
-    var items=box.querySelectorAll('.suggestion-item');if(!items.length)return;
-    if(focusIdx>=0)items[focusIdx].classList.remove('focused');
-    focusIdx=Math.max(-1,Math.min(items.length-1,focusIdx+dir));
-    if(focusIdx>=0){items[focusIdx].classList.add('focused');items[focusIdx].scrollIntoView({block:'nearest'});}
+  function moveFocus(dir) {
+    var items = box.querySelectorAll('.suggestion-item'); if (!items.length) return;
+    if (focusIdx >= 0) items[focusIdx].classList.remove('focused');
+    focusIdx = Math.max(-1, Math.min(items.length-1, focusIdx + dir));
+    if (focusIdx >= 0) { items[focusIdx].classList.add('focused'); items[focusIdx].scrollIntoView({block:'nearest'}); }
   }
 
-  function doSearch(q){
-    var xhr=new XMLHttpRequest();
-    xhr.open('GET','https://api-adresse.data.gouv.fr/search/?q='+encodeURIComponent(q)+'&limit=6&type=housenumber,street',true);
-    xhr.onreadystatechange=function(){
-      if(xhr.readyState!==4)return;
-      if(xhr.status===200){try{var d=JSON.parse(xhr.responseText);showSuggestions(d.features||[]);}catch(e){box.style.display='none';}}
-      else box.style.display='none';
+  function doSearch(q) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api-adresse.data.gouv.fr/search/?q='+encodeURIComponent(q)+'&limit=6&type=housenumber,street', true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== 4) return;
+      if (xhr.status === 200) { try { var d = JSON.parse(xhr.responseText); showSuggestions(d.features||[]); } catch(e) { box.style.display='none'; } }
+      else box.style.display = 'none';
     };
-    xhr.onerror=function(){box.style.display='none';};
+    xhr.onerror = function(){ box.style.display = 'none'; };
     xhr.send();
   }
 
-  input.addEventListener('input',function(){
-    var q=input.value.trim();clearTimeout(timer);
-    if(q.length<3){box.style.display='none';return;}
-    box.innerHTML='<div class="addr-loading">Recherche...</div>';box.style.display='block';
-    timer=setTimeout(function(){doSearch(q);},300);
+  input.addEventListener('input', function() {
+    var q = input.value.trim(); clearTimeout(timer);
+    if (q.length < 3) { box.style.display = 'none'; return; }
+    box.innerHTML = '<div class="addr-loading">Recherche...</div>'; box.style.display = 'block';
+    timer = setTimeout(function(){ doSearch(q); }, 300);
   });
-  input.addEventListener('keydown',function(e){
-    if(e.key==='ArrowDown'){e.preventDefault();moveFocus(1);}
-    if(e.key==='ArrowUp'){e.preventDefault();moveFocus(-1);}
-    if(e.key==='Enter'&&focusIdx>=0){e.preventDefault();selectItem(focusIdx);}
-    if(e.key==='Escape'){box.style.display='none';}
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown') { e.preventDefault(); moveFocus(1); }
+    if (e.key === 'ArrowUp') { e.preventDefault(); moveFocus(-1); }
+    if (e.key === 'Enter' && focusIdx >= 0) { e.preventDefault(); selectItem(focusIdx); }
+    if (e.key === 'Escape') { box.style.display = 'none'; }
   });
-  input.addEventListener('blur',function(){setTimeout(function(){box.style.display='none';},200);});
-  document.addEventListener('click',function(e){if(!input.contains(e.target)&&!box.contains(e.target))box.style.display='none';});
+  input.addEventListener('blur', function(){ setTimeout(function(){ box.style.display='none'; }, 200); });
+  document.addEventListener('click', function(e) { if (!input.contains(e.target) && !box.contains(e.target)) box.style.display = 'none'; });
 })();
 
-// ── SIMULATEUR TARIFAIRE RUNGIS ──
-(function(){
-
-// Grille tarifaire : [ext, int-caisse, int-desinfection]  null = non dispo — Prix HT (TVA 20%)
-var TARIFS={
+// ══════════════════════════════════════════════════════════════════
+// SIMULATEUR RUNGIS (inchangé depuis l'ancienne version)
+// ══════════════════════════════════════════════════════════════════
+(function() {
+var TARIFS = {
   'VL':[12.33,11.25,17.67],'12m3':[17.17,13.42,23.08],'20m3':[24.67,17.17,26.25],
   '6T':[31.08,17.67,28.42],'13T':[34.25,19.83,30.50],'26T':[36.42,22.00,32.67],
   'Tracteur':[25.75,null,null],'Semi':[37.50,31.08,40.67],'SemiBenne':[42.83,31.08,40.67],
@@ -1368,269 +1749,188 @@ var TARIFS={
   'TracteurSemiBenne':[68.58,null,null],'TracteurSemiPlateau':[52.50,null,null],
   'TracteurSemiCiterne':[73.92,null,null],'CamionRemorque':[67.50,null,null]
 };
-
-var VEH_LIST=[
-  {k:'VL',       l:'VL',                    d:'VP, citadine, SUV, berline, Kangoo, Partner...'},
-  {k:'12m3',     l:'12m³',                  d:'Sprinter, Trafic, Crafter, Jumper, Transit...'},
-  {k:'20m3',     l:'20m³',                  d:'Camion 20m³'},
-  {k:'6T',       l:'Porteur 6T',            d:''},
-  {k:'13T',      l:'Porteur 13T',           d:''},
-  {k:'26T',      l:'Porteur 26T',           d:''},
-  {k:'Tracteur', l:'Tracteur',              d:'Extérieur uniquement'},
-  {k:'Semi',     l:'Semi-remorque',         d:''},
-  {k:'SemiBenne',l:'Semi benne',            d:''},
-  {k:'SemiPlateau',l:'Semi plateau',        d:'Extérieur uniquement'},
-  {k:'SemiCiterne',l:'Semi citerne',        d:'Extérieur uniquement'},
-  {k:'PorteurCiterne',l:'Porteur citerne',  d:'Extérieur uniquement'},
-  {k:'PorteurPlateau',l:'Porteur plateau',  d:'Extérieur uniquement'},
-  {k:'PorteurBenne',l:'Porteur benne',      d:''},
-  {k:'CarBus',   l:'Car / Bus',             d:'Extérieur uniquement'},
-  {k:'Remorque', l:'Remorque',              d:'Camion remorque'},
-  {k:'TracteurSemi',l:'Tracteur + Semi',    d:'Extérieur uniquement'},
-  {k:'TracteurSemiBenne',l:'Tracteur + Semi Benne',  d:'Extérieur uniquement'},
+var VEH_LIST = [
+  {k:'VL',l:'VL',d:'VP, citadine, SUV, berline, Kangoo, Partner...'},
+  {k:'12m3',l:'12m³',d:'Sprinter, Trafic, Crafter, Jumper, Transit...'},
+  {k:'20m3',l:'20m³',d:'Camion 20m³'},
+  {k:'6T',l:'Porteur 6T',d:''},{k:'13T',l:'Porteur 13T',d:''},{k:'26T',l:'Porteur 26T',d:''},
+  {k:'Tracteur',l:'Tracteur',d:'Extérieur uniquement'},
+  {k:'Semi',l:'Semi-remorque',d:''},{k:'SemiBenne',l:'Semi benne',d:''},
+  {k:'SemiPlateau',l:'Semi plateau',d:'Extérieur uniquement'},
+  {k:'SemiCiterne',l:'Semi citerne',d:'Extérieur uniquement'},
+  {k:'PorteurCiterne',l:'Porteur citerne',d:'Extérieur uniquement'},
+  {k:'PorteurPlateau',l:'Porteur plateau',d:'Extérieur uniquement'},
+  {k:'PorteurBenne',l:'Porteur benne',d:''},
+  {k:'CarBus',l:'Car / Bus',d:'Extérieur uniquement'},
+  {k:'Remorque',l:'Remorque',d:'Camion remorque'},
+  {k:'TracteurSemi',l:'Tracteur + Semi',d:'Extérieur uniquement'},
+  {k:'TracteurSemiBenne',l:'Tracteur + Semi Benne',d:'Extérieur uniquement'},
   {k:'TracteurSemiPlateau',l:'Tracteur + Semi Plateau',d:'Extérieur uniquement'},
   {k:'TracteurSemiCiterne',l:'Tracteur + Semi Citerne',d:'Extérieur uniquement'},
-  {k:'CamionRemorque',l:'Camion Remorque',  d:'Extérieur uniquement'}
+  {k:'CamionRemorque',l:'Camion Remorque',d:'Extérieur uniquement'}
 ];
-
-// Options prestation par ligne (index dans TARIFS + libellé)
-// null = non disponible pour ce type
-var PRESTA_OPTS=[
-  {val:'ext',          label:'Ext.',                        idx:0},
-  {val:'int-caisse',   label:'Int. caisse frigo',           idx:1},
-  {val:'int-desinfection',label:'Int. caisse frigo+Désinfect.',idx:2},
-  {val:'ext+int',      label:'Ext.+Int. caisse frigo',      idx:null},
-  {val:'ext+desinfect',label:'Ext.+Int. caisse frigo+Désinfect.',idx:null},
-  {val:'cabine',       label:'Int. cabine →devis',          idx:null}
-];
-
-// État : qty et prestation par type
-var simData={};
+var simData = {};
 VEH_LIST.forEach(function(v){simData[v.k]={qty:0,presta:''};});
-
-var rungisMode=null;
-var rungisSimCard   = document.getElementById('rungisSimCard');
+var rungisMode = null;
+var rungisSimCard = document.getElementById('rungisSimCard');
 var rungisDevisCard = document.getElementById('rungisDevisCard');
 var simulateurBlock = document.getElementById('simulateurBlock');
-var simTbody        = document.getElementById('simTbody');
+var simTbody = document.getElementById('simTbody');
 
-// ── Construire le tableau ──
-function buildTable(){
-  if(!simTbody) return;
-  simTbody.innerHTML='';
-  VEH_LIST.forEach(function(veh){
-    var row=document.createElement('tr');
-    row.id='simrow-'+veh.k;
-    row.style.borderBottom='1px solid var(--gray-100)';
-    row.style.transition='background 0.15s';
-
-    // Colonne nom
-    var tdName=document.createElement('td');
-    tdName.style.padding='10px 0 10px 0';
-    tdName.style.verticalAlign='middle';
-    tdName.innerHTML='<div style="font-size:13px;font-weight:600;color:var(--black);line-height:1.3">'
-      +veh.l
-      +(veh.d?'<div style="font-size:10px;color:var(--gray-400);font-weight:400;margin-top:1px">'+veh.d+'</div>':'')
-      +'</div>';
-
-    // Colonne compteur
-    var tdQty=document.createElement('td');
-    tdQty.style.padding='10px 8px';
-    tdQty.style.verticalAlign='middle';
-    tdQty.innerHTML='<div style="display:flex;align-items:center;justify-content:center;gap:0">'
+function buildTable() {
+  if (!simTbody) return;
+  simTbody.innerHTML = '';
+  VEH_LIST.forEach(function(veh) {
+    var row = document.createElement('tr');
+    row.id = 'simrow-'+veh.k;
+    row.style.borderBottom = '1px solid var(--gray-100)';
+    row.style.transition = 'background 0.15s';
+    var tdName = document.createElement('td');
+    tdName.style.padding = '10px 0 10px 0';
+    tdName.style.verticalAlign = 'middle';
+    tdName.innerHTML = '<div style="font-size:13px;font-weight:600;color:var(--gray-900);line-height:1.3">'+veh.l+(veh.d?'<div style="font-size:10px;color:var(--gray-400);font-weight:400;margin-top:1px">'+veh.d+'</div>':'')+'</div>';
+    var tdQty = document.createElement('td');
+    tdQty.style.padding = '10px 8px';
+    tdQty.style.verticalAlign = 'middle';
+    tdQty.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;gap:0">'
       +'<button class="counter-btn sim-counter" data-simtype="'+veh.k+'" data-delta="-1" style="width:26px;height:26px;font-size:15px">−</button>'
       +'<div class="counter-val" id="sq-'+veh.k+'" style="width:34px;height:26px;font-size:13px">0</div>'
-      +'<button class="counter-btn sim-counter" data-simtype="'+veh.k+'" data-delta="1" style="width:26px;height:26px;font-size:15px">+</button>'
-      +'</div>';
-
-    // Colonne prestation (select déroulant)
-    var tdPresta=document.createElement('td');
-    tdPresta.style.padding='10px 6px';
-    tdPresta.style.verticalAlign='middle';
-    var sel=document.createElement('select');
-    sel.id='sp-'+veh.k;
-    sel.dataset.simtype=veh.k;
-    sel.style.cssText='width:100%;font-size:12px;padding:6px 28px 6px 8px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-family:var(--font);color:var(--black);background:var(--gray-50);cursor:pointer;';
-    sel.disabled=true; // activé quand qty>0
-
-    // Construire les options selon les tarifs disponibles
-    var row2=TARIFS[veh.k];
-    var optDefault=document.createElement('option');
-    optDefault.value='';optDefault.textContent='— choisir —';
+      +'<button class="counter-btn sim-counter" data-simtype="'+veh.k+'" data-delta="1" style="width:26px;height:26px;font-size:15px">+</button></div>';
+    var tdPresta = document.createElement('td');
+    tdPresta.style.padding = '10px 6px';
+    tdPresta.style.verticalAlign = 'middle';
+    var sel = document.createElement('select');
+    sel.id = 'sp-'+veh.k;
+    sel.dataset.simtype = veh.k;
+    sel.style.cssText = 'width:100%;font-size:12px;padding:6px 28px 6px 8px;border:1.5px solid var(--gray-200);border-radius:var(--radius);font-family:var(--font);color:var(--gray-900);background:var(--gray-50);cursor:pointer;';
+    sel.disabled = true;
+    var row2 = TARIFS[veh.k];
+    var optDefault = document.createElement('option');
+    optDefault.value=''; optDefault.textContent='— choisir —';
     sel.appendChild(optDefault);
-
-    // Ext seul
-    if(row2[0]!==null){
-      var o=document.createElement('option');o.value='ext';
-      o.textContent='Extérieur ('+row2[0].toFixed(2).replace('.',',')+' € HT)';sel.appendChild(o);
-    }
-    // Int caisse seul
-    if(row2[1]!==null){
-      var o=document.createElement('option');o.value='int-caisse';
-      o.textContent='Int. caisse frigo ('+row2[1].toFixed(2).replace('.',',')+' € HT)';sel.appendChild(o);
-    }
-    // Int + désinfection seul
-    if(row2[2]!==null){
-      var o=document.createElement('option');o.value='int-desinfection';
-      o.textContent='Int. caisse frigo + Désinfect. ('+row2[2].toFixed(2).replace('.',',')+' € HT)';sel.appendChild(o);
-    }
-    // Ext + Int caisse
-    if(row2[0]!==null&&row2[1]!==null){
-      var o=document.createElement('option');o.value='ext+int-caisse';
-      o.textContent='Ext. + Int. caisse frigo ('+(row2[0]+row2[1]).toFixed(2).replace('.',',')+' € HT)';sel.appendChild(o);
-    }
-    // Ext + Int + Désinfection
-    if(row2[0]!==null&&row2[2]!==null){
-      var o=document.createElement('option');o.value='ext+int-desinfection';
-      o.textContent='Ext. + Int. caisse frigo + Désinfect. ('+(row2[0]+row2[2]).toFixed(2).replace('.',',')+' € HT)';sel.appendChild(o);
-    }
-    // Cabine → devis
-    // Cabine → devis : non proposé dans le simulateur
-    // (nécessite toujours une demande de devis personnalisée)
-
+    if (row2[0] !== null) { var o = document.createElement('option'); o.value='ext'; o.textContent='Extérieur ('+row2[0].toFixed(2).replace('.',',')+' € HT)'; sel.appendChild(o); }
+    if (row2[1] !== null) { var o = document.createElement('option'); o.value='int-caisse'; o.textContent='Int. caisse frigo ('+row2[1].toFixed(2).replace('.',',')+' € HT)'; sel.appendChild(o); }
+    if (row2[2] !== null) { var o = document.createElement('option'); o.value='int-desinfection'; o.textContent='Int. caisse frigo + Désinfect. ('+row2[2].toFixed(2).replace('.',',')+' € HT)'; sel.appendChild(o); }
+    if (row2[0] !== null && row2[1] !== null) { var o = document.createElement('option'); o.value='ext+int-caisse'; o.textContent='Ext. + Int. caisse frigo ('+(row2[0]+row2[1]).toFixed(2).replace('.',',')+' € HT)'; sel.appendChild(o); }
+    if (row2[0] !== null && row2[2] !== null) { var o = document.createElement('option'); o.value='ext+int-desinfection'; o.textContent='Ext. + Int. caisse frigo + Désinfect. ('+(row2[0]+row2[2]).toFixed(2).replace('.',',')+' € HT)'; sel.appendChild(o); }
     tdPresta.appendChild(sel);
-
-    // Colonne sous-total
-    var tdTotal=document.createElement('td');
-    tdTotal.style.cssText='padding:10px 0 10px 6px;text-align:right;vertical-align:middle;';
-    tdTotal.innerHTML='<span id="st-'+veh.k+'" style="font-size:13px;font-weight:700;color:var(--gray-300);">—</span>';
-
-    row.appendChild(tdName);row.appendChild(tdQty);row.appendChild(tdPresta);row.appendChild(tdTotal);
+    var tdTotal = document.createElement('td');
+    tdTotal.style.cssText = 'padding:10px 0 10px 6px;text-align:right;vertical-align:middle;';
+    tdTotal.innerHTML = '<span id="st-'+veh.k+'" style="font-size:13px;font-weight:700;color:var(--gray-300);">—</span>';
+    row.appendChild(tdName); row.appendChild(tdQty); row.appendChild(tdPresta); row.appendChild(tdTotal);
     simTbody.appendChild(row);
-
-    // Listeners
-    sel.addEventListener('change',function(){
-      simData[veh.k].presta=sel.value;
-      if(sel.value==='cabine'){
-        document.getElementById('cabineMsg').style.display='flex';
-      } else {
-        // Cacher si plus aucune ligne cabine
-        var hasCabine=false;
-        VEH_LIST.forEach(function(v2){if(simData[v2.k].presta==='cabine')hasCabine=true;});
-        if(!hasCabine) document.getElementById('cabineMsg').style.display='none';
-      }
+    sel.addEventListener('change', function() {
+      simData[veh.k].presta = sel.value;
       calcSim();
     });
   });
-
-  // Listeners compteurs (après buildTable)
-  document.querySelectorAll('.sim-counter').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      var type=btn.dataset.simtype,delta=parseInt(btn.dataset.delta);
-      simData[type].qty=Math.max(0,(simData[type].qty||0)+delta);
-      var valEl=document.getElementById('sq-'+type);
-      if(valEl) valEl.textContent=simData[type].qty;
-      var selEl=document.getElementById('sp-'+type);
-      var rowEl=document.getElementById('simrow-'+type);
-      if(simData[type].qty>0){
-        if(selEl) selEl.disabled=false;
-        if(rowEl) rowEl.style.background='rgba(26,58,106,0.05)';
+  document.querySelectorAll('.sim-counter').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var type = btn.dataset.simtype, delta = parseInt(btn.dataset.delta);
+      simData[type].qty = Math.max(0, (simData[type].qty||0) + delta);
+      var valEl = document.getElementById('sq-'+type);
+      if (valEl) valEl.textContent = simData[type].qty;
+      var selEl = document.getElementById('sp-'+type);
+      var rowEl = document.getElementById('simrow-'+type);
+      if (simData[type].qty > 0) {
+        if (selEl) selEl.disabled = false;
+        if (rowEl) rowEl.style.background = 'rgba(26,58,106,0.05)';
       } else {
-        if(selEl){selEl.disabled=true;selEl.value='';simData[type].presta='';}
-        if(rowEl) rowEl.style.background='';
-        var stEl=document.getElementById('st-'+type);
-        if(stEl){stEl.textContent='—';stEl.style.color='var(--gray-300)';}
-        // Vérifier si cabine
-        var hasCabine=false;
-        VEH_LIST.forEach(function(v2){if(simData[v2.k].presta==='cabine')hasCabine=true;});
-        if(!hasCabine) document.getElementById('cabineMsg').style.display='none';
+        if (selEl) { selEl.disabled = true; selEl.value = ''; simData[type].presta = ''; }
+        if (rowEl) rowEl.style.background = '';
+        var stEl = document.getElementById('st-'+type);
+        if (stEl) { stEl.textContent = '—'; stEl.style.color = 'var(--gray-300)'; }
       }
       calcSim();
     });
   });
 }
 
-function getPrix(type,prestaVal){
-  var row=TARIFS[type];if(!row) return null;
-  if(prestaVal==='ext') return row[0];
-  if(prestaVal==='int-caisse') return row[1];
-  if(prestaVal==='int-desinfection') return row[2];
-  if(prestaVal==='ext+int-caisse') return (row[0]!==null&&row[1]!==null)?row[0]+row[1]:null;
-  if(prestaVal==='ext+int-desinfection') return (row[0]!==null&&row[2]!==null)?row[0]+row[2]:null;
+function getPrix(type, prestaVal) {
+  var row = TARIFS[type]; if (!row) return null;
+  if (prestaVal === 'ext') return row[0];
+  if (prestaVal === 'int-caisse') return row[1];
+  if (prestaVal === 'int-desinfection') return row[2];
+  if (prestaVal === 'ext+int-caisse') return (row[0]!==null && row[1]!==null) ? row[0]+row[1] : null;
+  if (prestaVal === 'ext+int-desinfection') return (row[0]!==null && row[2]!==null) ? row[0]+row[2] : null;
   return null;
 }
 
-function calcSim(){
-  var totalGeneral=0, lignes=[], actifs=0;
-  VEH_LIST.forEach(function(veh){
-    var d=simData[veh.k];
-    var stEl=document.getElementById('st-'+veh.k);
-    if(!d.qty||!d.presta||d.presta==='cabine'){
-      if(stEl){stEl.textContent='—';stEl.style.color='var(--gray-300)';}
+function calcSim() {
+  var totalGeneral = 0, lignes = [], actifs = 0;
+  VEH_LIST.forEach(function(veh) {
+    var d = simData[veh.k];
+    var stEl = document.getElementById('st-'+veh.k);
+    if (!d.qty || !d.presta) {
+      if (stEl) { stEl.textContent = '—'; stEl.style.color = 'var(--gray-300)'; }
       return;
     }
-    var prix=getPrix(veh.k,d.presta);
-    if(prix===null){
-      if(stEl){stEl.textContent='N/D';stEl.style.color='var(--red)';}
+    var prix = getPrix(veh.k, d.presta);
+    if (prix === null) {
+      if (stEl) { stEl.textContent = 'N/D'; stEl.style.color = 'var(--red)'; }
       return;
     }
-    var sub=prix*d.qty;
-    totalGeneral+=sub;
-    actifs++;
-    if(stEl){
-      stEl.textContent=sub.toFixed(2).replace('.',',')+' € HT';
-      stEl.style.color='var(--black)';
-    }
+    var sub = prix * d.qty;
+    totalGeneral += sub; actifs++;
+    if (stEl) { stEl.textContent = sub.toFixed(2).replace('.',',')+' € HT'; stEl.style.color = 'var(--gray-900)'; }
     lignes.push(veh.l+' ×'+d.qty+' × '+prix.toFixed(2).replace('.',',')+' € HT = '+sub.toFixed(2).replace('.',',')+' € HT');
   });
-
-  var totalRow=document.getElementById('simTotalRow');
-  if(!totalRow) return;
-
-  if(actifs===0){totalRow.style.display='none';return;}
-
-  document.getElementById('simPrice').textContent=totalGeneral.toFixed(2).replace('.',',')+' € HT';
-  document.getElementById('simDetail').textContent=lignes.join('\n');
-  totalRow.style.display='block';
+  var totalRow = document.getElementById('simTotalRow');
+  if (!totalRow) return;
+  if (actifs === 0) { totalRow.style.display = 'none'; return; }
+  document.getElementById('simPrice').textContent = totalGeneral.toFixed(2).replace('.',',')+' € HT';
+  document.getElementById('simDetail').textContent = lignes.join('\n');
+  totalRow.style.display = 'block';
 }
 
-function setRungisMode(mode){
-  if(mode==='simulateur'&&state.options.convoyage){
-    document.getElementById('convoyageDevisMsg').style.display='flex';
-    mode='devis';
+function setRungisMode(mode) {
+  if (mode === 'simulateur' && state.options.convoyage) {
+    document.getElementById('convoyageDevisMsg').style.display = 'flex';
+    mode = 'devis';
   }
-  rungisMode=mode;
-  if(rungisSimCard)    rungisSimCard.classList.toggle('selected',mode==='simulateur');
-  if(rungisDevisCard)  rungisDevisCard.classList.toggle('selected',mode==='devis');
-  if(simulateurBlock)  simulateurBlock.style.display=mode==='simulateur'?'block':'none';
-  if(mode==='simulateur') calcSim();
+  rungisMode = mode;
+  if (rungisSimCard) rungisSimCard.classList.toggle('selected', mode === 'simulateur');
+  if (rungisDevisCard) rungisDevisCard.classList.toggle('selected', mode === 'devis');
+  if (simulateurBlock) simulateurBlock.style.display = mode === 'simulateur' ? 'block' : 'none';
+  if (mode === 'simulateur') calcSim();
 }
 
-if(rungisSimCard)    rungisSimCard.addEventListener('click',   function(){setRungisMode('simulateur');});
-if(rungisDevisCard)  rungisDevisCard.addEventListener('click', function(){setRungisMode('devis');});
+if (rungisSimCard) rungisSimCard.addEventListener('click', function(){setRungisMode('simulateur');});
+if (rungisDevisCard) rungisDevisCard.addEventListener('click', function(){setRungisMode('devis');});
 
-// Construire le tableau dès l'initialisation (pas au clic)
 buildTable();
 
-var convoyageCard2=document.getElementById('convoyageCard');
-if(convoyageCard2){
-  convoyageCard2.addEventListener('click',function(){
-    setTimeout(function(){
-      var msg=document.getElementById('convoyageDevisMsg');
-      if(state.options.convoyage){if(msg)msg.style.display='flex';if(rungisMode==='simulateur')setRungisMode('devis');}
-      else{if(msg)msg.style.display='none';}
-    },50);
+var convoyageCard2 = document.getElementById('convoyageCard');
+if (convoyageCard2) {
+  convoyageCard2.addEventListener('click', function() {
+    setTimeout(function() {
+      var msg = document.getElementById('convoyageDevisMsg');
+      if (state.options.convoyage) { if (msg) msg.style.display = 'flex'; if (rungisMode === 'simulateur') setRungisMode('devis'); }
+      else { if (msg) msg.style.display = 'none'; }
+    }, 50);
   });
 }
 
-var switchBtn=document.getElementById('simSwitchDevis');
-if(switchBtn) switchBtn.addEventListener('click',function(){setRungisMode('devis');});
-
+var switchBtn = document.getElementById('simSwitchDevis');
+if (switchBtn) switchBtn.addEventListener('click', function(){setRungisMode('devis');});
 })();
-// ── FIN SIMULATEUR ──
 
-}
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initForm);}else{initForm();}
+} // end initForm
 
-// ── Communication hauteur iframe au parent ──
-(function(){
-  function sendHeight(){
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initForm); }
+else { initForm(); }
+
+// ══════════════════════════════════════════════════════════════════
+// COMMUNICATION HAUTEUR IFRAME AU PARENT (Wix)
+// ══════════════════════════════════════════════════════════════════
+(function() {
+  function sendHeight() {
     var h = document.documentElement.scrollHeight;
-    if(window.parent !== window){
-      window.parent.postMessage({type:'resize',height:h},'*');
+    if (window.parent !== window) {
+      window.parent.postMessage({type:'resize', height:h}, '*');
     }
   }
-  if(typeof ResizeObserver !== 'undefined'){
+  if (typeof ResizeObserver !== 'undefined') {
     new ResizeObserver(sendHeight).observe(document.body);
   }
   window.addEventListener('load', sendHeight);
